@@ -1,0 +1,119 @@
+config DEVICE_STM32F40X
+       bool
+       select ARM_CORTEX_M4F
+
+       # Sources
+       option source_dir="arch/ARM/STM32/svd/stm32f40x/"
+       option source_dir="arch/ARM/STM32/devices/stm32f40x/"
+       option source_dir="arch/ARM/STM32/drivers/"
+       option source_dir="arch/ARM/STM32/drivers/dma"
+       option source_dir="arch/ARM/STM32/drivers/dma_interrupts"
+       option source_dir="arch/ARM/STM32/drivers/crc_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/i2c_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/power_control_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/uart_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/sd"
+       option source_dir="arch/ARM/STM32/drivers/sd/sdio"
+
+config DEVICE_STM32F429
+       bool
+       select ARM_CORTEX_M4F
+
+       # Sources
+       option source_dir="arch/ARM/STM32/svd/stm32f429x/"
+       option source_dir="arch/ARM/STM32/devices/stm32f42x/"
+       option source_dir="arch/ARM/STM32/drivers/"
+       option source_dir="arch/ARM/STM32/drivers/fmc"
+       option source_dir="arch/ARM/STM32/drivers/dma"
+       option source_dir="arch/ARM/STM32/drivers/ltdc"
+       option source_dir="arch/ARM/STM32/drivers/dma_interrupts"
+       option source_dir="arch/ARM/STM32/drivers/dma2d"
+       option source_dir="arch/ARM/STM32/drivers/crc_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/i2c_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/power_control_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/uart_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/sd"
+       option source_dir="arch/ARM/STM32/drivers/sd/sdio"
+
+config DEVICE_STM32F427
+       bool
+       select ARM_CORTEX_M4F
+
+       # The only difference between 429x and 427x is LTDC device
+
+       # Sources
+       option source_dir="arch/ARM/STM32/svd/stm32f429x/"
+       option source_dir="arch/ARM/STM32/devices/stm32f42x/"
+       option source_dir="arch/ARM/STM32/drivers/"
+       option source_dir="arch/ARM/STM32/drivers/fmc"
+       option source_dir="arch/ARM/STM32/drivers/dma"
+       option source_dir="arch/ARM/STM32/drivers/dma_interrupts"
+       option source_dir="arch/ARM/STM32/drivers/dma2d"
+       option source_dir="arch/ARM/STM32/drivers/crc_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/i2c_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/power_control_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/uart_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/sd"
+       option source_dir="arch/ARM/STM32/drivers/sd/sdio"
+
+config DEVICE_STM32F46_79X
+       bool
+       select ARM_CORTEX_M4F
+
+       # Sources
+       option source_dir="arch/ARM/STM32/svd/stm32f46_79x/"
+       option source_dir="arch/ARM/STM32/devices/stm32f46_79x/"
+       option source_dir="arch/ARM/STM32/drivers/"
+       option source_dir="arch/ARM/STM32/drivers/crc_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/dma"
+       option source_dir="arch/ARM/STM32/drivers/dma_interrupts"
+       option source_dir="arch/ARM/STM32/drivers/dma2d"
+       option source_dir="arch/ARM/STM32/drivers/i2c_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/power_control_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/uart_stm32f4"
+       option source_dir="arch/ARM/STM32/drivers/fmc"
+       option source_dir="arch/ARM/STM32/drivers/dsi"
+       option source_dir="arch/ARM/STM32/drivers/ltdc"
+       option source_dir="arch/ARM/STM32/drivers/sai"
+       option source_dir="arch/ARM/STM32/drivers/sd"
+       option source_dir="arch/ARM/STM32/drivers/sd/sdio"
+
+config DEVICE_STM32F7X9
+       bool
+       select ARM_CORTEX_M7
+
+       # Sources
+       option source_dir="arch/ARM/STM32/svd/stm32f7x9/"
+       option source_dir="arch/ARM/STM32/devices/stm32f7x9/"
+       option source_dir="arch/ARM/STM32/drivers/"
+       option source_dir="arch/ARM/STM32/drivers/i2c_stm32f7"
+       option source_dir="arch/ARM/STM32/drivers/power_control_stm32f7"
+       option source_dir="arch/ARM/STM32/drivers/fmc"
+       option source_dir="arch/ARM/STM32/drivers/dma_stm32f769"
+       option source_dir="arch/ARM/STM32/drivers/dma_interrupts"
+       option source_dir="arch/ARM/STM32/drivers/dma2d"
+       option source_dir="arch/ARM/STM32/drivers/dsi"
+       option source_dir="arch/ARM/STM32/drivers/ltdc"
+       option source_dir="arch/ARM/STM32/drivers/sai"
+       option source_dir="arch/ARM/STM32/drivers/sd"
+       option source_dir="arch/ARM/STM32/drivers/sd/sdmmc"
+
+config DEVICE_STM32F7X
+       bool
+       select ARM_CORTEX_M7
+
+       # Sources
+       option source_dir="arch/ARM/STM32/svd/stm32f7x/"
+       option source_dir="arch/ARM/STM32/devices/stm32f7x/"
+       option source_dir="arch/ARM/STM32/drivers/"
+       option source_dir="arch/ARM/STM32/drivers/i2c_stm32f7"
+       option source_dir="arch/ARM/STM32/drivers/power_control_stm32f7"
+       option source_dir="arch/ARM/STM32/drivers/fmc"
+       option source_dir="arch/ARM/STM32/drivers/dma"
+       option source_dir="arch/ARM/STM32/drivers/dma_interrupts"
+       option source_dir="arch/ARM/STM32/drivers/dma2d"
+       option source_dir="arch/ARM/STM32/drivers/ltdc"
+       option source_dir="arch/ARM/STM32/drivers/sai"
+       option source_dir="arch/ARM/STM32/drivers/sd"
+       option source_dir="arch/ARM/STM32/drivers/sd/sdmmc"
+

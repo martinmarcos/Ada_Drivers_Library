@@ -1,0 +1,9 @@
+config DEVICE_NRF51
+       bool
+       select ARM_CORTEX_M0
+
+       # Sources
+       option source_dir="arch/ARM/Nordic/drivers"
+       option source_dir="arch/ARM/Nordic/devices"
+       option source_dir="arch/ARM/Nordic/svd/nrf51"
+

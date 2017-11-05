@@ -1,0 +1,7 @@
+
+config HAS_COMPONENTS
+       def_bool y
+
+       # Sources
+       option source_dir="components/src/**"
+

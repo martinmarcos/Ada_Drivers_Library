@@ -1,0 +1,21 @@
+menu "Middleware"
+
+config HAS_MIDDLEWARE
+       def_bool y
+
+       # Sources
+       option source_dir="middleware/src/**"
+       option source_dir="middleware/sdmmc/"
+       option source_dir="middleware/"
+
+menu "Filesystem"
+ config CONFIG_FILESYSTEM_MAX_PATH_LEN
+        int "Maximun path length"
+        default "1024"
+        range "1" "2048" if LOL
+        comment "test"
+
+endmenu
+endmenu
+
+

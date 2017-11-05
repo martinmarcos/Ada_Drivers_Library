@@ -1,0 +1,43 @@
+config ARCH_ARM
+       bool
+
+config ARM_CORTEX_M0
+       bool
+       select ARCH_ARM
+
+       # Sources
+       option source_dir="arch/ARM/cortex_m/src"
+       option source_dir="arch/ARM/cortex_m/src/cm0"
+       option source_dir="arch/ARM/cortex_m/src/nocache"
+       option source_dir="arch/ARM/cortex_m/src/nvic_cm0"
+
+config ARM_CORTEX_M4
+       bool
+       select ARCH_ARM
+
+       # Sources
+       option source_dir="arch/ARM/cortex_m/src"
+       option source_dir="arch/ARM/cortex_m/src/cm4f"
+       option source_dir="arch/ARM/cortex_m/src/nocache"
+       option source_dir="arch/ARM/cortex_m/src/nvic_cm4_cm7"
+
+config ARM_CORTEX_M4F
+       bool
+       select ARM_CORTEX_M4
+
+       # Sources
+       option source_dir="arch/ARM/cortex_m/src/fpu"
+
+config ARM_CORTEX_M7
+       bool
+       select ARCH_ARM
+
+       # Sources
+       option source_dir="arch/ARM/cortex_m/src"
+       option source_dir="arch/ARM/cortex_m/src/cm7f"
+       option source_dir="arch/ARM/cortex_m/src/fpu"
+       option source_dir="arch/ARM/cortex_m/src/cache"
+       option source_dir="arch/ARM/cortex_m/src/nvic_cm4_cm7"
+
+source "arch/ARM/STM32/config.in"
+source "arch/ARM/Nordic/config.in"

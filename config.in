@@ -1,0 +1,12 @@
+# mainmenu "Ada_Drivers_Library Configuration"
+
+config HARDWARE_ABSTRACTION_LAYER
+       def_bool y
+
+       # Sources
+       option source_dir="hal/src/**"
+
+source "arch/config.in"
+source "boards/config.in"
+source "middleware/config.in"
+source "components/config.in"

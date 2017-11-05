@@ -1,0 +1,231 @@
+
+###############
+# definitions #
+###############
+
+config BOARD_STM32F4_DISCO
+       bool
+       select DEVICE_STM32F40X
+
+       # Sources
+       option source_dir="boards/stm32_common/stm32f407disco"
+       option source_dir="boards/stm32_common/common"
+
+config BOARD_STM32F429_DISCO
+       bool
+       select DEVICE_STM32F429
+
+       # Sources
+       option source_dir="boards/stm32_common/stm32f429disco"
+       option source_dir="boards/stm32_common/common"
+       option source_dir="boards/stm32_common/dma2d"
+       option source_dir="boards/stm32_common/ltdc"
+       option source_dir="boards/stm32_common/sdram"
+
+config BOARD_OPENMV2
+       bool
+       select DEVICE_STM32F427
+
+       # Sources
+       option source_dir="boards/OpenMV2/src"
+
+config BOARD_STM32F469_DISCO
+       bool
+       select DEVICE_STM32F46_79X
+
+       # Sources
+       option source_dir="boards/stm32_common/stm32f469disco"
+       option source_dir="boards/stm32_common/common"
+       option source_dir="boards/stm32_common/dma2d"
+       option source_dir="boards/stm32_common/otm80909a"
+       option source_dir="boards/stm32_common/sdcard"
+       option source_dir="boards/stm32_common/sdram"
+
+config BOARD_STM32F746_DISCO
+       bool
+       select DEVICE_STM32F7X
+
+       # Sources
+       option source_dir="boards/stm32_common/stm32f746disco"
+       option source_dir="boards/stm32_common/common"
+       option source_dir="boards/stm32_common/dma2d"
+       option source_dir="boards/stm32_common/ltdc"
+       option source_dir="boards/stm32_common/sdcard"
+       option source_dir="boards/stm32_common/sdram"
+
+config BOARD_STM32F769_DISCO
+       bool
+       select DEVICE_STM32F7X9
+
+       # Sources
+       option source_dir="boards/stm32_common/stm32f769disco"
+       option source_dir="boards/stm32_common/common"
+       option source_dir="boards/stm32_common/dma2d"
+       option source_dir="boards/stm32_common/otm8009a"
+       option source_dir="boards/stm32_common/sdcard"
+       option source_dir="boards/stm32_common/sdram"
+
+config BOARD_MICRO_BIT
+       bool
+       select DEVICE_NRF51
+
+       # Sources
+       option source_dir="boards/MicroBit/src"
+
+###########
+# Choices #
+###########
+
+menu "Board"
+
+   config HAS_BOARD_DELAY_SUPPORT
+          bool
+    
+   config ARCH_RISCV
+          bool
+    
+   ####################
+   # Supported boards #
+   ####################
+   choice
+           prompt "Board variant"
+           default CHOICE_BOARD_CUSTOM
+           help
+             Specific board variant to use
+    
+      config CHOICE_BOARD_CUSTOM
+              bool "Custom board definition"
+       
+      config CHOICE_BOARD_NATIVE
+              bool "Native board"
+              help
+                Used for testing or for Raspberry-Pi support
+       
+      config CHOICE_STM32F4_DISCO
+              bool "STM32F4 Discovery"
+              select BOARD_STM32F4_DISCO
+      config CHOICE_BOARD_STM32F429_DISCO
+              bool "STM32F429 Discovery"
+              select BOARD_STM32F429_DISCO
+       
+      config CHOICE_BOARD_OPENMV2
+              bool "OpenMV 2"
+              select BOARD_OPENMV2
+       
+      config CHOICE_BOARD_STM32F469_DISCO
+              bool "STM32F469 Discovery"
+              select BOARD_STM32F469_DISCO
+       
+      config CHOICE_BOARD_STM32F746_DISCO
+              bool "STM32F746 Discovery"
+              select BOARD_STM32F746_DISCO
+       
+      config CHOICE_BOARD_STM32F769_DISCO
+              bool "STM32F769 Discovery"
+              select BOARD_STM32F769_DISCO
+       
+      config CHOICE_BOARD_MICROBIT
+              bool "BBC Micro:Bit"
+              select BOARD_MICRO_BIT
+              select HAS_BOARD_DELAY_SUPPORT
+       
+      config CHOICE_BOARD_HIFIVE1
+              bool "SiFive HiFive 1"
+              select ARCH_RISCV
+   endchoice
+    
+   if CHOICE_BOARD_CUSTOM
+    
+      config BOARD_CUSTOM_SOURCE_DIR
+             string "Source directory for the custom board support"
+       
+      choice
+              prompt "Target Micro-controller familly Variant"
+              default CHOICE_SELECT_MCU_STM32
+              help
+                Specific CPU variant to use
+         config CHOICE_SELECT_MCU_CUSTOM
+                 bool "Custom MCU definition"
+         config CHOICE_SELECT_MCU_STM32
+                 bool "STMicro STM32"
+         config CHOICE_SELECT_MCU_SIFIVE
+                 bool "SiFive RISC-V 32"
+         config CHOICE_SELECT_MCU_NORDIC
+                 bool "Nordic NRF5x"
+      endchoice
+   endif
+    
+   if CHOICE_SELECT_MCU_CUSTOM
+      choice
+              prompt "Target Architecture Variant"
+              default CHOICE_SELECT_ARCH_CUSTOM       
+              help
+                Specific CPU variant to use
+       
+         config CHOICE_SELECT_ARCH_CUSTOM
+                 bool "Custom arch definition"
+         config CHOICE_SELECT_ARCH_ARM
+                 bool "ARM"
+                 select ARCH_ARM
+         config CHOICE_SELECT_ARCH_RISCV
+                 bool "RISC-V"
+                 select ARCH_RISCV
+      endchoice
+   endif
+    
+   if CHOICE_SELECT_ARCH_ARM
+      choice
+              prompt "Target ARM Variant"
+              default CHOICE_ARCH_CORTEX_M4F
+              help
+                Specific CPU variant to use
+       
+         config CHOICE_ARCH_CORTEX_M0
+                 bool "ARM Cortex-M0"
+                 select ARM_CORTEX_M0
+         config CHOICE_ARCH_CORTEX_M4
+                 bool "ARM Cortex-M4"
+                 select ARM_CORTEX_M4
+         config CHOICE_ARCH_CORTEX_M4F
+                 bool "ARM Cortex-M4F"
+                 select ARM_CORTEX_M4F
+         config CHOICE_ARCH_CORTEX_M7
+                 bool "ARM Cortex-M7"
+                 select ARM_CORTEX_M7
+      endchoice
+   endif
+
+   if CHOICE_SELECT_MCU_STM32
+      choice
+              prompt "STM32 Device Variant"
+              default CHOICE_DEVICE_STM32F40X
+              help
+                Specific CPU variant to use
+       
+         config CHOICE_DEVICE_STM32F40X
+                 bool "STM32F40x"
+                 select DEVICE_STM32F40X
+
+         config CHOICE_DEVICE_STM32F429
+                 bool "STM32F429"
+                 select DEVICE_STM32F429
+
+         config CHOICE_DEVICE_STM32F427
+                 bool "STM32F427"
+                 select DEVICE_STM32F427
+
+         config CHOICE_DEVICE_STM32F46_79X
+                 bool "STM32F46_79X"
+                 select DEVICE_STM32F46_79X
+
+         config CHOICE_DEVICE_STM32F7X9
+                 bool "STM32F7X9"
+                 select DEVICE_STM32F7X9
+
+         config CHOICE_DEVICE_STM32F7X
+                 bool "STM32F7X"
+                 select DEVICE_STM32F7X
+      endchoice
+   endif
+
+endmenu
