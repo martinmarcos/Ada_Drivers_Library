@@ -1,0 +1,32 @@
+if CHOICE_SELECT_MCU_STM32
+   choice
+           prompt "STM32 Device Variant"
+           default CHOICE_DEVICE_STM32F40X
+           help
+             Specific CPU variant to use
+    
+      config CHOICE_DEVICE_STM32F40X
+              bool "STM32F40x"
+              select DEVICE_STM32F40X
+
+      config CHOICE_DEVICE_STM32F429
+              bool "STM32F429"
+              select DEVICE_STM32F429
+
+      config CHOICE_DEVICE_STM32F427
+              bool "STM32F427"
+              select DEVICE_STM32F427
+
+      config CHOICE_DEVICE_STM32F46_79X
+              bool "STM32F46_79X"
+              select DEVICE_STM32F46_79X
+
+      config CHOICE_DEVICE_STM32F7X9
+              bool "STM32F7X9"
+              select DEVICE_STM32F7X9
+
+      config CHOICE_DEVICE_STM32F7X
+              bool "STM32F7X"
+              select DEVICE_STM32F7X
+   endchoice
+endif

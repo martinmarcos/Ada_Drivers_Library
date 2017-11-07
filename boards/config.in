@@ -154,78 +154,7 @@ menu "Board"
                  bool "Nordic NRF5x"
       endchoice
    endif
-    
-   if CHOICE_SELECT_MCU_CUSTOM
-      choice
-              prompt "Target Architecture Variant"
-              default CHOICE_SELECT_ARCH_CUSTOM       
-              help
-                Specific CPU variant to use
-       
-         config CHOICE_SELECT_ARCH_CUSTOM
-                 bool "Custom arch definition"
-         config CHOICE_SELECT_ARCH_ARM
-                 bool "ARM"
-                 select ARCH_ARM
-         config CHOICE_SELECT_ARCH_RISCV
-                 bool "RISC-V"
-                 select ARCH_RISCV
-      endchoice
-   endif
-    
-   if CHOICE_SELECT_ARCH_ARM
-      choice
-              prompt "Target ARM Variant"
-              default CHOICE_ARCH_CORTEX_M4F
-              help
-                Specific CPU variant to use
-       
-         config CHOICE_ARCH_CORTEX_M0
-                 bool "ARM Cortex-M0"
-                 select ARM_CORTEX_M0
-         config CHOICE_ARCH_CORTEX_M4
-                 bool "ARM Cortex-M4"
-                 select ARM_CORTEX_M4
-         config CHOICE_ARCH_CORTEX_M4F
-                 bool "ARM Cortex-M4F"
-                 select ARM_CORTEX_M4F
-         config CHOICE_ARCH_CORTEX_M7
-                 bool "ARM Cortex-M7"
-                 select ARM_CORTEX_M7
-      endchoice
-   endif
 
-   if CHOICE_SELECT_MCU_STM32
-      choice
-              prompt "STM32 Device Variant"
-              default CHOICE_DEVICE_STM32F40X
-              help
-                Specific CPU variant to use
-       
-         config CHOICE_DEVICE_STM32F40X
-                 bool "STM32F40x"
-                 select DEVICE_STM32F40X
-
-         config CHOICE_DEVICE_STM32F429
-                 bool "STM32F429"
-                 select DEVICE_STM32F429
-
-         config CHOICE_DEVICE_STM32F427
-                 bool "STM32F427"
-                 select DEVICE_STM32F427
-
-         config CHOICE_DEVICE_STM32F46_79X
-                 bool "STM32F46_79X"
-                 select DEVICE_STM32F46_79X
-
-         config CHOICE_DEVICE_STM32F7X9
-                 bool "STM32F7X9"
-                 select DEVICE_STM32F7X9
-
-         config CHOICE_DEVICE_STM32F7X
-                 bool "STM32F7X"
-                 select DEVICE_STM32F7X
-      endchoice
-   endif
+source "arch/config.choices"
 
 endmenu

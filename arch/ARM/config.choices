@@ -1,0 +1,24 @@
+if CHOICE_SELECT_ARCH_ARM
+   choice
+           prompt "Target ARM Variant"
+           default CHOICE_ARCH_CORTEX_M4F
+           help
+             Specific CPU variant to use
+    
+      config CHOICE_ARCH_CORTEX_M0
+              bool "ARM Cortex-M0"
+              select ARM_CORTEX_M0
+      config CHOICE_ARCH_CORTEX_M4
+              bool "ARM Cortex-M4"
+              select ARM_CORTEX_M4
+      config CHOICE_ARCH_CORTEX_M4F
+              bool "ARM Cortex-M4F"
+              select ARM_CORTEX_M4F
+      config CHOICE_ARCH_CORTEX_M7
+              bool "ARM Cortex-M7"
+              select ARM_CORTEX_M7
+   endchoice
+endif
+
+source "arch/ARM/STM32/config.choices"
+source "arch/ARM/Nordic/config.choices"

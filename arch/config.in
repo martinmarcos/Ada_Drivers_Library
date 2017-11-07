@@ -1,2 +1,0 @@
-source "arch/ARM/config.in"
-source "arch/RISC-V/config.in"

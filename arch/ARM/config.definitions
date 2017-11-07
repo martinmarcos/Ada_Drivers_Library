@@ -39,5 +39,5 @@ config ARM_CORTEX_M7
        option source_dir="arch/ARM/cortex_m/src/cache"
        option source_dir="arch/ARM/cortex_m/src/nvic_cm4_cm7"
 
-source "arch/ARM/STM32/config.in"
-source "arch/ARM/Nordic/config.in"
+source "arch/ARM/STM32/config.definitions"
+source "arch/ARM/Nordic/config.definitions"

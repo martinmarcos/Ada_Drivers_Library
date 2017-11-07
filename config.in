@@ -6,7 +6,7 @@ config HARDWARE_ABSTRACTION_LAYER
        # Sources
        option source_dir="hal/src/**"
 
-source "arch/config.in"
+source "arch/config.definitions"
 source "boards/config.in"
 source "middleware/config.in"
 source "components/config.in"
