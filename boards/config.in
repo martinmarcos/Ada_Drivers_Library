@@ -3,17 +3,45 @@
 # definitions #
 ###############
 
+config HAS_RUNTIME_PROFILE_ZFP
+       bool
+config HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
+       bool
+config HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
+       bool
+config HAS_RUNTIME_PROFILE_NATIVE
+       bool
+
 config BOARD_STM32F4_DISCO
        bool
        select DEVICE_STM32F40X
+
+       select HAS_RUNTIME_PROFILE_ZFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
 
        # Sources
        option source_dir="boards/stm32_common/stm32f407disco"
        option source_dir="boards/stm32_common/common"
 
+if BOARD_STM32F4_DISCO
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "stm32f4"
+
+   config STM32_HSE_MHZ
+          int
+          default 8
+
+endif
+
 config BOARD_STM32F429_DISCO
        bool
        select DEVICE_STM32F429
+
+       select HAS_RUNTIME_PROFILE_ZFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
 
        # Sources
        option source_dir="boards/stm32_common/stm32f429disco"
@@ -22,16 +50,45 @@ config BOARD_STM32F429_DISCO
        option source_dir="boards/stm32_common/ltdc"
        option source_dir="boards/stm32_common/sdram"
 
+if BOARD_STM32F429_DISCO
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "stm32f429disco"
+
+   config STM32_HSE_MHZ
+          int
+          default 8
+
+endif
+
 config BOARD_OPENMV2
        bool
        select DEVICE_STM32F427
 
+       select HAS_RUNTIME_PROFILE_ZFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
+
        # Sources
        option source_dir="boards/OpenMV2/src"
+
+if BOARD_OPENMV2
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "openmv2"
+
+   config STM32_HSE_MHZ
+          int
+          default 25
+endif
 
 config BOARD_STM32F469_DISCO
        bool
        select DEVICE_STM32F46_79X
+
+       select HAS_RUNTIME_PROFILE_ZFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
 
        # Sources
        option source_dir="boards/stm32_common/stm32f469disco"
@@ -41,9 +98,24 @@ config BOARD_STM32F469_DISCO
        option source_dir="boards/stm32_common/sdcard"
        option source_dir="boards/stm32_common/sdram"
 
+if BOARD_STM32F469_DISCO
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "stm32f469disco"
+
+   config STM32_HSE_MHZ
+          int
+          default 8
+
+endif
+
 config BOARD_STM32F746_DISCO
        bool
        select DEVICE_STM32F7X
+
+       select HAS_RUNTIME_PROFILE_ZFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
 
        # Sources
        option source_dir="boards/stm32_common/stm32f746disco"
@@ -53,9 +125,24 @@ config BOARD_STM32F746_DISCO
        option source_dir="boards/stm32_common/sdcard"
        option source_dir="boards/stm32_common/sdram"
 
+if BOARD_STM32F746_DISCO
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "stm32f746disco"
+
+   config STM32_HSE_MHZ
+          int
+          default 25
+
+endif
+
 config BOARD_STM32F769_DISCO
        bool
        select DEVICE_STM32F7X9
+
+       select HAS_RUNTIME_PROFILE_ZFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
+       select HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
 
        # Sources
        option source_dir="boards/stm32_common/stm32f769disco"
@@ -65,12 +152,45 @@ config BOARD_STM32F769_DISCO
        option source_dir="boards/stm32_common/sdcard"
        option source_dir="boards/stm32_common/sdram"
 
+if BOARD_STM32F769_DISCO
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "stm32f769disco"
+
+   config STM32_HSE_MHZ
+          int
+          default 25
+
+endif
+
 config BOARD_MICRO_BIT
        bool
        select DEVICE_NRF51
 
+       select HAS_RUNTIME_PROFILE_ZFP
+
        # Sources
        option source_dir="boards/MicroBit/src"
+
+if BOARD_MICRO_BIT
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "nrf51"
+endif
+
+config BOARD_NATIVE
+       bool
+
+       select HAS_RUNTIME_PROFILE_NATIVE
+
+       # Sources
+       option source_dir="boards/native/src/"
+
+if BOARD_NATIVE
+   config RUNTIME_NAME_SUFFIX
+          string
+          default ""
+endif
 
 ###########
 # Choices #
@@ -80,10 +200,10 @@ menu "Board"
 
    config HAS_BOARD_DELAY_SUPPORT
           bool
-    
+
    config ARCH_RISCV
           bool
-    
+
    ####################
    # Supported boards #
    ####################
@@ -92,53 +212,55 @@ menu "Board"
            default CHOICE_BOARD_CUSTOM
            help
              Specific board variant to use
-    
+
       config CHOICE_BOARD_CUSTOM
               bool "Custom board definition"
-       
+
       config CHOICE_BOARD_NATIVE
               bool "Native board"
+              select BOARD_NATIVE
               help
                 Used for testing or for Raspberry-Pi support
-       
+
       config CHOICE_STM32F4_DISCO
               bool "STM32F4 Discovery"
               select BOARD_STM32F4_DISCO
+
       config CHOICE_BOARD_STM32F429_DISCO
               bool "STM32F429 Discovery"
               select BOARD_STM32F429_DISCO
-       
+
       config CHOICE_BOARD_OPENMV2
               bool "OpenMV 2"
               select BOARD_OPENMV2
-       
+
       config CHOICE_BOARD_STM32F469_DISCO
               bool "STM32F469 Discovery"
               select BOARD_STM32F469_DISCO
-       
+
       config CHOICE_BOARD_STM32F746_DISCO
               bool "STM32F746 Discovery"
               select BOARD_STM32F746_DISCO
-       
+
       config CHOICE_BOARD_STM32F769_DISCO
               bool "STM32F769 Discovery"
               select BOARD_STM32F769_DISCO
-       
+
       config CHOICE_BOARD_MICROBIT
               bool "BBC Micro:Bit"
               select BOARD_MICRO_BIT
               select HAS_BOARD_DELAY_SUPPORT
-       
+
       config CHOICE_BOARD_HIFIVE1
               bool "SiFive HiFive 1"
               select ARCH_RISCV
    endchoice
-    
+
    if CHOICE_BOARD_CUSTOM
-    
+
       config BOARD_CUSTOM_SOURCE_DIR
              string "Source directory for the custom board support"
-       
+
       choice
               prompt "Target Micro-controller familly Variant"
               default CHOICE_SELECT_MCU_STM32

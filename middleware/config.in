@@ -1,19 +1,30 @@
 menu "Middleware"
 
-config HAS_MIDDLEWARE
+config MIDDLEWARE
        def_bool y
 
        # Sources
-       option source_dir="middleware/src/**"
+       option source_dir="middleware/src/audio"
+       option source_dir="middleware/src/bitmap"
+       option source_dir="middleware/src/BLE"
+       option source_dir="middleware/src/filesystem"
+       option source_dir="middleware/src/monitor"
+       option source_dir="middleware/src/utils"
        option source_dir="middleware/sdmmc/"
-       option source_dir="middleware/"
+
+config MIDDLEWARE_RAVENSCAR
+       def_bool y
+
+       depends on RUNTIME_PROFILE_RAVENSCAR_FULL || RUNTIME_PROFILE_RAVENSCAR_SFP
+
+       # Sources
+       option source_dir="middleware/src/ravenscar-common"
 
 menu "Filesystem"
- config CONFIG_FILESYSTEM_MAX_PATH_LEN
-        int "Maximun path length"
-        default "1024"
-        range "1" "2048" if LOL
-        comment "test"
+      config CONFIG_FILESYSTEM_MAX_PATH_LEN
+             int "Maximun path length"
+             default "1024"
+             range "1" "2048"
 
 endmenu
 endmenu

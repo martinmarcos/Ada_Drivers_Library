@@ -1,4 +1,4 @@
-# mainmenu "Ada_Drivers_Library Configuration"
+mainmenu "Ada_Drivers_Library Configuration"
 
 config HARDWARE_ABSTRACTION_LAYER
        def_bool y
@@ -8,5 +8,66 @@ config HARDWARE_ABSTRACTION_LAYER
 
 source "arch/config.definitions"
 source "boards/config.in"
+
+menu "Run-time"
+
+     choice
+        prompt "Run-time profile"
+
+        config RUNTIME_PROFILE_ZFP
+               bool "Zero-FootPrint (ZFP)"
+               depends on HAS_RUNTIME_PROFILE_ZFP
+
+        config RUNTIME_PROFILE_RAVENSCAR_SFP
+               bool "Ravenscar Small-FootPrint (SFP)"
+               depends on HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
+
+        config RUNTIME_PROFILE_RAVENSCAR_FULL
+               bool "Ravenscar Full"
+               depends on HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
+
+        config RUNTIME_PROFILE_NATIVE
+               bool "Native run-time"
+               depends on HAS_RUNTIME_PROFILE_NATIVE
+
+        config RUNTIME_PROFILE_CUSTOM
+               bool "Custom run-time profile"
+               depends on !HAS_RUNTIME_PROFILE_NATIVE
+
+     endchoice
+
+     if RUNTIME_PROFILE_ZFP
+        config RUNTIME_NAME_PREFIX
+               string
+               default "zfp-"
+     endif
+     if RUNTIME_PROFILE_RAVENSCAR_SFP
+        config RUNTIME_NAME_PREFIX
+               string
+               default "ravenscar-sfp-"
+     endif
+     if RUNTIME_PROFILE_RAVENSCAR_FULL
+        config RUNTIME_NAME_PREFIX
+               string
+               default "ravenscar-full-"
+     endif
+
+     if RUNTIME_PROFILE_NATIVE
+        config RUNTIME_NAME_PREFIX
+               string
+               default "native"
+     endif
+
+     if RUNTIME_PROFILE_CUSTOM
+        config RUNTIME_NAME_PREFIX
+               string "Full name of the custom runtime"
+               default ""
+
+        config RUNTIME_NAME_SUFFIX
+               string
+               default ""
+     endif
+endmenu
+
 source "middleware/config.in"
 source "components/config.in"
