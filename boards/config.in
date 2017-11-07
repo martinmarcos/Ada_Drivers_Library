@@ -79,7 +79,7 @@ if BOARD_OPENMV2
 
    config STM32_HSE_MHZ
           int
-          default 25
+          default 12
 endif
 
 config BOARD_STM32F469_DISCO
