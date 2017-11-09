@@ -1,0 +1,1 @@
+source "arch/RISC-V/SiFive/config.choices"

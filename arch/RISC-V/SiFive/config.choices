@@ -1,0 +1,12 @@
+if CHOICE_SELECT_MCU_SIFIVE
+   choice
+           prompt "SiFive Device Variant"
+           default CHOICE_DEVICE_FE310
+           help
+             Specific CPU variant to use
+
+      config CHOICE_DEVICE_FE310
+              bool "FE310"
+              select DEVICE_FE310
+   endchoice
+endif

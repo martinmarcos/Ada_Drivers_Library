@@ -168,6 +168,7 @@ config BOARD_MICRO_BIT
        select DEVICE_NRF51
 
        select HAS_RUNTIME_PROFILE_ZFP
+       select HAS_BOARD_DELAY_SUPPORT
 
        # Sources
        option source_dir="boards/MicroBit/src"
@@ -191,6 +192,22 @@ if BOARD_NATIVE
           string
           default ""
 endif
+
+config BOARD_HIFIVE1
+       bool
+       select DEVICE_FE310
+
+       select HAS_RUNTIME_PROFILE_ZFP
+
+       # Sources
+       option source_dir="boards/HiFive1/src"
+
+if BOARD_HIFIVE1
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "hifive1"
+endif
+
 
 ###########
 # Choices #
@@ -249,11 +266,10 @@ menu "Board"
       config CHOICE_BOARD_MICROBIT
               bool "BBC Micro:Bit"
               select BOARD_MICRO_BIT
-              select HAS_BOARD_DELAY_SUPPORT
 
       config CHOICE_BOARD_HIFIVE1
               bool "SiFive HiFive 1"
-              select ARCH_RISCV
+              select BOARD_HIFIVE1
    endchoice
 
    if CHOICE_BOARD_CUSTOM

@@ -1,0 +1,10 @@
+config ARCH_RISCV_32
+       bool
+
+if ARCH_RISCV_32
+   config TARGET_PLATFORM
+          string
+          default "riscv32-unknown-elf"
+endif
+
+source "arch/RISC-V/SiFive/config.definitions"

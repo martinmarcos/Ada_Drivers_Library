@@ -1,0 +1,9 @@
+config DEVICE_FE310
+       bool
+       select ARCH_RISCV_32
+
+       # Sources
+       option source_dir="arch/RISC-V/SiFive/devices/FE310/"
+       option source_dir="arch/RISC-V/SiFive/drivers/"
+       option source_dir="arch/RISC-V/SiFive/svd/FE310/"
+
