@@ -1,3 +1,4 @@
+menu "Components"
 
 config HAS_COMPONENTS
        def_bool y
@@ -5,3 +6,4 @@ config HAS_COMPONENTS
        # Sources
        option source_dir="components/src/**"
 
+endmenu

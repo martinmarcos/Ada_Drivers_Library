@@ -18,17 +18,17 @@ menu "Run-time"
      choice
         prompt "Run-time profile"
 
-        config RUNTIME_PROFILE_ZFP
-               bool "Zero-FootPrint (ZFP)"
-               depends on HAS_RUNTIME_PROFILE_ZFP
+        config RUNTIME_PROFILE_RAVENSCAR_FULL
+               bool "Ravenscar Full"
+               depends on HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
 
         config RUNTIME_PROFILE_RAVENSCAR_SFP
                bool "Ravenscar Small-FootPrint (SFP)"
                depends on HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
 
-        config RUNTIME_PROFILE_RAVENSCAR_FULL
-               bool "Ravenscar Full"
-               depends on HAS_RUNTIME_PROFILE_RAVENSCAR_FULL
+        config RUNTIME_PROFILE_ZFP
+               bool "Zero-FootPrint (ZFP)"
+               depends on HAS_RUNTIME_PROFILE_ZFP
 
         config RUNTIME_PROFILE_NATIVE
                bool "Native run-time"

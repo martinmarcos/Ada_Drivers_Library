@@ -1,8 +1,4 @@
 
-###############
-# definitions #
-###############
-
 config HAS_RUNTIME_PROFILE_ZFP
        bool
 config HAS_RUNTIME_PROFILE_RAVENSCAR_SFP

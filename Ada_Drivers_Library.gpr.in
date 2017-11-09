@@ -1,0 +1,64 @@
+library Project Ada_Drivers_Library is
+
+  --  INSERT CONFIG HERE --
+  
+  -------------------------
+  -- Run-Time and Target --
+  -------------------------
+  
+  for Runtime ("Ada") use RUNTIME_NAME_PREFIX & RUNTIME_NAME_SUFFIX;
+
+  for Target use TARGET_PLATFORM;
+
+  ------------------------
+  -- Library Attributes --
+  ------------------------
+
+  Obj_Suffix := Project'Runtime ("Ada");
+
+  for Create_Missing_Dirs use "True";
+  for Library_Name use "Ada_Drivers_Library";
+  for Library_Kind use "static";
+  for Library_Dir use "lib/" & Obj_Suffix;
+  for Object_Dir use "obj/" & Obj_Suffix;
+
+  -----------------
+  -- Source Dirs --
+  -----------------
+
+  for Source_Dirs use Src_Dirs;
+ 
+  -----------------
+  -- Build flags --
+  -----------------
+
+  type BUILD_TYPE is ("Debug", "Production");
+  Build : BUILD_Type := external ("PLATFORM_BUILD", "Debug");
+
+  --  Target architecture
+  Target := Project'Target;
+
+  --  Callgraph info is not available on all architectures
+  Callgraph_Switch := ();
+  case Target is
+     when "riscv32-unknown-elf" =>
+        null;
+     when others =>
+        Callgraph_Switch := ("-fcallgraph-info=su");
+  end case;
+
+  package Compiler is
+     case Build is
+        when "Production" =>
+           for Default_Switches ("Ada") use
+             ("-g", "-O3", "-gnatp", "-gnatn");
+        when "Debug" =>
+           for Default_Switches ("Ada") use
+             ("-g", "-O0", "-gnata") & Callgraph_Switch;
+     end case;
+     for Default_Switches ("ada") use Compiler'Default_Switches ("Ada") &
+       ("-gnatwa", "-gnatwe", "-gnatQ", "-gnatw.X", "-gnaty", "-gnatyO",
+        "-gnatyM120", "-ffunction-sections", "-fdata-sections");
+  end Compiler;
+
+end Ada_Drivers_Library;
