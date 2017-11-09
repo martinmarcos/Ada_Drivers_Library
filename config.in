@@ -1,5 +1,9 @@
 mainmenu "Ada_Drivers_Library Configuration"
 
+config KCONFIG_PREFIX
+       string
+       default ""
+
 config HARDWARE_ABSTRACTION_LAYER
        def_bool y
 

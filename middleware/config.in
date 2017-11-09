@@ -21,7 +21,7 @@ config MIDDLEWARE_RAVENSCAR
        option source_dir="middleware/src/ravenscar-common"
 
 menu "Filesystem"
-      config CONFIG_FILESYSTEM_MAX_PATH_LEN
+      config FILESYSTEM_MAX_PATH_LEN
              int "Maximun path length"
              default "1024"
              range "1" "2048"
