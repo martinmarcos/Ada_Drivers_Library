@@ -40,7 +40,7 @@ config ARM_CORTEX_M7
 
        # Sources
        option source_dir="arch/ARM/cortex_m/src"
-       option source_dir="arch/ARM/cortex_m/src/cm7f"
+       option source_dir="arch/ARM/cortex_m/src/cm7"
        option source_dir="arch/ARM/cortex_m/src/fpu"
        option source_dir="arch/ARM/cortex_m/src/cache"
        option source_dir="arch/ARM/cortex_m/src/nvic_cm4_cm7"

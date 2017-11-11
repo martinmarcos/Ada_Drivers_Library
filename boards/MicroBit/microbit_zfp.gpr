@@ -2,18 +2,18 @@
 --  Please see board_projects_generator.py
 --  and edit this script instead.
 
-with "sfp/config.gpr";
+with "zfp/config.gpr";
 
-aggregate library project Crazyflie_sfp is
+aggregate library project MicroBit_zfp is
 
    for Runtime ("Ada") use Config.RUNTIME_NAME_PREFIX & Config.RUNTIME_NAME_SUFFIX;
    for Target use Config.TARGET_PLATFORM;
 
-   for Project_Path use ("sfp");
+   for Project_Path use ("zfp");
    for Project_Files use (Config.RELATIVE_PATH_TO_ADL_ROOT & "/Ada_Drivers_Library.gpr");
 
    for Library_Name use "adl";
    for Library_Dir use "lib";
    for Library_Kind use "static";
    for Create_Missing_Dirs use "True";
-end Crazyflie_sfp;
+end MicroBit_zfp;

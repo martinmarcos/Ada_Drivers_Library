@@ -112,7 +112,7 @@ config BOARD_STM32F469_DISCO
        option source_dir="boards/stm32_common/stm32f469disco"
        option source_dir="boards/stm32_common/common"
        option source_dir="boards/stm32_common/dma2d"
-       option source_dir="boards/stm32_common/otm80909a"
+       option source_dir="boards/stm32_common/otm8009a"
        option source_dir="boards/stm32_common/sdcard"
        option source_dir="boards/stm32_common/sdram"
 

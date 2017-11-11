@@ -4,83 +4,40 @@ import re
 import os
 import sys
 
+os.sys.path.insert(0, "../scripts/Kconfiglib/")
+
+from kconfiglib import Kconfig, STR_TO_TRI
+
 BOARDS = {
-    'Crazyflie': {
-        'rts_board':             'stm32f4',
-        'rts_profiles':          ['ravenscar-sfp', 'ravenscar-full'],
-        'target':                'arm-eabi',
-        'mcu':                   'arch/ARM/STM32/stm32f40x',
-        'source_dirs':           ['src']},
-    'HiFive1': {
-        'rts_board':             'hifive1',
-        'rts_profiles':          ['zfp'],
-        'target':                'riscv32-unknown-elf',
-        'mcu':                   'arch/RISC-V/SiFive/FE310',
-        'source_dirs':           ['src']},
-    'MicroBit': {
-        'rts_board':             'microbit',
-        'rts_profiles':          ['zfp'],
-        'target':                'arm-eabi',
-        'mcu':                   'arch/ARM/Nordic/nrf51',
-        'source_dirs':           ['src']},
-    'Native': {
-        'source_dirs':           ['src']},
-    'OpenMV2': {
-        'rts_board':             'openmv2',
-        'rts_profiles':          ['ravenscar-sfp', 'ravenscar-full'],
-        'target':                'arm-eabi',
-        'mcu':                   'arch/ARM/STM32/stm32f427x',
-        'source_dirs':           ['src']},
-    'STM32F407_Discovery': {
-        'rts_board':             'stm32f4',
-        'rts_profiles':          ['ravenscar-sfp', 'ravenscar-full'],
-        'target':                'arm-eabi',
-        'mcu':                   'arch/ARM/STM32/stm32f40x',
-        'source_dirs':           ['../stm32_common/stm32f407disco',
-                                  '../stm32_common/common']},
-    'STM32F429_Discovery': {
-        'rts_board':             'stm32f429disco',
-        'rts_profiles':          ['ravenscar-sfp', 'ravenscar-full'],
-        'target':                'arm-eabi',
-        'mcu':                   'arch/ARM/STM32/stm32f42x',
-        'source_dirs':           ['../stm32_common/stm32f429disco',
-                                  '../stm32_common/common',
-                                  '../stm32_common/dma2d',
-                                  '../stm32_common/ltdc',
-                                  '../stm32_common/sdram']},
-    'STM32F469_Discovery': {
-        'rts_board':             'stm32f469disco',
-        'rts_profiles':          ['ravenscar-sfp', 'ravenscar-full'],
-        'target':                'arm-eabi',
-        'mcu':                   'arch/ARM/STM32/stm32f46_79x',
-        'source_dirs':           ['../stm32_common/stm32f469disco',
-                                  '../stm32_common/common',
-                                  '../stm32_common/dma2d',
-                                  '../stm32_common/otm8009a',
-                                  '../stm32_common/sdcard',
-                                  '../stm32_common/sdram']},
-    'STM32F746_Discovery': {
-        'rts_board':             'stm32f746disco',
-        'rts_profiles':          ['ravenscar-sfp', 'ravenscar-full'],
-        'target':                'arm-eabi',
-        'mcu':                   'arch/ARM/STM32/stm32f7x',
-        'source_dirs':           ['../stm32_common/stm32f746disco',
-                                  '../stm32_common/common',
-                                  '../stm32_common/dma2d',
-                                  '../stm32_common/ltdc',
-                                  '../stm32_common/sdcard',
-                                  '../stm32_common/sdram']},
-    'STM32F769_Discovery': {
-        'rts_board':             'stm32f769disco',
-        'rts_profiles':          ['ravenscar-sfp', 'ravenscar-full'],
-        'target':                'arm-eabi',
-        'mcu':                   'arch/ARM/STM32/stm32f7x9',
-        'source_dirs':           ['../stm32_common/stm32f769disco',
-                                  '../stm32_common/common',
-                                  '../stm32_common/dma2d',
-                                  '../stm32_common/otm8009a',
-                                  '../stm32_common/sdcard',
-                                  '../stm32_common/sdram']},
+    'Crazyflie':           {'rts_profiles':      ['ravenscar-sfp', 'ravenscar-full'],
+                            'board_conf_choice': 'CHOICE_BOARD_CRAZYFLIE2'},
+
+    'HiFive1':             {'rts_profiles': ['zfp'],
+                            'board_conf_choice': 'CHOICE_BOARD_HIFIVE1'},
+
+    'MicroBit':            {'rts_profiles': ['zfp'],
+                            'board_conf_choice': 'CHOICE_BOARD_MICROBIT'},
+
+    'Native':              {'rts_profiles': ['native'],
+                            'board_conf_choice': 'CHOICE_BOARD_NATIVE'},
+
+    'OpenMV2':             {'rts_profiles': ['ravenscar-sfp', 'ravenscar-full'],
+                            'board_conf_choice': 'CHOICE_BOARD_OPENMV2'},
+
+    'STM32F407_Discovery': {'rts_profiles': ['ravenscar-sfp', 'ravenscar-full'],
+                            'board_conf_choice': 'CHOICE_BOARD_STM32F4_DISCO'},
+
+    'STM32F429_Discovery': {'rts_profiles': ['ravenscar-sfp', 'ravenscar-full'],
+                            'board_conf_choice': 'CHOICE_BOARD_STM32F429_DISCO'},
+
+    'STM32F469_Discovery': {'rts_profiles': ['ravenscar-sfp', 'ravenscar-full'],
+                            'board_conf_choice': 'CHOICE_BOARD_STM32F469_DISCO'},
+
+    'STM32F746_Discovery': {'rts_profiles': ['ravenscar-sfp', 'ravenscar-full'],
+                            'board_conf_choice': 'CHOICE_BOARD_STM32F746_DISCO'},
+
+    'STM32F769_Discovery': {'rts_profiles': ['ravenscar-sfp', 'ravenscar-full'],
+                            'board_conf_choice': 'CHOICE_BOARD_STM32F769_DISCO'},
     }
 
 
@@ -100,118 +57,81 @@ def gen_project(board_name, rts):
     assert board_name is not None, "board is undefined"
     assert board_name in BOARDS, "%s is undefined" % board_name
 
+    board = BOARDS[board_name]
+
+    conf = Kconfig("../config.in", srctree='..', config_prefix='')
+
+    conf.syms['RELATIVE_PATH_TO_ADL_ROOT'].set_value ("../../")
+
+    conf.syms[board['board_conf_choice']].set_value (STR_TO_TRI["y"])
+
     if rts == 'zfp':
-        suffix = 'ZFP'
+        suffix = 'zfp'
+        conf.syms['RUNTIME_PROFILE_ZFP'].set_value (STR_TO_TRI["y"])
     elif rts == 'ravenscar-sfp':
-        suffix = 'SFP'
+        suffix = 'sfp'
+        conf.syms['RUNTIME_PROFILE_RAVENSCAR_SFP'].set_value (STR_TO_TRI["y"])
     elif rts == 'ravenscar-full':
-        suffix = 'Full'
-    elif rts is None:
-        suffix = None
+        suffix = 'full'
+        conf.syms['RUNTIME_PROFILE_RAVENSCAR_FULL'].set_value (STR_TO_TRI["y"])
+    elif rts == 'native':
+        suffix = "native"
+        conf.syms['RUNTIME_PROFILE_NATIVE'].set_value (STR_TO_TRI["y"])
     else:
         assert False, "Unexpected runtime %s" % rts
 
-    if suffix is not None:
-        project_name = '%s_%s' % (board_name, suffix)
-    else:
+    if suffix == "native":
         project_name = board_name
+    else:
+        project_name = '%s_%s' % (board_name, suffix)
 
-    board = BOARDS[board_name]
     board_folder = FOLDERS[board_name]
 
-    # Generate the project's dependencies
+    if suffix is not None:
+        conf_out_folder = os.path.join(board_folder, suffix)
+    else:
+        conf_out_folder = board_folder
+
     cnt = '--  **AUTOMATICALLY GENERATED** Do not edit !!\n'
     cnt += '--  Please see board_projects_generator.py\n'
     cnt += '--  and edit this script instead.\n'
     cnt += '\n'
-    cnt += 'with "../config";\n'
-    if 'mcu' in board:
-        cnt += 'with "../../%s";\n' % board['mcu']
-    cnt += 'with "../../components/components";\n'
-    cnt += 'with "../../middleware/middleware";\n'
-    if 'rts_profiles' in board:
-        add_ravenscar_support = True
-        if rts is None:
-            for profile in board['rts_profiles']:
-                if 'ravenscar' not in profile:
-                    add_ravenscar_support = False
-                    break
-        elif 'ravenscar' not in rts:
-            add_ravenscar_support = False
-        if add_ravenscar_support:
-            cnt += 'with "../../middleware/ravenscar_support";\n'
-    if 'additional_dependency' in board:
-        deps = board['additional_dependency']
-        if deps is not None:
-            for dep in deps:
-                cnt += 'with "../../%s";\n' % dep
-
+    cnt += 'with "%s/config.gpr";\n' % suffix
     cnt += '\n'
-    cnt += 'library project %s is\n' % project_name
+    cnt += 'aggregate library project %s is\n' % project_name
     cnt += '\n'
-
-    #  Do not use a RTS Profile for the native project
-    if 'rts_profiles' in board:
-        runtimes = board['rts_profiles']
-        if len(runtimes) == 1:
-            # Only one rts defined for the board, do not make it a user option
-            rts = runtimes[0]
-        if rts is not None:
-            # Runtime profile is forced for this project
-            assert rts in runtimes, "invalid rts %s for %s" % (rts, board_name)
-            cnt += '   RTS_Profile := "%s";\n' % rts
-        else:
-            # Runtime profile is for the user to choose
-            cnt += '   type RTS_Profile_Type is ("%s");\n' % \
-                   '", "'.join(runtimes)
-            cnt += '   RTS_Profile : RTS_Profile_Type :=\n'
-            cnt += '     external ("RTS_Profile", "%s");\n' % \
-                   runtimes[0]
-        cnt += '\n'
-
-    # definition of the Target and runtime
-    if 'target' in board and board['target'] is not None:
-        assert 'rts_board' in board, "undefined 'rts_board' for %s" % board_name
-        cnt += '   for Target use "%s";\n' % board['target']
-        cnt += '   for Runtime ("Ada") use RTS_Profile & "-%s";\n' % \
-               board['rts_board']
-        cnt += '\n'
-
-    # Object subdirectories.
-    if board_name == 'Native':
-        # native target
-        cnt += '   Obj_Suffix := "native";\n'
-    else:
-        cnt += '   Obj_Suffix := Project\'Runtime ("Ada");\n'
+    cnt += '   for Runtime ("Ada") use Config.RUNTIME_NAME_PREFIX & Config.RUNTIME_NAME_SUFFIX;\n'
+    cnt += '   for Target use Config.TARGET_PLATFORM;\n'
     cnt += '\n'
+    cnt += '   for Project_Path use ("%s");\n' % suffix
+    cnt += '   for Project_Files use (Config.RELATIVE_PATH_TO_ADL_ROOT & "/Ada_Drivers_Library.gpr");\n'
+    cnt += '\n'
+    cnt += '   for Library_Name use "adl";\n'
+    cnt += '   for Library_Dir use "lib-" & Config.RUNTIME_NAME_SUFFIX;\n'
+    cnt += '   for Library_Kind use "static";\n'
     cnt += '   for Create_Missing_Dirs use "True";\n'
-    cnt += '   for Library_Name use "%s";\n' % board_name.lower()
-    cnt += '   for Library_Dir use "lib/" & Obj_Suffix;\n'
-    cnt += '   for Object_Dir use "obj/" & Obj_Suffix;\n'
-    cnt += '\n'
-    cnt += '   for Source_Dirs use\n'
-    cnt += '     ("%s");\n' % '",\n      "'.join(board['source_dirs'])
-    cnt += '\n'
-    cnt += '   package Builder is\n'
-    cnt += '      for Switches ("Ada") use\n'
-    if board_name == 'Native':
-        cnt += '        ("-s");\n'
-    else:
-        cnt += '        ("--RTS=" & Project\'Runtime("Ada"), "-s");\n'
-    cnt += '   end Builder;\n'
-    cnt += '\n'
-    cnt += '   package Compiler renames Config.Compiler;\n'
-    cnt += '\n'
     cnt += 'end %s;\n' % project_name
+
+    print "creating directory %s" % conf_out_folder
+    try:
+        os.mkdir(conf_out_folder)
+    except Exception:
+        pass
 
     print "creating %s.gpr" % project_name.lower()
     with open('%s/%s.gpr' % (board_folder, project_name.lower()), 'w') as fp:
         fp.write(cnt)
 
+    conf.write_config_ada('%s/config.ads' % conf_out_folder)
+    print("configuration written to config.ads")
+
+    conf.write_config_gpr('%s/config.gpr' % conf_out_folder)
+    print("configuration written to config.gpr")
+
+
 
 if __name__ == "__main__":
     for b in BOARDS:
-        gen_project(b, None)
-        if 'rts_profiles' in BOARDS[b] and len(BOARDS[b]['rts_profiles']) > 1:
+        if 'rts_profiles' in BOARDS[b] and len(BOARDS[b]['rts_profiles']) >= 1:
             for rts in BOARDS[b]['rts_profiles']:
                 gen_project(b, rts)

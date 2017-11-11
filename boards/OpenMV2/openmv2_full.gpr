@@ -2,34 +2,18 @@
 --  Please see board_projects_generator.py
 --  and edit this script instead.
 
-with "../config";
-with "../../arch/ARM/STM32/stm32f427x";
-with "../../components/components";
-with "../../middleware/middleware";
-with "../../middleware/ravenscar_support";
+with "full/config.gpr";
 
-library project OpenMV2_Full is
+aggregate library project OpenMV2_full is
 
-   RTS_Profile := "ravenscar-full";
+   for Runtime ("Ada") use Config.RUNTIME_NAME_PREFIX & Config.RUNTIME_NAME_SUFFIX;
+   for Target use Config.TARGET_PLATFORM;
 
-   for Target use "arm-eabi";
-   for Runtime ("Ada") use RTS_Profile & "-openmv2";
+   for Project_Path use ("full");
+   for Project_Files use (Config.RELATIVE_PATH_TO_ADL_ROOT & "/Ada_Drivers_Library.gpr");
 
-   Obj_Suffix := Project'Runtime ("Ada");
-
+   for Library_Name use "adl";
+   for Library_Dir use "lib";
+   for Library_Kind use "static";
    for Create_Missing_Dirs use "True";
-   for Library_Name use "openmv2";
-   for Library_Dir use "lib/" & Obj_Suffix;
-   for Object_Dir use "obj/" & Obj_Suffix;
-
-   for Source_Dirs use
-     ("src");
-
-   package Builder is
-      for Switches ("Ada") use
-        ("--RTS=" & Project'Runtime("Ada"), "-s");
-   end Builder;
-
-   package Compiler renames Config.Compiler;
-
-end OpenMV2_Full;
+end OpenMV2_full;

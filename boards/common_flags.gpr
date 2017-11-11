@@ -1,15 +1,12 @@
 --  This abstract project defines common scenario variables and switches used
 --  all over the library.
-abstract project Config is
+abstract project Common_Flags is
 
    for Languages use ("Ada");
    for Source_Dirs use ();
 
-   type BUILD_TYPE is
-      ("Debug", "Production");
+   type BUILD_TYPE is ("Debug", "Production");
    Build : BUILD_Type := external ("PLATFORM_BUILD", "Debug");
-
-   RTS := external ("RTS_Profile", "ravenscar-sfp");
 
    --  Target architecture
    Target := Project'Target;
@@ -38,4 +35,10 @@ abstract project Config is
          "-gnatyM120", "-ffunction-sections", "-fdata-sections");
    end Compiler;
 
-end Config;
+   package Linker is
+      for Default_Switches ("Ada") use
+        ("-Wl,--gc-sections",
+         "-Wl,--print-memory-usage");
+   end Linker;
+
+end Common_Flags;
