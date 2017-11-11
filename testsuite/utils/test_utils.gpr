@@ -1,4 +1,4 @@
-with "../../boards/config.gpr";
+with "../../boards/common_flags.gpr";
 
 project Test_Utils is
 
@@ -7,6 +7,6 @@ project Test_Utils is
    for Object_Dir use "obj/";
    for Create_Missing_Dirs use "True";
 
-   package Compiler renames Config.Compiler;
+   package Compiler renames Common_Flags.Compiler;
 
 end Test_Utils;
