@@ -10,6 +10,10 @@ config HARDWARE_ABSTRACTION_LAYER
        # Sources
        option source_dir="hal/src/**"
 
+config RELATIVE_PATH_TO_ADL_ROOT
+       string "Relative path to Ada_Drivers_Library project root directory"
+       default "."
+
 source "arch/config.definitions"
 source "boards/config.in"
 
