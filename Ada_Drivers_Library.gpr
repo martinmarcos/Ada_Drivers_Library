@@ -1,0 +1,23 @@
+with "boards/common_flags";
+
+with "config.gpr";
+
+library Project Ada_Drivers_Library Is
+ 
+   for Runtime ("Ada") use 
+     Config.RUNTIME_NAME_PREFIX & Config.RUNTIME_NAME_SUFFIX;
+
+  for Target use Config.TARGET_PLATFORM;
+
+  Obj_Suffix := Project'Runtime ("Ada") & "-" & Common_Flags.Build;
+
+  for Create_Missing_Dirs use "True";
+  for Library_Name use "Ada_Drivers_Library";
+  for Library_Dir use "lib/" & Obj_Suffix;
+  for Object_Dir use "obj/" & Obj_Suffix;
+
+  for Source_Dirs use Config.Src_Dirs;
+
+  package Compiler renames Common_Flags.Compiler;
+
+end Ada_Drivers_Library;
