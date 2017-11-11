@@ -1,9 +1,8 @@
-with "../../../boards/config";
+with "../../../boards/common_flags";
 
 project Common is
 
-   type LOADER_Type is
-      ("RAM", "ROM");
+   type LOADER_Type is ("RAM", "ROM");
    LOADER : LOADER_Type := external ("LOADER", "ROM");
 
    type RTS_Type is ("ravenscar-sfp", "ravenscar-full");
@@ -35,13 +34,8 @@ project Common is
          end case;
    end case;
 
-   package Compiler renames Config.Compiler;
-
-   package Linker is
-      for Default_Switches ("Ada") use
-        ("-Wl,--gc-sections",
-         "-Wl,--print-memory-usage");
-   end Linker;
+   package Compiler renames Common_Flags.Compiler;
+   package Linker renames Common_Flags.Linker;
 
    package Ide is
       for Gnat use "arm-eabi-gnat";

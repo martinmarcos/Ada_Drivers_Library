@@ -31,11 +31,8 @@ def run_program(*argv):
     return (p.returncode, stdout, stderr)
 
 
-def gprbuild(project_file, debug=False, rts_profile=None):
+def gprbuild(project_file, debug=False,):
     extra_args = []
-
-    if rts_profile:
-        extra_args = extra_args + ["-XRTS_Profile=" + rts_profile]
 
     extra_args = extra_args + ["-XPLATFORM_BUILD=" + ("Debug" if debug else "Production")]
 
@@ -55,86 +52,87 @@ def gprbuild(project_file, debug=False, rts_profile=None):
 
     # Clean to avoid error in the next build with a different run-time or
     # compile switches.
-    run_program ('gprclean', '-r', "-P",  project_file, *extra_args)
+    run_program ('gprclean', "-P",  project_file, *extra_args)
 
     return returncode
-
-
-# Run-time profiles
-RAVENSCAR_FULL = ["ravenscar-full"]
-RAVENSCAR_SFP = ["ravenscar-sfp"]
-BOTH_RAVENSCAR = RAVENSCAR_FULL + RAVENSCAR_SFP
-
-# There's no ZFP value in the RTS variable so far so we'll use an empty string
-# for now.
-ZFP = [""]
 
 STM_DRIVERS="/arch/ARM/STM32/driver_demos/"
 
 # List of project to compile
-#
-#            Project file                                                                                List of run-time profiles
 projects = [
             # STM32F429 Discovery
-            ("/examples/STM32F429_Discovery/draw_stm32f429disco.gpr",                                    BOTH_RAVENSCAR),
-            ("/examples/STM32F429_Discovery/blinky_f429disco.gpr",                                       BOTH_RAVENSCAR),
-            ("/examples/STM32F429_Discovery/dma2d_stm32f429disco.gpr",                                   BOTH_RAVENSCAR),
-            ("/examples/STM32F429_Discovery/serial_ports_f429disco.gpr",                                 RAVENSCAR_FULL),
-
+            "/boards/stm32f429_discovery/stm32f429_discovery_full.gpr",
+            "/boards/stm32f429_discovery/stm32f429_discovery_sfp.gpr",
+            "/examples/STM32F429_Discovery/draw_stm32f429disco.gpr",
+            "/examples/STM32F429_Discovery/blinky_f429disco.gpr",
+            "/examples/STM32F429_Discovery/dma2d_stm32f429disco.gpr",
+            "/examples/STM32F429_Discovery/serial_ports_f429disco.gpr",
 
             # STM32F4 DISCO
-            ("/examples/STM32F4_DISCO/accelerometer/accelerometer.gpr",                                  BOTH_RAVENSCAR),
-            ("/examples/STM32F4_DISCO/simple_audio/simple_audio.gpr",                                    BOTH_RAVENSCAR),
-            ("/examples/STM32F4_DISCO/filesystem/filesystem.gpr",                                        BOTH_RAVENSCAR),
+            "/boards/stm32f407_discovery/stm32f407_discovery_full.gpr",
+            "/boards/stm32f407_discovery/stm32f407_discovery_sfp.gpr",
+            "/examples/STM32F4_DISCO/accelerometer/accelerometer.gpr",
+            "/examples/STM32F4_DISCO/simple_audio/simple_audio.gpr",
+            "/examples/STM32F4_DISCO/filesystem/filesystem.gpr",
 
             # STM32F469 Discovery
-            ("/examples/STM32F469_Discovery/dma2d_stm32f469disco.gpr",                                   BOTH_RAVENSCAR),
-            ("/examples/STM32F469_Discovery/draw_stm32f469disco.gpr",                                    BOTH_RAVENSCAR),
-            ("/examples/STM32F469_Discovery/hello_world_tasking_f469disco.gpr",                          BOTH_RAVENSCAR),
-
+            "/boards/stm32f469_discovery/stm32f469_discovery_full.gpr",
+            "/boards/stm32f469_discovery/stm32f469_discovery_sfp.gpr",
+            "/examples/STM32F469_Discovery/dma2d_stm32f469disco.gpr",
+            "/examples/STM32F469_Discovery/draw_stm32f469disco.gpr",
+            "/examples/STM32F469_Discovery/hello_world_tasking_f469disco.gpr",
 
             # STM32F746 Discovery
-            ("/examples/STM32F746_Discovery/dma2d_stm32f746disco.gpr",                                   BOTH_RAVENSCAR),
-            ("/examples/STM32F746_Discovery/draw_stm32f746disco.gpr",                                    BOTH_RAVENSCAR),
-            ("/examples/STM32F746_Discovery/blinky_f7disco.gpr",                                         BOTH_RAVENSCAR),
+            "/boards/stm32f746_discovery/stm32f746_discovery_full.gpr",
+            "/boards/stm32f746_discovery/stm32f746_discovery_sfp.gpr",
+            "/examples/STM32F746_Discovery/dma2d_stm32f746disco.gpr",
+            "/examples/STM32F746_Discovery/draw_stm32f746disco.gpr",
+            "/examples/STM32F746_Discovery/blinky_f7disco.gpr",
 
             # STM32F769 Discovery
-            ("/examples/STM32F769_Discovery/dma2d_stm32f769disco.gpr",                                   BOTH_RAVENSCAR),
-            ("/examples/STM32F769_Discovery/draw_stm32f769disco.gpr",                                    BOTH_RAVENSCAR),
+            "/boards/stm32f769_discovery/stm32f769_discovery_full.gpr",
+            "/boards/stm32f769_discovery/stm32f769_discovery_sfp.gpr",
+            "/examples/STM32F769_Discovery/dma2d_stm32f769disco.gpr",
+            "/examples/STM32F769_Discovery/draw_stm32f769disco.gpr",
 
             # OpenMV2
-            ("/examples/OpenMV2/openmv2_example.gpr",                                                    BOTH_RAVENSCAR),
-            ("/examples/OpenMV2/openmv2_example.gpr",                                                    BOTH_RAVENSCAR),
-            ("/examples/OpenMV2/openmv2_example.gpr",                                                    BOTH_RAVENSCAR),
+            "/boards/OpenMV2/openmv2_full.gpr",
+            "/boards/OpenMV2/openmv2_sfp.gpr",
+            "/examples/OpenMV2/openmv2_example.gpr",
 
             # MicroBit
-            ("/examples/MicroBit/microbit_example.gpr",                                                  ZFP),
+            "/boards/MicroBit/microbit_zfp.gpr",
+            "/examples/MicroBit/microbit_example.gpr",
+
+            # Crazyflie 2.0
+            "/boards/crazyflie/crazyflie_full.gpr",
+            "/boards/crazyflie/crazyflie_sfp.gpr",
 
             # STM32 driver examples
-            (STM_DRIVERS + "/demo_adc_dma/demo_adc_dma.gpr",                                             BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_adc_interrupts/demo_adc_interrupts.gpr",                               BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_adc_polling/demo_adc_polling.gpr",                                     BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_adc_timer_dma/demo_adc_timer_dma.gpr",                                 BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_adc_timer_triggered/demo_adc_timer_triggered.gpr",                     BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_crc/demo_crc.gpr",                                                     BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_dac_basic/demo_dac_basic.gpr",                                         BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_dac_dma/demo_dac_dma.gpr",                                             BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_dma_mem_to_mem/demo_dma_mem_to_mem.gpr",                               BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_dma_mem_to_peripheral/demo_usart_dma_continuous.gpr",                  BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_gpio_direct_leds/demo_gpio.gpr",                                       BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_independent_watchdog/demo_iwdg.gpr",                                   BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_L3GD20_dataready_int/demo_l3gd20_dataready_int.gpr",                   RAVENSCAR_FULL),
-            (STM_DRIVERS + "/demo_L3GD20_fifo_int/demo_l3gd20_fifo_int.gpr",                             RAVENSCAR_FULL),
-            (STM_DRIVERS + "/demo_L3GD20_polling/demo_l3gd20.gpr",                                       RAVENSCAR_FULL),
-            (STM_DRIVERS + "/demo_LIS3DSH_pwm/demo_lis3dsh_pwm.gpr",                                     BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_LIS3DSH_tilt/demo_lis3dsh_tilt.gpr",                                   BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_rng/demo_rng.gpr",                                                     BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_timer_interrupts_basic/demo_basic_timer_interrupts.gpr",               BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_timer_interrupts_multichannel/demo_timer_interrupts_multichannel.gpr", BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_timer_pwm/demo_timer_pwm.gpr",                                         BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_timer_quad_encoder/demo_timer_quad_encoder.gpr",                       BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_usart_interrupts/demo_usart_interrupts.gpr",                           BOTH_RAVENSCAR),
-            (STM_DRIVERS + "/demo_usart_polling/demo_usart_polling.gpr",                                 BOTH_RAVENSCAR),
+            STM_DRIVERS + "/demo_adc_dma/demo_adc_dma.gpr",
+            STM_DRIVERS + "/demo_adc_interrupts/demo_adc_interrupts.gpr",
+            STM_DRIVERS + "/demo_adc_polling/demo_adc_polling.gpr",
+            STM_DRIVERS + "/demo_adc_timer_dma/demo_adc_timer_dma.gpr",
+            STM_DRIVERS + "/demo_adc_timer_triggered/demo_adc_timer_triggered.gpr",
+            STM_DRIVERS + "/demo_crc/demo_crc.gpr",
+            STM_DRIVERS + "/demo_dac_basic/demo_dac_basic.gpr",
+            STM_DRIVERS + "/demo_dac_dma/demo_dac_dma.gpr",
+            STM_DRIVERS + "/demo_dma_mem_to_mem/demo_dma_mem_to_mem.gpr",
+            STM_DRIVERS + "/demo_dma_mem_to_peripheral/demo_usart_dma_continuous.gpr",
+            STM_DRIVERS + "/demo_gpio_direct_leds/demo_gpio.gpr",
+            STM_DRIVERS + "/demo_independent_watchdog/demo_iwdg.gpr",
+            STM_DRIVERS + "/demo_L3GD20_dataready_int/demo_l3gd20_dataready_int.gpr",
+            STM_DRIVERS + "/demo_L3GD20_fifo_int/demo_l3gd20_fifo_int.gpr",
+            STM_DRIVERS + "/demo_L3GD20_polling/demo_l3gd20.gpr",
+            STM_DRIVERS + "/demo_LIS3DSH_pwm/demo_lis3dsh_pwm.gpr",
+            STM_DRIVERS + "/demo_LIS3DSH_tilt/demo_lis3dsh_tilt.gpr",
+            STM_DRIVERS + "/demo_rng/demo_rng.gpr",
+            STM_DRIVERS + "/demo_timer_interrupts_basic/demo_basic_timer_interrupts.gpr",
+            STM_DRIVERS + "/demo_timer_interrupts_multichannel/demo_timer_interrupts_multichannel.gpr",
+            STM_DRIVERS + "/demo_timer_pwm/demo_timer_pwm.gpr",
+            STM_DRIVERS + "/demo_timer_quad_encoder/demo_timer_quad_encoder.gpr",
+            STM_DRIVERS + "/demo_usart_interrupts/demo_usart_interrupts.gpr",
+            STM_DRIVERS + "/demo_usart_polling/demo_usart_polling.gpr",
             ]
 
 parser = argparse.ArgumentParser('Compile all the Ada_Drivers_Library examples')
@@ -152,15 +150,14 @@ def main(args):
         sys.exit(1)
 
     ret = 0
-    for prj, rts_list in projects:
+    for prj in projects:
 
         # Check filter pattern, if any
         if args.pattern and not any(pat in prj for pat in args.pattern):
             continue
 
-        for rts in rts_list:
-            ret = ret or gprbuild (ROOT_DIR + prj, debug=True, rts_profile=rts)
-            ret = ret or gprbuild (ROOT_DIR + prj, debug=False, rts_profile=rts)
+        ret = ret or gprbuild (ROOT_DIR + prj, debug=True)
+        ret = ret or gprbuild (ROOT_DIR + prj, debug=False)
 
     if ret:
         sys.exit(1)
