@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.ADC; use NRF51_SVD.ADC;
+with NRF_SVD.ADC; use NRF_SVD.ADC;
 with nRF51.Tasks;   use nRF51.Tasks;
 
 package body nRF51.ADC is

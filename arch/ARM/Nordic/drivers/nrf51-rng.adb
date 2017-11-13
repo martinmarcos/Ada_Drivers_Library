@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.RNG; use NRF51_SVD.RNG;
+with NRF_SVD.RNG; use NRF_SVD.RNG;
 
 package body nRF51.RNG is
 

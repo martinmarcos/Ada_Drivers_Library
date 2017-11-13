@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.GPIO; use NRF51_SVD.GPIO;
+with NRF_SVD.GPIO; use NRF_SVD.GPIO;
 
 package body nRF51.GPIO is
 

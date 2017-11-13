@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.RTC;
+with NRF_SVD.RTC;
 with HAL; use HAL;
 
 package nRF51.RTC is
@@ -39,7 +39,7 @@ package nRF51.RTC is
 
    type Compare_Channel is range 0 .. 3;
 
-   type Real_Time_Counter (Periph : not null access NRF51_SVD.RTC.RTC_Peripheral) is private;
+   type Real_Time_Counter (Periph : not null access NRF_SVD.RTC.RTC_Peripheral) is private;
 
    procedure Start (This : Real_Time_Counter);
    procedure Stop (This : Real_Time_Counter);
@@ -62,5 +62,5 @@ package nRF51.RTC is
    procedure Disable_Event (This : Real_Time_Counter;
                             Evt  : RTC_Events);
 private
-   type Real_Time_Counter (Periph : not null access NRF51_SVD.RTC.RTC_Peripheral) is null record;
+   type Real_Time_Counter (Periph : not null access NRF_SVD.RTC.RTC_Peripheral) is null record;
 end nRF51.RTC;

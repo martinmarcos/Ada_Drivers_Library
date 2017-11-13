@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.GPIOTE; use NRF51_SVD.GPIOTE;
+with NRF_SVD.GPIOTE; use NRF_SVD.GPIOTE;
 with HAL;              use HAL;
 
 package body nRF51.GPIO.Tasks_And_Events is

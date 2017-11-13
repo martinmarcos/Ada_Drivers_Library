@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.CLOCK; use NRF51_SVD.CLOCK;
+with NRF_SVD.CLOCK; use NRF_SVD.CLOCK;
 with nRF51.Tasks;     use nRF51.Tasks;
 
 package body nRF51.Clock is

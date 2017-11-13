@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.PPI; use NRF51_SVD.PPI;
+with NRF_SVD.PPI; use NRF_SVD.PPI;
 with nRF51.Events;  use nRF51.Events;
 with nRF51.Tasks;   use nRF51.Tasks;
 

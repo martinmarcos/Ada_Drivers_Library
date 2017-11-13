@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.TWI; use NRF51_SVD.TWI;
+with NRF_SVD.TWI; use NRF_SVD.TWI;
 
 package body nRF51.TWI is
 

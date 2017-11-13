@@ -32,13 +32,13 @@
 with HAL;           use HAL;
 with HAL.I2C;       use HAL.I2C;
 with nRF51.GPIO;    use nRF51.GPIO;
-with NRF51_SVD.TWI;
+with NRF_SVD.TWI;
 
 package nRF51.TWI is
 
    type TWI_Speed is (TWI_100kbps, TWI_250kbps, TWI_400kbps);
 
-   type TWI_Master (Periph : not null access NRF51_SVD.TWI.TWI_Peripheral) is
+   type TWI_Master (Periph : not null access NRF_SVD.TWI.TWI_Peripheral) is
      new HAL.I2C.I2C_Port with private;
 
    procedure Enable (This : in out TWI_Master);
@@ -96,7 +96,7 @@ package nRF51.TWI is
 
 private
 
-   type TWI_Master (Periph : not null access NRF51_SVD.TWI.TWI_Peripheral) is
+   type TWI_Master (Periph : not null access NRF_SVD.TWI.TWI_Peripheral) is
      new HAL.I2C.I2C_Port with record
       Do_Stop_Sequence : Boolean := True;
    end record;

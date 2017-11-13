@@ -29,12 +29,12 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.TIMER;
+with NRF_SVD.TIMER;
 with HAL;             use HAL;
 
 package nRF51.Timers is
 
-   type Timer (Periph : not null access NRF51_SVD.TIMER.TIMER_Peripheral)
+   type Timer (Periph : not null access NRF_SVD.TIMER.TIMER_Peripheral)
    is tagged private;
 
    type Timer_Channel is range 0 .. 3;
@@ -152,7 +152,7 @@ package nRF51.Timers is
 
 private
 
-   type Timer (Periph : not null access NRF51_SVD.TIMER.TIMER_Peripheral)
+   type Timer (Periph : not null access NRF_SVD.TIMER.TIMER_Peripheral)
    is tagged null record;
 
 end nRF51.Timers;

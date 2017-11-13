@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.RTC; use NRF51_SVD.RTC;
+with NRF_SVD.RTC; use NRF_SVD.RTC;
 
 package body nRF51.RTC is
 

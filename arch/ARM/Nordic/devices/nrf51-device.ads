@@ -31,11 +31,11 @@
 
 with nRF51.GPIO;    use nRF51.GPIO;
 with nRF51.RTC;     use nRF51.RTC;
-with NRF51_SVD.RTC;
+with NRF_SVD.RTC;
 with nRF51.TWI;     use nRF51.TWI;
-with NRF51_SVD.TWI;
+with NRF_SVD.TWI;
 with nRF51.Timers;  use nRF51.Timers;
-with NRF51_SVD.TIMER;
+with NRF_SVD.TIMER;
 
 
 package nRF51.Device is
@@ -73,14 +73,14 @@ package nRF51.Device is
    P30 : aliased GPIO_Point := (Pin => 30);
    P31 : aliased GPIO_Point := (Pin => 31);
 
-   RTC_0 : aliased Real_Time_Counter (NRF51_SVD.RTC.RTC0_Periph'Access);
-   RTC_1 : aliased Real_Time_Counter (NRF51_SVD.RTC.RTC1_Periph'Access);
+   RTC_0 : aliased Real_Time_Counter (NRF_SVD.RTC.RTC0_Periph'Access);
+   RTC_1 : aliased Real_Time_Counter (NRF_SVD.RTC.RTC1_Periph'Access);
 
-   TWI_0 : aliased TWI_Master (NRF51_SVD.TWI.TWI0_Periph'Access);
-   TWI_1 : aliased TWI_Master (NRF51_SVD.TWI.TWI1_Periph'Access);
+   TWI_0 : aliased TWI_Master (NRF_SVD.TWI.TWI0_Periph'Access);
+   TWI_1 : aliased TWI_Master (NRF_SVD.TWI.TWI1_Periph'Access);
 
-   Timer_0 : aliased Timer (NRF51_SVD.TIMER.TIMER0_Periph'Access);
-   Timer_1 : aliased Timer (NRF51_SVD.TIMER.TIMER1_Periph'Access);
-   Timer_2 : aliased Timer (NRF51_SVD.TIMER.TIMER2_Periph'Access);
+   Timer_0 : aliased Timer (NRF_SVD.TIMER.TIMER0_Periph'Access);
+   Timer_1 : aliased Timer (NRF_SVD.TIMER.TIMER1_Periph'Access);
+   Timer_2 : aliased Timer (NRF_SVD.TIMER.TIMER2_Periph'Access);
 
 end nRF51.Device;

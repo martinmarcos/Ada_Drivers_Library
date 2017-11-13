@@ -29,7 +29,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with NRF51_SVD.TIMER; use NRF51_SVD.TIMER;
+with NRF_SVD.TIMER; use NRF_SVD.TIMER;
 
 package body nRF51.Timers is
 
@@ -83,8 +83,8 @@ package body nRF51.Timers is
    begin
       This.Periph.MODE.MODE :=
         (case Mode is
-            when Mode_Timer => NRF51_SVD.TIMER.Timer,
-            when Mode_Counter => NRF51_SVD.TIMER.Counter);
+            when Mode_Timer => NRF_SVD.TIMER.Timer,
+            when Mode_Counter => NRF_SVD.TIMER.Counter);
    end Set_Mode;
 
    -----------------

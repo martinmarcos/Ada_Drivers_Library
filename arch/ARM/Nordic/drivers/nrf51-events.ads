@@ -30,23 +30,23 @@
 ------------------------------------------------------------------------------
 
 with System;
-with NRF51_SVD.POWER;
-with NRF51_SVD.CLOCK;
-with NRF51_SVD.GPIOTE;
-with NRF51_SVD.RADIO;
-with NRF51_SVD.TIMER;
-with NRF51_SVD.RTC;
-with NRF51_SVD.WDT;
-with NRF51_SVD.RNG;
-with NRF51_SVD.TEMP;
-with NRF51_SVD.ECB;
-with NRF51_SVD.CCM;
-with NRF51_SVD.AAR;
-with NRF51_SVD.SPI;
-with NRF51_SVD.TWI;
-with NRF51_SVD.UART;
-with NRF51_SVD.QDEC;
-with NRF51_SVD.ADC;
+with NRF_SVD.POWER;
+with NRF_SVD.CLOCK;
+with NRF_SVD.GPIOTE;
+with NRF_SVD.RADIO;
+with NRF_SVD.TIMER;
+with NRF_SVD.RTC;
+with NRF_SVD.WDT;
+with NRF_SVD.RNG;
+with NRF_SVD.TEMP;
+with NRF_SVD.ECB;
+with NRF_SVD.CCM;
+with NRF_SVD.AAR;
+with NRF_SVD.SPI;
+with NRF_SVD.TWI;
+with NRF_SVD.UART;
+with NRF_SVD.QDEC;
+with NRF_SVD.ADC;
 with HAL; use HAL;
 
 
@@ -187,196 +187,196 @@ private
 
    --  Power management events
    Power_POFWARN       : constant Event_Type :=
-     Event_Type (NRF51_SVD.POWER.POWER_Periph.EVENTS_POFWARN'Address);
+     Event_Type (NRF_SVD.POWER.POWER_Periph.EVENTS_POFWARN'Address);
 
    --  Clock events
    Clock_HFCLKSTARTED  : constant Event_Type :=
-     Event_Type (NRF51_SVD.CLOCK.CLOCK_Periph.EVENTS_HFCLKSTARTED'Address);
+     Event_Type (NRF_SVD.CLOCK.CLOCK_Periph.EVENTS_HFCLKSTARTED'Address);
    Clock_LFCLKSTARTED  : constant Event_Type :=
-     Event_Type (NRF51_SVD.CLOCK.CLOCK_Periph.EVENTS_LFCLKSTARTED'Address);
+     Event_Type (NRF_SVD.CLOCK.CLOCK_Periph.EVENTS_LFCLKSTARTED'Address);
    Clock_DONE          : constant Event_Type :=
-     Event_Type (NRF51_SVD.CLOCK.CLOCK_Periph.EVENTS_DONE'Address);
+     Event_Type (NRF_SVD.CLOCK.CLOCK_Periph.EVENTS_DONE'Address);
    Clock_CTTO          : constant Event_Type :=
-     Event_Type (NRF51_SVD.CLOCK.CLOCK_Periph.EVENTS_CTTO'Address);
+     Event_Type (NRF_SVD.CLOCK.CLOCK_Periph.EVENTS_CTTO'Address);
 
    --  GPIOTE events
    GPIOTE_IN_0         : constant Event_Type :=
-     Event_Type (NRF51_SVD.GPIOTE.GPIOTE_Periph.EVENTS_IN (0)'Address);
+     Event_Type (NRF_SVD.GPIOTE.GPIOTE_Periph.EVENTS_IN (0)'Address);
    GPIOTE_IN_1         : constant Event_Type :=
-     Event_Type (NRF51_SVD.GPIOTE.GPIOTE_Periph.EVENTS_IN (1)'Address);
+     Event_Type (NRF_SVD.GPIOTE.GPIOTE_Periph.EVENTS_IN (1)'Address);
    GPIOTE_IN_2         : constant Event_Type :=
-     Event_Type (NRF51_SVD.GPIOTE.GPIOTE_Periph.EVENTS_IN (2)'Address);
+     Event_Type (NRF_SVD.GPIOTE.GPIOTE_Periph.EVENTS_IN (2)'Address);
    GPIOTE_IN_3         : constant Event_Type :=
-     Event_Type (NRF51_SVD.GPIOTE.GPIOTE_Periph.EVENTS_IN (3)'Address);
+     Event_Type (NRF_SVD.GPIOTE.GPIOTE_Periph.EVENTS_IN (3)'Address);
    GPIOTE_PORT         : constant Event_Type :=
-     Event_Type (NRF51_SVD.GPIOTE.GPIOTE_Periph.EVENTS_PORT'Address);
+     Event_Type (NRF_SVD.GPIOTE.GPIOTE_Periph.EVENTS_PORT'Address);
 
    --  Radio events
    Radio_READY         : constant Event_Type :=
-     Event_Type (NRF51_SVD.RADIO.RADIO_Periph.EVENTS_READY'Address);
+     Event_Type (NRF_SVD.RADIO.RADIO_Periph.EVENTS_READY'Address);
    Radio_ADDRESS       : constant Event_Type :=
-     Event_Type (NRF51_SVD.RADIO.RADIO_Periph.EVENTS_ADDRESS'Address);
+     Event_Type (NRF_SVD.RADIO.RADIO_Periph.EVENTS_ADDRESS'Address);
    Radio_PAYLOAD       : constant Event_Type :=
-     Event_Type (NRF51_SVD.RADIO.RADIO_Periph.EVENTS_PAYLOAD'Address);
+     Event_Type (NRF_SVD.RADIO.RADIO_Periph.EVENTS_PAYLOAD'Address);
    Radio_END           : constant Event_Type :=
-     Event_Type (NRF51_SVD.RADIO.RADIO_Periph.EVENTS_END'Address);
+     Event_Type (NRF_SVD.RADIO.RADIO_Periph.EVENTS_END'Address);
    Radio_DISABLED      : constant Event_Type :=
-     Event_Type (NRF51_SVD.RADIO.RADIO_Periph.EVENTS_DISABLED'Address);
+     Event_Type (NRF_SVD.RADIO.RADIO_Periph.EVENTS_DISABLED'Address);
    Radio_DEVMATCH      : constant Event_Type :=
-     Event_Type (NRF51_SVD.RADIO.RADIO_Periph.EVENTS_DEVMATCH'Address);
+     Event_Type (NRF_SVD.RADIO.RADIO_Periph.EVENTS_DEVMATCH'Address);
    Radio_DEVMISS       : constant Event_Type :=
-     Event_Type (NRF51_SVD.RADIO.RADIO_Periph.EVENTS_DEVMISS'Address);
+     Event_Type (NRF_SVD.RADIO.RADIO_Periph.EVENTS_DEVMISS'Address);
    Radio_RSSIEND       : constant Event_Type :=
-     Event_Type (NRF51_SVD.RADIO.RADIO_Periph.EVENTS_RSSIEND'Address);
+     Event_Type (NRF_SVD.RADIO.RADIO_Periph.EVENTS_RSSIEND'Address);
    Radio_BCMATCH       : constant Event_Type :=
-     Event_Type (NRF51_SVD.RADIO.RADIO_Periph.EVENTS_BCMATCH'Address);
+     Event_Type (NRF_SVD.RADIO.RADIO_Periph.EVENTS_BCMATCH'Address);
 
    --  Timer 0 events
    Timer_0_COMPARE_0   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER0_Periph.EVENTS_COMPARE (0)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER0_Periph.EVENTS_COMPARE (0)'Address);
    Timer_0_COMPARE_1   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER0_Periph.EVENTS_COMPARE (1)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER0_Periph.EVENTS_COMPARE (1)'Address);
    Timer_0_COMPARE_2   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER0_Periph.EVENTS_COMPARE (2)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER0_Periph.EVENTS_COMPARE (2)'Address);
    Timer_0_COMPARE_3   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER0_Periph.EVENTS_COMPARE (3)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER0_Periph.EVENTS_COMPARE (3)'Address);
 
    --  Timer 1 events
    Timer_1_COMPARE_0   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER1_Periph.EVENTS_COMPARE (0)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER1_Periph.EVENTS_COMPARE (0)'Address);
    Timer_1_COMPARE_1   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER1_Periph.EVENTS_COMPARE (1)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER1_Periph.EVENTS_COMPARE (1)'Address);
    Timer_1_COMPARE_2   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER1_Periph.EVENTS_COMPARE (2)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER1_Periph.EVENTS_COMPARE (2)'Address);
    Timer_1_COMPARE_3   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER1_Periph.EVENTS_COMPARE (3)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER1_Periph.EVENTS_COMPARE (3)'Address);
 
    --  Timer 2 events
    Timer_2_COMPARE_0   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER2_Periph.EVENTS_COMPARE (0)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER2_Periph.EVENTS_COMPARE (0)'Address);
    Timer_2_COMPARE_1   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER2_Periph.EVENTS_COMPARE (1)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER2_Periph.EVENTS_COMPARE (1)'Address);
    Timer_2_COMPARE_2   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER2_Periph.EVENTS_COMPARE (2)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER2_Periph.EVENTS_COMPARE (2)'Address);
    Timer_2_COMPARE_3   : constant Event_Type :=
-     Event_Type (NRF51_SVD.TIMER.TIMER2_Periph.EVENTS_COMPARE (3)'Address);
+     Event_Type (NRF_SVD.TIMER.TIMER2_Periph.EVENTS_COMPARE (3)'Address);
 
    --  RTC 0 events
    RTC_0_TICK          : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC0_Periph.EVENTS_TICK'Address);
+     Event_Type (NRF_SVD.RTC.RTC0_Periph.EVENTS_TICK'Address);
    RTC_0_OVERFLW       : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC0_Periph.EVENTS_OVRFLW'Address);
+     Event_Type (NRF_SVD.RTC.RTC0_Periph.EVENTS_OVRFLW'Address);
    RTC_0_COMPARE_0     : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC0_Periph.EVENTS_COMPARE (0)'Address);
+     Event_Type (NRF_SVD.RTC.RTC0_Periph.EVENTS_COMPARE (0)'Address);
    RTC_0_COMPARE_1     : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC0_Periph.EVENTS_COMPARE (1)'Address);
+     Event_Type (NRF_SVD.RTC.RTC0_Periph.EVENTS_COMPARE (1)'Address);
    RTC_0_COMPARE_2     : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC0_Periph.EVENTS_COMPARE (2)'Address);
+     Event_Type (NRF_SVD.RTC.RTC0_Periph.EVENTS_COMPARE (2)'Address);
    RTC_0_COMPARE_3     : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC0_Periph.EVENTS_COMPARE (3)'Address);
+     Event_Type (NRF_SVD.RTC.RTC0_Periph.EVENTS_COMPARE (3)'Address);
 
    --  RTC 1 events
    RTC_1_TICK          : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC1_Periph.EVENTS_TICK'Address);
+     Event_Type (NRF_SVD.RTC.RTC1_Periph.EVENTS_TICK'Address);
    RTC_1_OVERFLW       : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC1_Periph.EVENTS_OVRFLW'Address);
+     Event_Type (NRF_SVD.RTC.RTC1_Periph.EVENTS_OVRFLW'Address);
    RTC_1_COMPARE_0     : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC1_Periph.EVENTS_COMPARE (0)'Address);
+     Event_Type (NRF_SVD.RTC.RTC1_Periph.EVENTS_COMPARE (0)'Address);
    RTC_1_COMPARE_1     : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC1_Periph.EVENTS_COMPARE (1)'Address);
+     Event_Type (NRF_SVD.RTC.RTC1_Periph.EVENTS_COMPARE (1)'Address);
    RTC_1_COMPARE_2     : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC1_Periph.EVENTS_COMPARE (2)'Address);
+     Event_Type (NRF_SVD.RTC.RTC1_Periph.EVENTS_COMPARE (2)'Address);
    RTC_1_COMPARE_3     : constant Event_Type :=
-     Event_Type (NRF51_SVD.RTC.RTC1_Periph.EVENTS_COMPARE (3)'Address);
+     Event_Type (NRF_SVD.RTC.RTC1_Periph.EVENTS_COMPARE (3)'Address);
 
    --  Watchdog task
    Watchdog_TIMEOUT    : constant Event_Type :=
-     Event_Type (NRF51_SVD.WDT.WDT_Periph.EVENTS_TIMEOUT'Address);
+     Event_Type (NRF_SVD.WDT.WDT_Periph.EVENTS_TIMEOUT'Address);
 
    --  Random Number Genrator events
    RNG_VALRDY          : constant Event_Type :=
-     Event_Type (NRF51_SVD.RNG.RNG_Periph.EVENTS_VALRDY'Address);
+     Event_Type (NRF_SVD.RNG.RNG_Periph.EVENTS_VALRDY'Address);
 
    --  Temperature events
    Temperature_DATARDY : constant Event_Type :=
-     Event_Type (NRF51_SVD.TEMP.TEMP_Periph.EVENTS_DATARDY'Address);
+     Event_Type (NRF_SVD.TEMP.TEMP_Periph.EVENTS_DATARDY'Address);
 
    --  AES Electronic Codebook mode encryption (ECB) events
    ECB_END             : constant Event_Type :=
-     Event_Type (NRF51_SVD.ECB.ECB_Periph.EVENTS_ENDECB'Address);
+     Event_Type (NRF_SVD.ECB.ECB_Periph.EVENTS_ENDECB'Address);
    ECB_ERROR           : constant Event_Type :=
-     Event_Type (NRF51_SVD.ECB.ECB_Periph.EVENTS_ERRORECB'Address);
+     Event_Type (NRF_SVD.ECB.ECB_Periph.EVENTS_ERRORECB'Address);
 
    --  AES CCM mode encryption (CCM) events
    CCM_KSGEN_END       : constant Event_Type :=
-     Event_Type (NRF51_SVD.CCM.CCM_Periph.EVENTS_ENDKSGEN'Address);
+     Event_Type (NRF_SVD.CCM.CCM_Periph.EVENTS_ENDKSGEN'Address);
    CCM_CRYPT_END       : constant Event_Type :=
-     Event_Type (NRF51_SVD.CCM.CCM_Periph.EVENTS_ENDCRYPT'Address);
+     Event_Type (NRF_SVD.CCM.CCM_Periph.EVENTS_ENDCRYPT'Address);
    CCM_ERROR           : constant Event_Type :=
-     Event_Type (NRF51_SVD.CCM.CCM_Periph.EVENTS_ERROR'Address);
+     Event_Type (NRF_SVD.CCM.CCM_Periph.EVENTS_ERROR'Address);
 
    --  Accelerated Address Resolver (AAR) events
    AAR_END             : constant Event_Type :=
-     Event_Type (NRF51_SVD.AAR.AAR_Periph.EVENTS_END'Address);
+     Event_Type (NRF_SVD.AAR.AAR_Periph.EVENTS_END'Address);
    AAR_RESOLVED        : constant Event_Type :=
-     Event_Type (NRF51_SVD.AAR.AAR_Periph.EVENTS_RESOLVED'Address);
+     Event_Type (NRF_SVD.AAR.AAR_Periph.EVENTS_RESOLVED'Address);
    AAR_NOTRESOLVED     : constant Event_Type :=
-     Event_Type (NRF51_SVD.AAR.AAR_Periph.EVENTS_NOTRESOLVED'Address);
+     Event_Type (NRF_SVD.AAR.AAR_Periph.EVENTS_NOTRESOLVED'Address);
 
    --  Serial Peripheral Interface (SPI) events
    SPI_0_READY         : constant Event_Type :=
-     Event_Type (NRF51_SVD.SPI.SPI0_Periph.EVENTS_READY'Address);
+     Event_Type (NRF_SVD.SPI.SPI0_Periph.EVENTS_READY'Address);
 
    --  Serial Peripheral Interface (SPI) events
    SPI_1_READY         : constant Event_Type :=
-     Event_Type (NRF51_SVD.SPI.SPI1_Periph.EVENTS_READY'Address);
+     Event_Type (NRF_SVD.SPI.SPI1_Periph.EVENTS_READY'Address);
 
    --  Two Wire Interface (TWI) 0 events
    TWI_0_STOPPED       : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI0_Periph.EVENTS_STOPPED'Address);
+     Event_Type (NRF_SVD.TWI.TWI0_Periph.EVENTS_STOPPED'Address);
    TWI_0_RXDRDY        : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI0_Periph.EVENTS_RXDREADY'Address);
+     Event_Type (NRF_SVD.TWI.TWI0_Periph.EVENTS_RXDREADY'Address);
    TWI_0_TXDENT        : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI0_Periph.EVENTS_TXDSENT'Address);
+     Event_Type (NRF_SVD.TWI.TWI0_Periph.EVENTS_TXDSENT'Address);
    TWI_0_ERRO          : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI0_Periph.EVENTS_ERROR'Address);
+     Event_Type (NRF_SVD.TWI.TWI0_Periph.EVENTS_ERROR'Address);
    TWI_0_BB            : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI0_Periph.EVENTS_BB'Address);
+     Event_Type (NRF_SVD.TWI.TWI0_Periph.EVENTS_BB'Address);
    TWI_0_SUSPENDED     : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI0_Periph.EVENTS_SUSPENDED'Address);
+     Event_Type (NRF_SVD.TWI.TWI0_Periph.EVENTS_SUSPENDED'Address);
 
    --  Two Wire Interface (TWI) 1 events
    TWI_1_STOPPED       : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI1_Periph.EVENTS_STOPPED'Address);
+     Event_Type (NRF_SVD.TWI.TWI1_Periph.EVENTS_STOPPED'Address);
    TWI_1_RXDRDY        : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI1_Periph.EVENTS_RXDREADY'Address);
+     Event_Type (NRF_SVD.TWI.TWI1_Periph.EVENTS_RXDREADY'Address);
    TWI_1_TXDENT        : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI1_Periph.EVENTS_TXDSENT'Address);
+     Event_Type (NRF_SVD.TWI.TWI1_Periph.EVENTS_TXDSENT'Address);
    TWI_1_ERRO          : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI1_Periph.EVENTS_ERROR'Address);
+     Event_Type (NRF_SVD.TWI.TWI1_Periph.EVENTS_ERROR'Address);
    TWI_1_BB            : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI1_Periph.EVENTS_BB'Address);
+     Event_Type (NRF_SVD.TWI.TWI1_Periph.EVENTS_BB'Address);
    TWI_1_SUSPENDED     : constant Event_Type :=
-     Event_Type (NRF51_SVD.TWI.TWI1_Periph.EVENTS_SUSPENDED'Address);
+     Event_Type (NRF_SVD.TWI.TWI1_Periph.EVENTS_SUSPENDED'Address);
 
    --  Universal Asynchronous Receiver/Transmitter (UART) Events
    UART_RXDRDY         : constant Event_Type :=
-     Event_Type (NRF51_SVD.UART.UART0_Periph.EVENTS_RXDRDY'Address);
+     Event_Type (NRF_SVD.UART.UART0_Periph.EVENTS_RXDRDY'Address);
    UART_TXDRDY         : constant Event_Type :=
-     Event_Type (NRF51_SVD.UART.UART0_Periph.EVENTS_TXDRDY'Address);
+     Event_Type (NRF_SVD.UART.UART0_Periph.EVENTS_TXDRDY'Address);
    UART_ERROR          : constant Event_Type :=
-     Event_Type (NRF51_SVD.UART.UART0_Periph.EVENTS_ERROR'Address);
+     Event_Type (NRF_SVD.UART.UART0_Periph.EVENTS_ERROR'Address);
 
    --  Quadrature Decoder (QDEC)
    QDEC_SAMPLERDY      : constant Event_Type :=
-     Event_Type (NRF51_SVD.QDEC.QDEC_Periph.EVENTS_SAMPLERDY'Address);
+     Event_Type (NRF_SVD.QDEC.QDEC_Periph.EVENTS_SAMPLERDY'Address);
    QDEC_REPORTRDY      : constant Event_Type :=
-     Event_Type (NRF51_SVD.QDEC.QDEC_Periph.EVENTS_REPORTRDY'Address);
+     Event_Type (NRF_SVD.QDEC.QDEC_Periph.EVENTS_REPORTRDY'Address);
    QDEC_ACCOF          : constant Event_Type :=
-     Event_Type (NRF51_SVD.QDEC.QDEC_Periph.EVENTS_ACCOF'Address);
+     Event_Type (NRF_SVD.QDEC.QDEC_Periph.EVENTS_ACCOF'Address);
 
    --  Analof to Digital Converter (ADC)
    ADC_END             : constant Event_Type :=
-     Event_Type (NRF51_SVD.ADC.ADC_Periph.EVENTS_END'Address);
+     Event_Type (NRF_SVD.ADC.ADC_Periph.EVENTS_END'Address);
 
 end nRF51.Events;
