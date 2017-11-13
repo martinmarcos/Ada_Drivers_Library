@@ -13,7 +13,7 @@ aggregate library project STM32F769_Discovery_full is
    for Project_Files use (Config.RELATIVE_PATH_TO_ADL_ROOT & "/Ada_Drivers_Library.gpr");
 
    for Library_Name use "adl";
-   for Library_Dir use "lib";
+   for Library_Dir use "lib-" & Config.RUNTIME_NAME_SUFFIX;
    for Library_Kind use "static";
    for Create_Missing_Dirs use "True";
 end STM32F769_Discovery_full;

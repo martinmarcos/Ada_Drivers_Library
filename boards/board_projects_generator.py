@@ -1,5 +1,18 @@
 #!/usr/bin/env python
 
+###############################################################################
+# We need to increase the maximum recursion depth for Kconfiglib to be able to
+# process the big KConfig tree...
+
+import resource
+import sys
+
+# Will segfault without this line.
+resource.setrlimit(resource.RLIMIT_STACK, [0x10000000, resource.RLIM_INFINITY])
+sys.setrecursionlimit(0x100000)
+
+###############################################################################
+
 import re
 import os
 import sys
@@ -9,7 +22,7 @@ os.sys.path.insert(0, "../scripts/Kconfiglib/")
 from kconfiglib import Kconfig, STR_TO_TRI
 
 BOARDS = {
-    'Crazyflie':           {'rts_profiles':      ['ravenscar-sfp', 'ravenscar-full'],
+    'Crazyflie':           {'rts_profiles': ['ravenscar-sfp', 'ravenscar-full'],
                             'board_conf_choice': 'CHOICE_BOARD_CRAZYFLIE2'},
 
     'HiFive1':             {'rts_profiles': ['zfp'],
@@ -53,15 +66,16 @@ FOLDERS = {'Crazyflie': 'crazyflie',
            'STM32F769_Discovery': 'stm32f769_discovery'}
 
 
-def gen_project(board_name, rts):
+def gen_project(conf, board_name, rts):
     assert board_name is not None, "board is undefined"
     assert board_name in BOARDS, "%s is undefined" % board_name
 
+    conf.unset_values()
+
     board = BOARDS[board_name]
 
-    conf = Kconfig("../config.in", srctree='..', config_prefix='')
-
     conf.syms['RELATIVE_PATH_TO_ADL_ROOT'].set_value ("../../")
+
 
     conf.syms[board['board_conf_choice']].set_value (STR_TO_TRI["y"])
 
@@ -131,7 +145,8 @@ def gen_project(board_name, rts):
 
 
 if __name__ == "__main__":
+    conf = Kconfig("../config.in", srctree='..', config_prefix='')
     for b in BOARDS:
         if 'rts_profiles' in BOARDS[b] and len(BOARDS[b]['rts_profiles']) >= 1:
             for rts in BOARDS[b]['rts_profiles']:
-                gen_project(b, rts)
+                gen_project(conf, b, rts)

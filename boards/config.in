@@ -10,7 +10,7 @@ config HAS_RUNTIME_PROFILE_NATIVE
 
 config BOARD_STM32F4_DISCO
        bool
-       select DEVICE_STM32F40X
+       select MCU_Device_STM32F407VGTx
 
        select HAS_RUNTIME_PROFILE_ZFP
        select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
@@ -33,7 +33,7 @@ endif
 
 config BOARD_CRAZYFLIE2
        bool
-       select DEVICE_STM32F40X
+       select MCU_Device_STM32F405RGTx
 
        select HAS_RUNTIME_PROFILE_ZFP
        select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
@@ -55,7 +55,7 @@ endif
 
 config BOARD_STM32F429_DISCO
        bool
-       select DEVICE_STM32F429
+       select MCU_Device_STM32F429ZITx
 
        select HAS_RUNTIME_PROFILE_ZFP
        select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
@@ -81,7 +81,7 @@ endif
 
 config BOARD_OPENMV2
        bool
-       select DEVICE_STM32F427
+       select MCU_Device_STM32F427VGTx
 
        select HAS_RUNTIME_PROFILE_ZFP
        select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
@@ -102,7 +102,7 @@ endif
 
 config BOARD_STM32F469_DISCO
        bool
-       select DEVICE_STM32F46_79X
+       select MCU_Device_STM32F469NIHx
 
        select HAS_RUNTIME_PROFILE_ZFP
        select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
@@ -129,7 +129,7 @@ endif
 
 config BOARD_STM32F746_DISCO
        bool
-       select DEVICE_STM32F7X
+       select MCU_Device_STM32F746NGHx
 
        select HAS_RUNTIME_PROFILE_ZFP
        select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
@@ -156,7 +156,7 @@ endif
 
 config BOARD_STM32F769_DISCO
        bool
-       select DEVICE_STM32F7X9
+       select MCU_Device_STM32F769NIHx
 
        select HAS_RUNTIME_PROFILE_ZFP
        select HAS_RUNTIME_PROFILE_RAVENSCAR_SFP
@@ -183,7 +183,7 @@ endif
 
 config BOARD_MICRO_BIT
        bool
-       select DEVICE_NRF51
+       select MCU_Device_nRF51822xxAA
 
        select HAS_RUNTIME_PROFILE_ZFP
        select HAS_BOARD_DELAY_SUPPORT
