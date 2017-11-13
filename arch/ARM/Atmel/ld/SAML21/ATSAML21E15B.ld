@@ -1,0 +1,9 @@
+
+MEMORY
+{
+  rom1 (rx) : ORIGIN = 0x00000000, LENGTH = 0x8000
+  rom2 (rx) : ORIGIN = 0x00400000, LENGTH = 0x400
+  ram1 (rwx) : ORIGIN = 0x20000000, LENGTH = 0x1000
+  ram2 (rwx) : ORIGIN = 0x30000000, LENGTH = 0x800
+}
+

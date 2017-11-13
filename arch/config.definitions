@@ -1,2 +1,10 @@
-source "arch/ARM/config.definitions"
+source "arch/ARM/cores.definitions"
+source "arch/ARM/families.definitions"
+source "arch/ARM/mcus.definitions"
+source "arch/ARM/driver.definitions"
+
+source "arch/ARM/STMicro/driver.definitions"
+
+source "arch/ARM/Nordic/driver.definitions"
+
 source "arch/RISC-V/config.definitions"

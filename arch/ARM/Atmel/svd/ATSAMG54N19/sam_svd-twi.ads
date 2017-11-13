@@ -1,0 +1,743 @@
+--  This spec has been automatically generated from ATSAMG54N19.svd
+
+pragma Restrictions (No_Elaboration_Code);
+pragma Ada_2012;
+pragma Style_Checks (Off);
+
+with HAL;
+with System;
+
+package SAM_SVD.TWI is
+   pragma Preelaborate;
+
+   ---------------
+   -- Registers --
+   ---------------
+
+   --  Control Register
+   type TWI1_CR_Register is record
+      --  Write-only. Send a START Condition
+      START         : Boolean := False;
+      --  Write-only. Send a STOP Condition
+      STOP          : Boolean := False;
+      --  Write-only. TWI Master Mode Enabled
+      MSEN          : Boolean := False;
+      --  Write-only. TWI Master Mode Disabled
+      MSDIS         : Boolean := False;
+      --  Write-only. TWI Slave Mode Enabled
+      SVEN          : Boolean := False;
+      --  Write-only. TWI Slave Mode Disabled
+      SVDIS         : Boolean := False;
+      --  Write-only. SMBus Quick Command
+      QUICK         : Boolean := False;
+      --  Write-only. Software Reset
+      SWRST         : Boolean := False;
+      --  unspecified
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_CR_Register use record
+      START         at 0 range 0 .. 0;
+      STOP          at 0 range 1 .. 1;
+      MSEN          at 0 range 2 .. 2;
+      MSDIS         at 0 range 3 .. 3;
+      SVEN          at 0 range 4 .. 4;
+      SVDIS         at 0 range 5 .. 5;
+      QUICK         at 0 range 6 .. 6;
+      SWRST         at 0 range 7 .. 7;
+      Reserved_8_31 at 0 range 8 .. 31;
+   end record;
+
+   --  Internal Device Address Size
+   type MMR_IADRSZ_Field is
+     (
+      --  No internal device address
+      None,
+      --  One-byte internal device address
+      MMR_IADRSZ_Field_1_Byte,
+      --  Two-byte internal device address
+      MMR_IADRSZ_Field_2_Byte,
+      --  Three-byte internal device address
+      MMR_IADRSZ_Field_3_Byte)
+     with Size => 2;
+   for MMR_IADRSZ_Field use
+     (None => 0,
+      MMR_IADRSZ_Field_1_Byte => 1,
+      MMR_IADRSZ_Field_2_Byte => 2,
+      MMR_IADRSZ_Field_3_Byte => 3);
+
+   subtype TWI1_MMR_DADR_Field is HAL.UInt7;
+
+   --  Master Mode Register
+   type TWI1_MMR_Register is record
+      --  unspecified
+      Reserved_0_7   : HAL.UInt8 := 16#0#;
+      --  Internal Device Address Size
+      IADRSZ         : MMR_IADRSZ_Field := SAM_SVD.TWI.None;
+      --  unspecified
+      Reserved_10_11 : HAL.UInt2 := 16#0#;
+      --  Master Read Direction
+      MREAD          : Boolean := False;
+      --  unspecified
+      Reserved_13_15 : HAL.UInt3 := 16#0#;
+      --  Device Address
+      DADR           : TWI1_MMR_DADR_Field := 16#0#;
+      --  unspecified
+      Reserved_23_31 : HAL.UInt9 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_MMR_Register use record
+      Reserved_0_7   at 0 range 0 .. 7;
+      IADRSZ         at 0 range 8 .. 9;
+      Reserved_10_11 at 0 range 10 .. 11;
+      MREAD          at 0 range 12 .. 12;
+      Reserved_13_15 at 0 range 13 .. 15;
+      DADR           at 0 range 16 .. 22;
+      Reserved_23_31 at 0 range 23 .. 31;
+   end record;
+
+   subtype TWI1_SMR_SADR_Field is HAL.UInt7;
+
+   --  Slave Mode Register
+   type TWI1_SMR_Register is record
+      --  unspecified
+      Reserved_0_15  : HAL.UInt16 := 16#0#;
+      --  Slave Address
+      SADR           : TWI1_SMR_SADR_Field := 16#0#;
+      --  unspecified
+      Reserved_23_31 : HAL.UInt9 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_SMR_Register use record
+      Reserved_0_15  at 0 range 0 .. 15;
+      SADR           at 0 range 16 .. 22;
+      Reserved_23_31 at 0 range 23 .. 31;
+   end record;
+
+   subtype TWI1_IADR_IADR_Field is HAL.UInt24;
+
+   --  Internal Address Register
+   type TWI1_IADR_Register is record
+      --  Internal Address
+      IADR           : TWI1_IADR_IADR_Field := 16#0#;
+      --  unspecified
+      Reserved_24_31 : HAL.UInt8 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_IADR_Register use record
+      IADR           at 0 range 0 .. 23;
+      Reserved_24_31 at 0 range 24 .. 31;
+   end record;
+
+   subtype TWI1_CWGR_CLDIV_Field is HAL.UInt8;
+   subtype TWI1_CWGR_CHDIV_Field is HAL.UInt8;
+   subtype TWI1_CWGR_CKDIV_Field is HAL.UInt3;
+   subtype TWI1_CWGR_HOLD_Field is HAL.UInt5;
+
+   --  Clock Waveform Generator Register
+   type TWI1_CWGR_Register is record
+      --  Clock Low Divider
+      CLDIV          : TWI1_CWGR_CLDIV_Field := 16#0#;
+      --  Clock High Divider
+      CHDIV          : TWI1_CWGR_CHDIV_Field := 16#0#;
+      --  Clock Divider
+      CKDIV          : TWI1_CWGR_CKDIV_Field := 16#0#;
+      --  unspecified
+      Reserved_19_23 : HAL.UInt5 := 16#0#;
+      --  TWD Hold Time versus TWCK falling
+      HOLD           : TWI1_CWGR_HOLD_Field := 16#0#;
+      --  unspecified
+      Reserved_29_31 : HAL.UInt3 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_CWGR_Register use record
+      CLDIV          at 0 range 0 .. 7;
+      CHDIV          at 0 range 8 .. 15;
+      CKDIV          at 0 range 16 .. 18;
+      Reserved_19_23 at 0 range 19 .. 23;
+      HOLD           at 0 range 24 .. 28;
+      Reserved_29_31 at 0 range 29 .. 31;
+   end record;
+
+   --  Status Register
+   type TWI1_SR_Register is record
+      --  Read-only. Transmission Completed (cleared by writing TWI_THR)
+      TXCOMP         : Boolean;
+      --  Read-only. Receive Holding Register Ready (cleared by reading
+      --  TWI_RHR)
+      RXRDY          : Boolean;
+      --  Read-only. Transmit Holding Register Ready (cleared by writing
+      --  TWI_THR)
+      TXRDY          : Boolean;
+      --  Read-only. Slave Read
+      SVREAD         : Boolean;
+      --  Read-only. Slave Access
+      SVACC          : Boolean;
+      --  Read-only. General Call Access (cleared on read)
+      GACC           : Boolean;
+      --  Read-only. Overrun Error (cleared on read)
+      OVRE           : Boolean;
+      --  unspecified
+      Reserved_7_7   : HAL.Bit;
+      --  Read-only. Not Acknowledged (cleared on read)
+      NACK           : Boolean;
+      --  Read-only. Arbitration Lost (cleared on read)
+      ARBLST         : Boolean;
+      --  Read-only. Clock Wait State
+      SCLWS          : Boolean;
+      --  Read-only. End Of Slave Access (cleared on read)
+      EOSACC         : Boolean;
+      --  Read-only. End of RX buffer (cleared by writing TWI_RCR or TWI_RNCR)
+      ENDRX          : Boolean;
+      --  Read-only. End of TX buffer (cleared by writing TWI_TCR or TWI_TNCR)
+      ENDTX          : Boolean;
+      --  Read-only. RX Buffer Full (cleared by writing TWI_RCR or TWI_RNCR)
+      RXBUFF         : Boolean;
+      --  Read-only. TX Buffer Empty (cleared by writing TWI_TCR or TWI_TNCR)
+      TXBUFE         : Boolean;
+      --  unspecified
+      Reserved_16_31 : HAL.UInt16;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_SR_Register use record
+      TXCOMP         at 0 range 0 .. 0;
+      RXRDY          at 0 range 1 .. 1;
+      TXRDY          at 0 range 2 .. 2;
+      SVREAD         at 0 range 3 .. 3;
+      SVACC          at 0 range 4 .. 4;
+      GACC           at 0 range 5 .. 5;
+      OVRE           at 0 range 6 .. 6;
+      Reserved_7_7   at 0 range 7 .. 7;
+      NACK           at 0 range 8 .. 8;
+      ARBLST         at 0 range 9 .. 9;
+      SCLWS          at 0 range 10 .. 10;
+      EOSACC         at 0 range 11 .. 11;
+      ENDRX          at 0 range 12 .. 12;
+      ENDTX          at 0 range 13 .. 13;
+      RXBUFF         at 0 range 14 .. 14;
+      TXBUFE         at 0 range 15 .. 15;
+      Reserved_16_31 at 0 range 16 .. 31;
+   end record;
+
+   --  Interrupt Enable Register
+   type TWI1_IER_Register is record
+      --  Write-only. Transmission Completed Interrupt Enable
+      TXCOMP         : Boolean := False;
+      --  Write-only. Receive Holding Register Ready Interrupt Enable
+      RXRDY          : Boolean := False;
+      --  Write-only. Transmit Holding Register Ready Interrupt Enable
+      TXRDY          : Boolean := False;
+      --  unspecified
+      Reserved_3_3   : HAL.Bit := 16#0#;
+      --  Write-only. Slave Access Interrupt Enable
+      SVACC          : Boolean := False;
+      --  Write-only. General Call Access Interrupt Enable
+      GACC           : Boolean := False;
+      --  Write-only. Overrun Error Interrupt Enable
+      OVRE           : Boolean := False;
+      --  unspecified
+      Reserved_7_7   : HAL.Bit := 16#0#;
+      --  Write-only. Not Acknowledge Interrupt Enable
+      NACK           : Boolean := False;
+      --  Write-only. Arbitration Lost Interrupt Enable
+      ARBLST         : Boolean := False;
+      --  Write-only. Clock Wait State Interrupt Enable
+      SCL_WS         : Boolean := False;
+      --  Write-only. End Of Slave Access Interrupt Enable
+      EOSACC         : Boolean := False;
+      --  Write-only. End of Receive Buffer Interrupt Enable
+      ENDRX          : Boolean := False;
+      --  Write-only. End of Transmit Buffer Interrupt Enable
+      ENDTX          : Boolean := False;
+      --  Write-only. Receive Buffer Full Interrupt Enable
+      RXBUFF         : Boolean := False;
+      --  Write-only. Transmit Buffer Empty Interrupt Enable
+      TXBUFE         : Boolean := False;
+      --  unspecified
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_IER_Register use record
+      TXCOMP         at 0 range 0 .. 0;
+      RXRDY          at 0 range 1 .. 1;
+      TXRDY          at 0 range 2 .. 2;
+      Reserved_3_3   at 0 range 3 .. 3;
+      SVACC          at 0 range 4 .. 4;
+      GACC           at 0 range 5 .. 5;
+      OVRE           at 0 range 6 .. 6;
+      Reserved_7_7   at 0 range 7 .. 7;
+      NACK           at 0 range 8 .. 8;
+      ARBLST         at 0 range 9 .. 9;
+      SCL_WS         at 0 range 10 .. 10;
+      EOSACC         at 0 range 11 .. 11;
+      ENDRX          at 0 range 12 .. 12;
+      ENDTX          at 0 range 13 .. 13;
+      RXBUFF         at 0 range 14 .. 14;
+      TXBUFE         at 0 range 15 .. 15;
+      Reserved_16_31 at 0 range 16 .. 31;
+   end record;
+
+   --  Interrupt Disable Register
+   type TWI1_IDR_Register is record
+      --  Write-only. Transmission Completed Interrupt Disable
+      TXCOMP         : Boolean := False;
+      --  Write-only. Receive Holding Register Ready Interrupt Disable
+      RXRDY          : Boolean := False;
+      --  Write-only. Transmit Holding Register Ready Interrupt Disable
+      TXRDY          : Boolean := False;
+      --  unspecified
+      Reserved_3_3   : HAL.Bit := 16#0#;
+      --  Write-only. Slave Access Interrupt Disable
+      SVACC          : Boolean := False;
+      --  Write-only. General Call Access Interrupt Disable
+      GACC           : Boolean := False;
+      --  Write-only. Overrun Error Interrupt Disable
+      OVRE           : Boolean := False;
+      --  unspecified
+      Reserved_7_7   : HAL.Bit := 16#0#;
+      --  Write-only. Not Acknowledge Interrupt Disable
+      NACK           : Boolean := False;
+      --  Write-only. Arbitration Lost Interrupt Disable
+      ARBLST         : Boolean := False;
+      --  Write-only. Clock Wait State Interrupt Disable
+      SCL_WS         : Boolean := False;
+      --  Write-only. End Of Slave Access Interrupt Disable
+      EOSACC         : Boolean := False;
+      --  Write-only. End of Receive Buffer Interrupt Disable
+      ENDRX          : Boolean := False;
+      --  Write-only. End of Transmit Buffer Interrupt Disable
+      ENDTX          : Boolean := False;
+      --  Write-only. Receive Buffer Full Interrupt Disable
+      RXBUFF         : Boolean := False;
+      --  Write-only. Transmit Buffer Empty Interrupt Disable
+      TXBUFE         : Boolean := False;
+      --  unspecified
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_IDR_Register use record
+      TXCOMP         at 0 range 0 .. 0;
+      RXRDY          at 0 range 1 .. 1;
+      TXRDY          at 0 range 2 .. 2;
+      Reserved_3_3   at 0 range 3 .. 3;
+      SVACC          at 0 range 4 .. 4;
+      GACC           at 0 range 5 .. 5;
+      OVRE           at 0 range 6 .. 6;
+      Reserved_7_7   at 0 range 7 .. 7;
+      NACK           at 0 range 8 .. 8;
+      ARBLST         at 0 range 9 .. 9;
+      SCL_WS         at 0 range 10 .. 10;
+      EOSACC         at 0 range 11 .. 11;
+      ENDRX          at 0 range 12 .. 12;
+      ENDTX          at 0 range 13 .. 13;
+      RXBUFF         at 0 range 14 .. 14;
+      TXBUFE         at 0 range 15 .. 15;
+      Reserved_16_31 at 0 range 16 .. 31;
+   end record;
+
+   --  Interrupt Mask Register
+   type TWI1_IMR_Register is record
+      --  Read-only. Transmission Completed Interrupt Mask
+      TXCOMP         : Boolean;
+      --  Read-only. Receive Holding Register Ready Interrupt Mask
+      RXRDY          : Boolean;
+      --  Read-only. Transmit Holding Register Ready Interrupt Mask
+      TXRDY          : Boolean;
+      --  unspecified
+      Reserved_3_3   : HAL.Bit;
+      --  Read-only. Slave Access Interrupt Mask
+      SVACC          : Boolean;
+      --  Read-only. General Call Access Interrupt Mask
+      GACC           : Boolean;
+      --  Read-only. Overrun Error Interrupt Mask
+      OVRE           : Boolean;
+      --  unspecified
+      Reserved_7_7   : HAL.Bit;
+      --  Read-only. Not Acknowledge Interrupt Mask
+      NACK           : Boolean;
+      --  Read-only. Arbitration Lost Interrupt Mask
+      ARBLST         : Boolean;
+      --  Read-only. Clock Wait State Interrupt Mask
+      SCL_WS         : Boolean;
+      --  Read-only. End Of Slave Access Interrupt Mask
+      EOSACC         : Boolean;
+      --  Read-only. End of Receive Buffer Interrupt Mask
+      ENDRX          : Boolean;
+      --  Read-only. End of Transmit Buffer Interrupt Mask
+      ENDTX          : Boolean;
+      --  Read-only. Receive Buffer Full Interrupt Mask
+      RXBUFF         : Boolean;
+      --  Read-only. Transmit Buffer Empty Interrupt Mask
+      TXBUFE         : Boolean;
+      --  unspecified
+      Reserved_16_31 : HAL.UInt16;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_IMR_Register use record
+      TXCOMP         at 0 range 0 .. 0;
+      RXRDY          at 0 range 1 .. 1;
+      TXRDY          at 0 range 2 .. 2;
+      Reserved_3_3   at 0 range 3 .. 3;
+      SVACC          at 0 range 4 .. 4;
+      GACC           at 0 range 5 .. 5;
+      OVRE           at 0 range 6 .. 6;
+      Reserved_7_7   at 0 range 7 .. 7;
+      NACK           at 0 range 8 .. 8;
+      ARBLST         at 0 range 9 .. 9;
+      SCL_WS         at 0 range 10 .. 10;
+      EOSACC         at 0 range 11 .. 11;
+      ENDRX          at 0 range 12 .. 12;
+      ENDTX          at 0 range 13 .. 13;
+      RXBUFF         at 0 range 14 .. 14;
+      TXBUFE         at 0 range 15 .. 15;
+      Reserved_16_31 at 0 range 16 .. 31;
+   end record;
+
+   subtype TWI1_RHR_RXDATA_Field is HAL.UInt8;
+
+   --  Receive Holding Register
+   type TWI1_RHR_Register is record
+      --  Read-only. Master or Slave Receive Holding Data
+      RXDATA        : TWI1_RHR_RXDATA_Field;
+      --  unspecified
+      Reserved_8_31 : HAL.UInt24;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_RHR_Register use record
+      RXDATA        at 0 range 0 .. 7;
+      Reserved_8_31 at 0 range 8 .. 31;
+   end record;
+
+   subtype TWI1_THR_TXDATA_Field is HAL.UInt8;
+
+   --  Transmit Holding Register
+   type TWI1_THR_Register is record
+      --  Write-only. Master or Slave Transmit Holding Data
+      TXDATA        : TWI1_THR_TXDATA_Field := 16#0#;
+      --  unspecified
+      Reserved_8_31 : HAL.UInt24 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_THR_Register use record
+      TXDATA        at 0 range 0 .. 7;
+      Reserved_8_31 at 0 range 8 .. 31;
+   end record;
+
+   --  Write Protection Key
+   type WPMR_WPKEY_Field is
+     (
+      --  Reset value for the field
+      Wpmr_Wpkey_Field_Reset,
+      --  Writing any other value in this field aborts the write operation of
+      --  the WPEN bit.Always reads as 0
+      Passwd)
+     with Size => 24;
+   for WPMR_WPKEY_Field use
+     (Wpmr_Wpkey_Field_Reset => 0,
+      Passwd => 5527369);
+
+   --  Write Protection Mode Register
+   type TWI1_WPMR_Register is record
+      --  Write Protection Enable
+      WPEN         : Boolean := False;
+      --  unspecified
+      Reserved_1_7 : HAL.UInt7 := 16#0#;
+      --  Write Protection Key
+      WPKEY        : WPMR_WPKEY_Field := Wpmr_Wpkey_Field_Reset;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_WPMR_Register use record
+      WPEN         at 0 range 0 .. 0;
+      Reserved_1_7 at 0 range 1 .. 7;
+      WPKEY        at 0 range 8 .. 31;
+   end record;
+
+   subtype TWI1_WPSR_WPVSRC_Field is HAL.UInt24;
+
+   --  Write Protection Status Register
+   type TWI1_WPSR_Register is record
+      --  Read-only. Write Protection Violation Status
+      WPVS         : Boolean;
+      --  unspecified
+      Reserved_1_7 : HAL.UInt7;
+      --  Read-only. Write Protection Violation Source
+      WPVSRC       : TWI1_WPSR_WPVSRC_Field;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_WPSR_Register use record
+      WPVS         at 0 range 0 .. 0;
+      Reserved_1_7 at 0 range 1 .. 7;
+      WPVSRC       at 0 range 8 .. 31;
+   end record;
+
+   subtype TWI1_RCR_RXCTR_Field is HAL.UInt16;
+
+   --  Receive Counter Register
+   type TWI1_RCR_Register is record
+      --  Receive Counter Register
+      RXCTR          : TWI1_RCR_RXCTR_Field := 16#0#;
+      --  unspecified
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_RCR_Register use record
+      RXCTR          at 0 range 0 .. 15;
+      Reserved_16_31 at 0 range 16 .. 31;
+   end record;
+
+   subtype TWI1_TCR_TXCTR_Field is HAL.UInt16;
+
+   --  Transmit Counter Register
+   type TWI1_TCR_Register is record
+      --  Transmit Counter Register
+      TXCTR          : TWI1_TCR_TXCTR_Field := 16#0#;
+      --  unspecified
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_TCR_Register use record
+      TXCTR          at 0 range 0 .. 15;
+      Reserved_16_31 at 0 range 16 .. 31;
+   end record;
+
+   subtype TWI1_RNCR_RXNCTR_Field is HAL.UInt16;
+
+   --  Receive Next Counter Register
+   type TWI1_RNCR_Register is record
+      --  Receive Next Counter
+      RXNCTR         : TWI1_RNCR_RXNCTR_Field := 16#0#;
+      --  unspecified
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_RNCR_Register use record
+      RXNCTR         at 0 range 0 .. 15;
+      Reserved_16_31 at 0 range 16 .. 31;
+   end record;
+
+   subtype TWI1_TNCR_TXNCTR_Field is HAL.UInt16;
+
+   --  Transmit Next Counter Register
+   type TWI1_TNCR_Register is record
+      --  Transmit Counter Next
+      TXNCTR         : TWI1_TNCR_TXNCTR_Field := 16#0#;
+      --  unspecified
+      Reserved_16_31 : HAL.UInt16 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_TNCR_Register use record
+      TXNCTR         at 0 range 0 .. 15;
+      Reserved_16_31 at 0 range 16 .. 31;
+   end record;
+
+   --  Transfer Control Register
+   type TWI1_PTCR_Register is record
+      --  Write-only. Receiver Transfer Enable
+      RXTEN          : Boolean := False;
+      --  Write-only. Receiver Transfer Disable
+      RXTDIS         : Boolean := False;
+      --  unspecified
+      Reserved_2_7   : HAL.UInt6 := 16#0#;
+      --  Write-only. Transmitter Transfer Enable
+      TXTEN          : Boolean := False;
+      --  Write-only. Transmitter Transfer Disable
+      TXTDIS         : Boolean := False;
+      --  unspecified
+      Reserved_10_15 : HAL.UInt6 := 16#0#;
+      --  Write-only. Receiver Circular Buffer Enable
+      RXCBEN         : Boolean := False;
+      --  Write-only. Receiver Circular Buffer Disable
+      RXCBDIS        : Boolean := False;
+      --  Write-only. Transmitter Circular Buffer Enable
+      TXCBEN         : Boolean := False;
+      --  Write-only. Transmitter Circular Buffer Disable
+      TXCBDIS        : Boolean := False;
+      --  unspecified
+      Reserved_20_23 : HAL.UInt4 := 16#0#;
+      --  Write-only. Transfer Bus Error Clear
+      ERRCLR         : Boolean := False;
+      --  unspecified
+      Reserved_25_31 : HAL.UInt7 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_PTCR_Register use record
+      RXTEN          at 0 range 0 .. 0;
+      RXTDIS         at 0 range 1 .. 1;
+      Reserved_2_7   at 0 range 2 .. 7;
+      TXTEN          at 0 range 8 .. 8;
+      TXTDIS         at 0 range 9 .. 9;
+      Reserved_10_15 at 0 range 10 .. 15;
+      RXCBEN         at 0 range 16 .. 16;
+      RXCBDIS        at 0 range 17 .. 17;
+      TXCBEN         at 0 range 18 .. 18;
+      TXCBDIS        at 0 range 19 .. 19;
+      Reserved_20_23 at 0 range 20 .. 23;
+      ERRCLR         at 0 range 24 .. 24;
+      Reserved_25_31 at 0 range 25 .. 31;
+   end record;
+
+   --  Transfer Status Register
+   type TWI1_PTSR_Register is record
+      --  Read-only. Receiver Transfer Enable
+      RXTEN          : Boolean;
+      --  unspecified
+      Reserved_1_7   : HAL.UInt7;
+      --  Read-only. Transmitter Transfer Enable
+      TXTEN          : Boolean;
+      --  unspecified
+      Reserved_9_15  : HAL.UInt7;
+      --  Read-only. Receiver Circular Buffer Enable
+      RXCBEN         : Boolean;
+      --  unspecified
+      Reserved_17_17 : HAL.Bit;
+      --  Read-only. Transmitter Circular Buffer Enable
+      TXCBEN         : Boolean;
+      --  unspecified
+      Reserved_19_23 : HAL.UInt5;
+      --  Read-only. Transfer Bus Error
+      ERR            : Boolean;
+      --  unspecified
+      Reserved_25_31 : HAL.UInt7;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for TWI1_PTSR_Register use record
+      RXTEN          at 0 range 0 .. 0;
+      Reserved_1_7   at 0 range 1 .. 7;
+      TXTEN          at 0 range 8 .. 8;
+      Reserved_9_15  at 0 range 9 .. 15;
+      RXCBEN         at 0 range 16 .. 16;
+      Reserved_17_17 at 0 range 17 .. 17;
+      TXCBEN         at 0 range 18 .. 18;
+      Reserved_19_23 at 0 range 19 .. 23;
+      ERR            at 0 range 24 .. 24;
+      Reserved_25_31 at 0 range 25 .. 31;
+   end record;
+
+   -----------------
+   -- Peripherals --
+   -----------------
+
+   --  Two-wire Interface 1
+   type TWI_Peripheral is record
+      --  Control Register
+      CR   : aliased TWI1_CR_Register;
+      --  Master Mode Register
+      MMR  : aliased TWI1_MMR_Register;
+      --  Slave Mode Register
+      SMR  : aliased TWI1_SMR_Register;
+      --  Internal Address Register
+      IADR : aliased TWI1_IADR_Register;
+      --  Clock Waveform Generator Register
+      CWGR : aliased TWI1_CWGR_Register;
+      --  Status Register
+      SR   : aliased TWI1_SR_Register;
+      --  Interrupt Enable Register
+      IER  : aliased TWI1_IER_Register;
+      --  Interrupt Disable Register
+      IDR  : aliased TWI1_IDR_Register;
+      --  Interrupt Mask Register
+      IMR  : aliased TWI1_IMR_Register;
+      --  Receive Holding Register
+      RHR  : aliased TWI1_RHR_Register;
+      --  Transmit Holding Register
+      THR  : aliased TWI1_THR_Register;
+      --  Write Protection Mode Register
+      WPMR : aliased TWI1_WPMR_Register;
+      --  Write Protection Status Register
+      WPSR : aliased TWI1_WPSR_Register;
+      --  Receive Pointer Register
+      RPR  : aliased HAL.UInt32;
+      --  Receive Counter Register
+      RCR  : aliased TWI1_RCR_Register;
+      --  Transmit Pointer Register
+      TPR  : aliased HAL.UInt32;
+      --  Transmit Counter Register
+      TCR  : aliased TWI1_TCR_Register;
+      --  Receive Next Pointer Register
+      RNPR : aliased HAL.UInt32;
+      --  Receive Next Counter Register
+      RNCR : aliased TWI1_RNCR_Register;
+      --  Transmit Next Pointer Register
+      TNPR : aliased HAL.UInt32;
+      --  Transmit Next Counter Register
+      TNCR : aliased TWI1_TNCR_Register;
+      --  Transfer Control Register
+      PTCR : aliased TWI1_PTCR_Register;
+      --  Transfer Status Register
+      PTSR : aliased TWI1_PTSR_Register;
+   end record
+     with Volatile;
+
+   for TWI_Peripheral use record
+      CR   at 16#0# range 0 .. 31;
+      MMR  at 16#4# range 0 .. 31;
+      SMR  at 16#8# range 0 .. 31;
+      IADR at 16#C# range 0 .. 31;
+      CWGR at 16#10# range 0 .. 31;
+      SR   at 16#20# range 0 .. 31;
+      IER  at 16#24# range 0 .. 31;
+      IDR  at 16#28# range 0 .. 31;
+      IMR  at 16#2C# range 0 .. 31;
+      RHR  at 16#30# range 0 .. 31;
+      THR  at 16#34# range 0 .. 31;
+      WPMR at 16#E4# range 0 .. 31;
+      WPSR at 16#E8# range 0 .. 31;
+      RPR  at 16#100# range 0 .. 31;
+      RCR  at 16#104# range 0 .. 31;
+      TPR  at 16#108# range 0 .. 31;
+      TCR  at 16#10C# range 0 .. 31;
+      RNPR at 16#110# range 0 .. 31;
+      RNCR at 16#114# range 0 .. 31;
+      TNPR at 16#118# range 0 .. 31;
+      TNCR at 16#11C# range 0 .. 31;
+      PTCR at 16#120# range 0 .. 31;
+      PTSR at 16#124# range 0 .. 31;
+   end record;
+
+   --  Two-wire Interface 1
+   TWI1_Periph : aliased TWI_Peripheral
+     with Import, Address => System'To_Address (16#4001C000#);
+
+   --  Two-wire Interface 2
+   TWI2_Periph : aliased TWI_Peripheral
+     with Import, Address => System'To_Address (16#40040000#);
+
+end SAM_SVD.TWI;

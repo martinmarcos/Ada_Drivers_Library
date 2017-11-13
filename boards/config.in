@@ -299,22 +299,7 @@ menu "Board"
       config BOARD_CUSTOM_SOURCE_DIR
              string "Source directory for the custom board support"
 
-      choice
-              prompt "Target Micro-controller familly Variant"
-              default CHOICE_SELECT_MCU_STM32
-              help
-                Specific CPU variant to use
-         config CHOICE_SELECT_MCU_CUSTOM
-                 bool "Custom MCU definition"
-         config CHOICE_SELECT_MCU_STM32
-                 bool "STMicro STM32"
-         config CHOICE_SELECT_MCU_SIFIVE
-                 bool "SiFive RISC-V 32"
-         config CHOICE_SELECT_MCU_NORDIC
-                 bool "Nordic NRF5x"
-      endchoice
+      source "arch/config.choices"
    endif
-
-source "arch/config.choices"
 
 endmenu

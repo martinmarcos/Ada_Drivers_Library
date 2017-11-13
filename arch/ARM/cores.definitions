@@ -1,0 +1,40 @@
+config MCU_Core_ARM_Cortex_M0
+      bool
+
+if MCU_Core_ARM_Cortex_M0
+   config MCU_Core_Name
+         string
+         default "ARM Cortex-M0"
+endif
+config MCU_Core_ARM_Cortex_M0P
+      bool
+
+if MCU_Core_ARM_Cortex_M0P
+   config MCU_Core_Name
+         string
+         default "ARM Cortex-M0+"
+endif
+config MCU_Core_ARM_Cortex_M3
+      bool
+
+if MCU_Core_ARM_Cortex_M3
+   config MCU_Core_Name
+         string
+         default "ARM Cortex-M3"
+endif
+config MCU_Core_ARM_Cortex_M4
+      bool
+
+if MCU_Core_ARM_Cortex_M4
+   config MCU_Core_Name
+         string
+         default "ARM Cortex-M4"
+endif
+config MCU_Core_ARM_Cortex_M7
+      bool
+
+if MCU_Core_ARM_Cortex_M7
+   config MCU_Core_Name
+         string
+         default "ARM Cortex-M7"
+endif

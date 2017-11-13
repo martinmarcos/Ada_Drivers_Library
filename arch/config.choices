@@ -1,20 +1,23 @@
-if CHOICE_SELECT_MCU_CUSTOM
-   choice
-           prompt "Target Architecture Variant"
-           default CHOICE_SELECT_ARCH_CUSTOM       
-           help
-             Specific CPU variant to use
-    
-      config CHOICE_SELECT_ARCH_CUSTOM
-              bool "Custom arch definition"
-      config CHOICE_SELECT_ARCH_ARM
-              bool "ARM"
-              select ARCH_ARM
-      config CHOICE_SELECT_ARCH_RISCV
-              bool "RISC-V"
-              select ARCH_RISCV
-   endchoice
+choice
+        prompt "Target Architecture Variant"
+        default CHOICE_SELECT_ARCH_CUSTOM       
+        help
+          Specific CPU variant to use
+ 
+   config CHOICE_SELECT_ARCH_CUSTOM
+           bool "Custom arch definition"
+   config CHOICE_SELECT_ARCH_ARM
+           bool "ARM"
+           select ARCH_ARM
+   config CHOICE_SELECT_ARCH_RISCV
+           bool "RISC-V"
+           select ARCH_RISCV
+endchoice
+
+if CHOICE_SELECT_ARCH_ARM
+   source "arch/ARM/config.choices"
 endif
 
-source "arch/ARM/config.choices"
-source "arch/RISC-V/config.choices"
+if CHOICE_SELECT_ARCH_RISCV
+   source "arch/RISC-V/config.choices"
+endif

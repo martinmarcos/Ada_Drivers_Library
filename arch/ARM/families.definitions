@@ -1,0 +1,408 @@
+config MCU_Family_SAM3A
+      bool
+
+if MCU_Family_SAM3A
+   config MCU_Family_Name
+         string
+         default "SAM3A"
+endif
+config MCU_Family_SAM3N
+      bool
+
+if MCU_Family_SAM3N
+   config MCU_Family_Name
+         string
+         default "SAM3N"
+endif
+config MCU_Family_SAM3S
+      bool
+
+if MCU_Family_SAM3S
+   config MCU_Family_Name
+         string
+         default "SAM3S"
+endif
+config MCU_Family_SAM3U
+      bool
+
+if MCU_Family_SAM3U
+   config MCU_Family_Name
+         string
+         default "SAM3U"
+endif
+config MCU_Family_SAM3X
+      bool
+
+if MCU_Family_SAM3X
+   config MCU_Family_Name
+         string
+         default "SAM3X"
+endif
+config MCU_Family_SAM4C
+      bool
+
+if MCU_Family_SAM4C
+   config MCU_Family_Name
+         string
+         default "SAM4C"
+endif
+config MCU_Family_SAM4E
+      bool
+
+if MCU_Family_SAM4E
+   config MCU_Family_Name
+         string
+         default "SAM4E"
+endif
+config MCU_Family_SAM4L
+      bool
+
+if MCU_Family_SAM4L
+   config MCU_Family_Name
+         string
+         default "SAM4L"
+endif
+config MCU_Family_SAM4N
+      bool
+
+if MCU_Family_SAM4N
+   config MCU_Family_Name
+         string
+         default "SAM4N"
+endif
+config MCU_Family_SAM4S
+      bool
+
+if MCU_Family_SAM4S
+   config MCU_Family_Name
+         string
+         default "SAM4S"
+endif
+config MCU_Family_SAMB11
+      bool
+
+if MCU_Family_SAMB11
+   config MCU_Family_Name
+         string
+         default "SAMB11"
+endif
+config MCU_Family_SAMC20
+      bool
+
+if MCU_Family_SAMC20
+   config MCU_Family_Name
+         string
+         default "SAMC20"
+endif
+config MCU_Family_SAMC21
+      bool
+
+if MCU_Family_SAMC21
+   config MCU_Family_Name
+         string
+         default "SAMC21"
+endif
+config MCU_Family_SAMD09
+      bool
+
+if MCU_Family_SAMD09
+   config MCU_Family_Name
+         string
+         default "SAMD09"
+endif
+config MCU_Family_SAMD10
+      bool
+
+if MCU_Family_SAMD10
+   config MCU_Family_Name
+         string
+         default "SAMD10"
+endif
+config MCU_Family_SAMD11
+      bool
+
+if MCU_Family_SAMD11
+   config MCU_Family_Name
+         string
+         default "SAMD11"
+endif
+config MCU_Family_SAMD20
+      bool
+
+if MCU_Family_SAMD20
+   config MCU_Family_Name
+         string
+         default "SAMD20"
+endif
+config MCU_Family_SAMD21
+      bool
+
+if MCU_Family_SAMD21
+   config MCU_Family_Name
+         string
+         default "SAMD21"
+endif
+config MCU_Family_SAMD51
+      bool
+
+if MCU_Family_SAMD51
+   config MCU_Family_Name
+         string
+         default "SAMD51"
+endif
+config MCU_Family_SAMDA1
+      bool
+
+if MCU_Family_SAMDA1
+   config MCU_Family_Name
+         string
+         default "SAMDA1"
+endif
+config MCU_Family_SAME51
+      bool
+
+if MCU_Family_SAME51
+   config MCU_Family_Name
+         string
+         default "SAME51"
+endif
+config MCU_Family_SAME53
+      bool
+
+if MCU_Family_SAME53
+   config MCU_Family_Name
+         string
+         default "SAME53"
+endif
+config MCU_Family_SAME54
+      bool
+
+if MCU_Family_SAME54
+   config MCU_Family_Name
+         string
+         default "SAME54"
+endif
+config MCU_Family_SAME70
+      bool
+
+if MCU_Family_SAME70
+   config MCU_Family_Name
+         string
+         default "SAME70"
+endif
+config MCU_Family_SAMG
+      bool
+
+if MCU_Family_SAMG
+   config MCU_Family_Name
+         string
+         default "SAMG"
+endif
+config MCU_Family_SAMHA1
+      bool
+
+if MCU_Family_SAMHA1
+   config MCU_Family_Name
+         string
+         default "SAMHA1"
+endif
+config MCU_Family_SAML21
+      bool
+
+if MCU_Family_SAML21
+   config MCU_Family_Name
+         string
+         default "SAML21"
+endif
+config MCU_Family_SAML22
+      bool
+
+if MCU_Family_SAML22
+   config MCU_Family_Name
+         string
+         default "SAML22"
+endif
+config MCU_Family_SAMR21
+      bool
+
+if MCU_Family_SAMR21
+   config MCU_Family_Name
+         string
+         default "SAMR21"
+endif
+config MCU_Family_SAMR30
+      bool
+
+if MCU_Family_SAMR30
+   config MCU_Family_Name
+         string
+         default "SAMR30"
+endif
+config MCU_Family_SAMS70
+      bool
+
+if MCU_Family_SAMS70
+   config MCU_Family_Name
+         string
+         default "SAMS70"
+endif
+config MCU_Family_SAMV70
+      bool
+
+if MCU_Family_SAMV70
+   config MCU_Family_Name
+         string
+         default "SAMV70"
+endif
+config MCU_Family_SAMV71
+      bool
+
+if MCU_Family_SAMV71
+   config MCU_Family_Name
+         string
+         default "SAMV71"
+endif
+config MCU_Family_STM32F0
+      bool
+
+if MCU_Family_STM32F0
+   config MCU_Family_Name
+         string
+         default "STM32F0"
+endif
+config MCU_Family_STM32F1
+      bool
+
+if MCU_Family_STM32F1
+   config MCU_Family_Name
+         string
+         default "STM32F1"
+endif
+config MCU_Family_STM32F2
+      bool
+
+if MCU_Family_STM32F2
+   config MCU_Family_Name
+         string
+         default "STM32F2"
+endif
+config MCU_Family_STM32F30
+      bool
+
+if MCU_Family_STM32F30
+   config MCU_Family_Name
+         string
+         default "STM32F30"
+endif
+config MCU_Family_STM32F31
+      bool
+
+if MCU_Family_STM32F31
+   config MCU_Family_Name
+         string
+         default "STM32F31"
+endif
+config MCU_Family_STM32F32
+      bool
+
+if MCU_Family_STM32F32
+   config MCU_Family_Name
+         string
+         default "STM32F32"
+endif
+config MCU_Family_STM32F33
+      bool
+
+if MCU_Family_STM32F33
+   config MCU_Family_Name
+         string
+         default "STM32F33"
+endif
+config MCU_Family_STM32F35
+      bool
+
+if MCU_Family_STM32F35
+   config MCU_Family_Name
+         string
+         default "STM32F35"
+endif
+config MCU_Family_STM32F37
+      bool
+
+if MCU_Family_STM32F37
+   config MCU_Family_Name
+         string
+         default "STM32F37"
+endif
+config MCU_Family_STM32F39
+      bool
+
+if MCU_Family_STM32F39
+   config MCU_Family_Name
+         string
+         default "STM32F39"
+endif
+config MCU_Family_STM32F4
+      bool
+
+if MCU_Family_STM32F4
+   config MCU_Family_Name
+         string
+         default "STM32F4"
+endif
+config MCU_Family_STM32F7
+      bool
+
+if MCU_Family_STM32F7
+   config MCU_Family_Name
+         string
+         default "STM32F7"
+endif
+config MCU_Family_STM32H7
+      bool
+
+if MCU_Family_STM32H7
+   config MCU_Family_Name
+         string
+         default "STM32H7"
+endif
+config MCU_Family_STM32L0
+      bool
+
+if MCU_Family_STM32L0
+   config MCU_Family_Name
+         string
+         default "STM32L0"
+endif
+config MCU_Family_STM32L1
+      bool
+
+if MCU_Family_STM32L1
+   config MCU_Family_Name
+         string
+         default "STM32L1"
+endif
+config MCU_Family_STM32L4
+      bool
+
+if MCU_Family_STM32L4
+   config MCU_Family_Name
+         string
+         default "STM32L4"
+endif
+config MCU_Family_STM32L4PLUS
+      bool
+
+if MCU_Family_STM32L4PLUS
+   config MCU_Family_Name
+         string
+         default "STM32L4PLUS"
+endif
+config MCU_Family_nRF51
+      bool
+
+if MCU_Family_nRF51
+   config MCU_Family_Name
+         string
+         default "nRF51"
+endif
