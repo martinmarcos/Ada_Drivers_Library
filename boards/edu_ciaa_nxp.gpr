@@ -1,0 +1,26 @@
+aggregate library project edu_ciaa_nxp is
+
+   Build := external ("BUILD", "Debug");
+
+   type RTS_Type is ("ravenscar-sfp", "ravenscar-full");
+   RTS : RTS_Type := External ("RTS", "ravenscar-sfp");
+
+   RTS_Base := Project'Project_Dir &
+               "../embedded-runtimes/ravenscar-lpc4337_educiaa";
+   for Target use "arm-eabi";
+
+   case RTS is
+      when "ravenscar-sfp" =>
+         for Runtime ("Ada") use RTS_Base & "/sfp";
+      when "ravenscar-full" =>
+         for Runtime ("Ada") use RTS_Base & "/full";
+   end case;
+
+   for Project_Path use ("edu_ciaa_nxp");
+
+   for Project_Files use ("edu_ciaa_nxp/board.gpr");
+
+   for Library_Dir use "lib/edu_ciaa_nxp/" & RTS & "/" & Build;
+   for Library_Name use "edu_ciaa_nxp";
+
+end edu_ciaa_nxp;
