@@ -183,7 +183,7 @@ endif
 
 config BOARD_MICRO_BIT
        bool
-       select MCU_Device_nRF51822xxAA
+       select MCU_Device_nRF51822_xxAA
 
        select HAS_RUNTIME_PROFILE_ZFP
        select HAS_BOARD_DELAY_SUPPORT

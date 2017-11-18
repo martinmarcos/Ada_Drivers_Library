@@ -76,8 +76,9 @@ def gen_project(conf, board_name, rts):
 
     conf.syms['RELATIVE_PATH_TO_ADL_ROOT'].set_value ("../../")
 
-
     conf.syms[board['board_conf_choice']].set_value (STR_TO_TRI["y"])
+
+    conf.syms['Include_Trap_Handler_Vector'].set_value (STR_TO_TRI["y"])
 
     if rts == 'zfp':
         suffix = 'zfp'
