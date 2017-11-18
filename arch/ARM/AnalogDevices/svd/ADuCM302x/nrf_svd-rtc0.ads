@@ -1,0 +1,902 @@
+--
+
+--  This spec has been automatically generated from ADuCM302x.svd
+
+pragma Restrictions (No_Elaboration_Code);
+pragma Ada_2012;
+pragma Style_Checks (Off);
+
+with HAL;
+with System;
+
+package NRF_SVD.RTC0 is
+   pragma Preelaborate;
+
+   ---------------
+   -- Registers --
+   ---------------
+
+   subtype CR0_MOD60ALM_Field is HAL.UInt6;
+
+   --  RTC Control 0
+   type CR0_Register is record
+      --  Global Enable for the RTC
+      CNTEN         : Boolean := False;
+      --  Enable the RTC Alarm (Absolute) Operation
+      ALMEN         : Boolean := False;
+      --  Enable ALMINT Sourced Alarm Interrupts to the CPU
+      ALMINTEN      : Boolean := True;
+      --  Enable RTC Digital Trimming
+      TRMEN         : Boolean := False;
+      --  Enable RTC Modulo-60 Counting of Time Past a Modulo-60 Boundary
+      MOD60ALMEN    : Boolean := False;
+      --  Periodic, Modulo-60 Alarm Time in Prescaled RTC Time Units Beyond a
+      --  Modulo-60 Boundary
+      MOD60ALM      : CR0_MOD60ALM_Field := 16#1E#;
+      --  Enable Periodic Modulo-60 RTC Alarm Sourced Interrupts to the CPU
+      MOD60ALMINTEN : Boolean := False;
+      --  Enable ISOINT Sourced Interrupts to the CPU When Isolation of the RTC
+      --  Power Domain is Activated and Subsequently De-activated
+      ISOINTEN      : Boolean := False;
+      --  Enable Write Pending Error Sourced Interrupts to the CPU When an RTC
+      --  Register-write Pending Error Occurs
+      WPNDERRINTEN  : Boolean := False;
+      --  Enable Write Synchronization Sourced Interrupts to the CPU
+      WSYNCINTEN    : Boolean := False;
+      --  Enable Write Pending Sourced Interrupts to the CPU
+      WPNDINTEN     : Boolean := False;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for CR0_Register use record
+      CNTEN         at 0 range 0 .. 0;
+      ALMEN         at 0 range 1 .. 1;
+      ALMINTEN      at 0 range 2 .. 2;
+      TRMEN         at 0 range 3 .. 3;
+      MOD60ALMEN    at 0 range 4 .. 4;
+      MOD60ALM      at 0 range 5 .. 10;
+      MOD60ALMINTEN at 0 range 11 .. 11;
+      ISOINTEN      at 0 range 12 .. 12;
+      WPNDERRINTEN  at 0 range 13 .. 13;
+      WSYNCINTEN    at 0 range 14 .. 14;
+      WPNDINTEN     at 0 range 15 .. 15;
+   end record;
+
+   --  SR0_WSYNCCNT array
+   type SR0_WSYNCCNT_Field_Array is array (0 .. 1) of Boolean
+     with Component_Size => 1, Size => 2;
+
+   --  Type definition for SR0_WSYNCCNT
+   type SR0_WSYNCCNT_Field
+     (As_Array : Boolean := False)
+   is record
+      case As_Array is
+         when False =>
+            --  WSYNCCNT as a value
+            Val : HAL.UInt2;
+         when True =>
+            --  WSYNCCNT as an array
+            Arr : SR0_WSYNCCNT_Field_Array;
+      end case;
+   end record
+     with Unchecked_Union, Size => 2;
+
+   for SR0_WSYNCCNT_Field use record
+      Val at 0 range 0 .. 1;
+      Arr at 0 range 0 .. 1;
+   end record;
+
+   --  SR0_WSYNCALM array
+   type SR0_WSYNCALM_Field_Array is array (0 .. 1) of Boolean
+     with Component_Size => 1, Size => 2;
+
+   --  Type definition for SR0_WSYNCALM
+   type SR0_WSYNCALM_Field
+     (As_Array : Boolean := False)
+   is record
+      case As_Array is
+         when False =>
+            --  WSYNCALM as a value
+            Val : HAL.UInt2;
+         when True =>
+            --  WSYNCALM as an array
+            Arr : SR0_WSYNCALM_Field_Array;
+      end case;
+   end record
+     with Unchecked_Union, Size => 2;
+
+   for SR0_WSYNCALM_Field use record
+      Val at 0 range 0 .. 1;
+      Arr at 0 range 0 .. 1;
+   end record;
+
+   --  RTC Status 0
+   type SR0_Register is record
+      --  unspecified
+      Reserved_0_0   : HAL.Bit := 16#0#;
+      --  Alarm Interrupt Source
+      ALMINT         : Boolean := False;
+      --  Modulo-60 RTC Alarm Interrupt Source
+      MOD60ALMINT    : Boolean := False;
+      --  RTC Power-Domain Isolation Interrupt Source
+      ISOINT         : Boolean := False;
+      --  Write Pending Error Interrupt Source
+      WPNDERRINT     : Boolean := False;
+      --  Write Synchronisation Interrupt
+      WSYNCINT       : Boolean := False;
+      --  Write Pending Interrupt
+      WPNDINT        : Boolean := False;
+      --  Read-only. Synchronisation Status of Posted Writes to CR0
+      WSYNCCR0       : Boolean := True;
+      --  Read-only. Synchronisation Status of Posted Writes to SR0
+      WSYNCSR0       : Boolean := True;
+      --  Read-only. Synchronisation Status of Posted Writes to CNT0
+      WSYNCCNT       : SR0_WSYNCCNT_Field :=
+                        (As_Array => False, Val => 16#1#);
+      --  Read-only. Synchronisation Status of Posted Writes to ALM0
+      WSYNCALM       : SR0_WSYNCALM_Field :=
+                        (As_Array => False, Val => 16#1#);
+      --  Read-only. Synchronisation Status of Posted Writes to TRM
+      WSYNCTRM       : Boolean := True;
+      --  Read-only. Visibility of 32kHz Sourced Registers
+      ISOENB         : Boolean := False;
+      --  unspecified
+      Reserved_15_15 : HAL.Bit := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for SR0_Register use record
+      Reserved_0_0   at 0 range 0 .. 0;
+      ALMINT         at 0 range 1 .. 1;
+      MOD60ALMINT    at 0 range 2 .. 2;
+      ISOINT         at 0 range 3 .. 3;
+      WPNDERRINT     at 0 range 4 .. 4;
+      WSYNCINT       at 0 range 5 .. 5;
+      WPNDINT        at 0 range 6 .. 6;
+      WSYNCCR0       at 0 range 7 .. 7;
+      WSYNCSR0       at 0 range 8 .. 8;
+      WSYNCCNT       at 0 range 9 .. 10;
+      WSYNCALM       at 0 range 11 .. 12;
+      WSYNCTRM       at 0 range 13 .. 13;
+      ISOENB         at 0 range 14 .. 14;
+      Reserved_15_15 at 0 range 15 .. 15;
+   end record;
+
+   --  SR1_WPNDCNT array
+   type SR1_WPNDCNT_Field_Array is array (0 .. 1) of Boolean
+     with Component_Size => 1, Size => 2;
+
+   --  Type definition for SR1_WPNDCNT
+   type SR1_WPNDCNT_Field
+     (As_Array : Boolean := False)
+   is record
+      case As_Array is
+         when False =>
+            --  WPNDCNT as a value
+            Val : HAL.UInt2;
+         when True =>
+            --  WPNDCNT as an array
+            Arr : SR1_WPNDCNT_Field_Array;
+      end case;
+   end record
+     with Unchecked_Union, Size => 2;
+
+   for SR1_WPNDCNT_Field use record
+      Val at 0 range 0 .. 1;
+      Arr at 0 range 0 .. 1;
+   end record;
+
+   --  SR1_WPNDALM array
+   type SR1_WPNDALM_Field_Array is array (0 .. 1) of Boolean
+     with Component_Size => 1, Size => 2;
+
+   --  Type definition for SR1_WPNDALM
+   type SR1_WPNDALM_Field
+     (As_Array : Boolean := False)
+   is record
+      case As_Array is
+         when False =>
+            --  WPNDALM as a value
+            Val : HAL.UInt2;
+         when True =>
+            --  WPNDALM as an array
+            Arr : SR1_WPNDALM_Field_Array;
+      end case;
+   end record
+     with Unchecked_Union, Size => 2;
+
+   for SR1_WPNDALM_Field use record
+      Val at 0 range 0 .. 1;
+      Arr at 0 range 0 .. 1;
+   end record;
+
+   --  RTC Status 1
+   type SR1_Register is record
+      --  unspecified
+      Reserved_0_6   : HAL.UInt7;
+      --  Read-only. Pending Status of Posted Writes to CR0
+      WPNDCR0        : Boolean;
+      --  Read-only. Pending Status of Posted Clearances of Interrupt Sources
+      --  in SR0
+      WPNDSR0        : Boolean;
+      --  Read-only. Pending Status of Posted Writes to CNT0
+      WPNDCNT        : SR1_WPNDCNT_Field;
+      --  Read-only. Pending Status of Posted Writes to ALM0
+      WPNDALM        : SR1_WPNDALM_Field;
+      --  Read-only. Pending Status of Posted Writes to TRM
+      WPNDTRM        : Boolean;
+      --  unspecified
+      Reserved_14_15 : HAL.UInt2;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for SR1_Register use record
+      Reserved_0_6   at 0 range 0 .. 6;
+      WPNDCR0        at 0 range 7 .. 7;
+      WPNDSR0        at 0 range 8 .. 8;
+      WPNDCNT        at 0 range 9 .. 10;
+      WPNDALM        at 0 range 11 .. 12;
+      WPNDTRM        at 0 range 13 .. 13;
+      Reserved_14_15 at 0 range 14 .. 15;
+   end record;
+
+   subtype TRM_VALUE_Field is HAL.UInt3;
+   subtype TRM_IVL_Field is HAL.UInt2;
+   subtype TRM_IVL2EXPMIN_Field is HAL.UInt4;
+
+   --  RTC Trim
+   type TRM_Register is record
+      --  Trim Value in Prescaled RTC Time Units to Be Added or Subtracted from
+      --  the RTC Count at the End of a Periodic Interval Selected by
+      --  TRM:TRMIVL
+      VALUE          : TRM_VALUE_Field := 16#0#;
+      --  Trim Polarity
+      ADD            : Boolean := True;
+      --  Trim Interval in Prescaled RTC Time Units
+      IVL            : TRM_IVL_Field := 16#1#;
+      --  Minimum Power-of-two Interval of Prescaled RTC Time Units Which
+      --  TRM:TRMIVL TRMIVL Can Select
+      IVL2EXPMIN     : TRM_IVL2EXPMIN_Field := 16#E#;
+      --  unspecified
+      Reserved_10_15 : HAL.UInt6 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for TRM_Register use record
+      VALUE          at 0 range 0 .. 2;
+      ADD            at 0 range 3 .. 3;
+      IVL            at 0 range 4 .. 5;
+      IVL2EXPMIN     at 0 range 6 .. 9;
+      Reserved_10_15 at 0 range 10 .. 15;
+   end record;
+
+   subtype CR1_PRESCALE2EXP_Field is HAL.UInt4;
+
+   --  RTC Control 1
+   type CR1_Register is record
+      --  Enable for the RTC Count Interrupt Source
+      CNTINTEN          : Boolean := False;
+      --  Enable for the Prescaled, Modulo-1 Interrupt Source, in SR2:RTCPSINT
+      PSINTEN           : Boolean := False;
+      --  Enable for the RTC Trim Interrupt Source, in SR2:RTCTRMINT
+      TRMINTEN          : Boolean := False;
+      --  Enable for the RTC Count Roll-Over Interrupt Source, in
+      --  SR2:RTCCNTROLLINT
+      CNTROLLINTEN      : Boolean := False;
+      --  Enable for the RTC Modulo-60 Count Roll-Over Interrupt Source, in
+      --  SR2:RTCCNTMOD60ROLLINT
+      CNTMOD60ROLLINTEN : Boolean := False;
+      --  Prescale Power of 2 Division Factor for the RTC Base Clock
+      PRESCALE2EXP      : CR1_PRESCALE2EXP_Field := 16#F#;
+      --  unspecified
+      Reserved_9_15     : HAL.UInt7 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for CR1_Register use record
+      CNTINTEN          at 0 range 0 .. 0;
+      PSINTEN           at 0 range 1 .. 1;
+      TRMINTEN          at 0 range 2 .. 2;
+      CNTROLLINTEN      at 0 range 3 .. 3;
+      CNTMOD60ROLLINTEN at 0 range 4 .. 4;
+      PRESCALE2EXP      at 0 range 5 .. 8;
+      Reserved_9_15     at 0 range 9 .. 15;
+   end record;
+
+   --  RTC Status 2
+   type SR2_Register is record
+      --  RTC Count Interrupt Source
+      CNTINT          : Boolean := False;
+      --  RTC Prescaled, Modulo-1 Boundary Interrupt Source
+      PSINT           : Boolean := False;
+      --  RTC Trim Interrupt Source
+      TRMINT          : Boolean := False;
+      --  RTC Count Roll-Over Interrupt Source
+      CNTROLLINT      : Boolean := False;
+      --  RTC Modulo-60 Count Roll-Over Interrupt Source
+      CNTMOD60ROLLINT : Boolean := False;
+      --  Read-only. RTC Count Roll-Over
+      CNTROLL         : Boolean := False;
+      --  Read-only. RTC Count Modulo-60 Roll-Over
+      CNTMOD60ROLL    : Boolean := False;
+      --  Read-only. Mirror of MOD:RTCTRMBDY
+      TRMBDYMIR       : Boolean := False;
+      --  unspecified
+      Reserved_8_11   : HAL.UInt4 := 16#0#;
+      --  Read-only. Pending Status of Posted Writes to CR1
+      WPNDCR1MIR      : Boolean := False;
+      --  Read-only. Pending Status of Posted Writes to ALM2
+      WPNDALM2MIR     : Boolean := False;
+      --  Read-only. Synchronization Status of Posted Writes to CR1
+      WSYNCCR1MIR     : Boolean := True;
+      --  Read-only. Synchronization Status of Posted Writes to ALM2
+      WSYNCALM2MIR    : Boolean := True;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for SR2_Register use record
+      CNTINT          at 0 range 0 .. 0;
+      PSINT           at 0 range 1 .. 1;
+      TRMINT          at 0 range 2 .. 2;
+      CNTROLLINT      at 0 range 3 .. 3;
+      CNTMOD60ROLLINT at 0 range 4 .. 4;
+      CNTROLL         at 0 range 5 .. 5;
+      CNTMOD60ROLL    at 0 range 6 .. 6;
+      TRMBDYMIR       at 0 range 7 .. 7;
+      Reserved_8_11   at 0 range 8 .. 11;
+      WPNDCR1MIR      at 0 range 12 .. 12;
+      WPNDALM2MIR     at 0 range 13 .. 13;
+      WSYNCCR1MIR     at 0 range 14 .. 14;
+      WSYNCALM2MIR    at 0 range 15 .. 15;
+   end record;
+
+   subtype SNAP2_VALUE_Field is HAL.UInt15;
+
+   --  RTC Snapshot 2
+   type SNAP2_Register is record
+      --  Read-only. Part of the 47-bit Input Capture Channel 0 Containing a
+      --  Sticky Snapshot of CNT2
+      VALUE          : SNAP2_VALUE_Field;
+      --  unspecified
+      Reserved_15_15 : HAL.Bit;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for SNAP2_Register use record
+      VALUE          at 0 range 0 .. 14;
+      Reserved_15_15 at 0 range 15 .. 15;
+   end record;
+
+   subtype MOD_CNTMOD60_Field is HAL.UInt6;
+   subtype MOD_INCR_Field is HAL.UInt4;
+   subtype MOD_CNT0_4TOZERO_Field is HAL.UInt5;
+
+   --  RTC Modulo
+   type MOD_Register is record
+      --  Read-only. Modulo-60 Value of the RTC Count: CNT1 and CNT0
+      CNTMOD60     : MOD_CNTMOD60_Field;
+      --  Read-only. Most Recent Increment Value Added to the RTC Count in CNT1
+      --  and CNT0
+      INCR         : MOD_INCR_Field;
+      --  Read-only. Trim Boundary Indicator
+      TRMBDY       : Boolean;
+      --  Read-only. Mirror of CNT0[4:0]
+      CNT0_4TOZERO : MOD_CNT0_4TOZERO_Field;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for MOD_Register use record
+      CNTMOD60     at 0 range 0 .. 5;
+      INCR         at 0 range 6 .. 9;
+      TRMBDY       at 0 range 10 .. 10;
+      CNT0_4TOZERO at 0 range 11 .. 15;
+   end record;
+
+   subtype CNT2_VALUE_Field is HAL.UInt15;
+
+   --  RTC Count 2
+   type CNT2_Register is record
+      --  Read-only. Fractional Bits of the RTC Real-Time Count
+      VALUE          : CNT2_VALUE_Field;
+      --  unspecified
+      Reserved_15_15 : HAL.Bit;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for CNT2_Register use record
+      VALUE          at 0 range 0 .. 14;
+      Reserved_15_15 at 0 range 15 .. 15;
+   end record;
+
+   subtype ALM2_VALUE_Field is HAL.UInt15;
+
+   --  RTC Alarm 2
+   type ALM2_Register is record
+      --  Fractional Bits of the Alarm Target Time
+      VALUE          : ALM2_VALUE_Field := 16#0#;
+      --  unspecified
+      Reserved_15_15 : HAL.Bit := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for ALM2_Register use record
+      VALUE          at 0 range 0 .. 14;
+      Reserved_15_15 at 0 range 15 .. 15;
+   end record;
+
+   --  RTC Status 3
+   type SR3_Register is record
+      --  Sticky Interrupt Source for the RTC Input Capture Channel 0
+      IC0IRQ         : Boolean := False;
+      --  unspecified
+      Reserved_1_1   : HAL.Bit := 16#0#;
+      --  Sticky Interrupt Source for the RTC Input Capture Channel 2
+      IC2IRQ         : Boolean := False;
+      --  Sticky Interrupt Source for the RTC Input Capture Channel 3
+      IC3IRQ         : Boolean := False;
+      --  Sticky Interrupt Source for the RTC Input Capture Channel 4
+      IC4IRQ         : Boolean := False;
+      --  unspecified
+      Reserved_5_7   : HAL.UInt3 := 16#0#;
+      --  Read-only. Read-only Mirror of the ALMINT Interrupt Source in SR0
+      --  Register
+      ALMINTMIR      : Boolean := False;
+      --  Sticky Interrupt Source for SensorStrobe Channel 1
+      SS1IRQ         : Boolean := False;
+      --  unspecified
+      Reserved_10_15 : HAL.UInt6 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for SR3_Register use record
+      IC0IRQ         at 0 range 0 .. 0;
+      Reserved_1_1   at 0 range 1 .. 1;
+      IC2IRQ         at 0 range 2 .. 2;
+      IC3IRQ         at 0 range 3 .. 3;
+      IC4IRQ         at 0 range 4 .. 4;
+      Reserved_5_7   at 0 range 5 .. 7;
+      ALMINTMIR      at 0 range 8 .. 8;
+      SS1IRQ         at 0 range 9 .. 9;
+      Reserved_10_15 at 0 range 10 .. 15;
+   end record;
+
+   --  RTC Control 2 for Configuring Input Capture Channels
+   type CR2IC_Register is record
+      --  Enable for the RTC Input Capture Channel 0
+      IC0EN          : Boolean := False;
+      --  unspecified
+      Reserved_1_1   : HAL.Bit := 16#0#;
+      --  Enable for the RTC Input Capture Channel 2
+      IC2EN          : Boolean := False;
+      --  Enable for the RTC Input Capture Channel 3
+      IC3EN          : Boolean := False;
+      --  Enable for the RTC Input Capture Channel 4
+      IC4EN          : Boolean := False;
+      --  Polarity of the Active-Going Capture Edge for the RTC Input Capture
+      --  Channel 0
+      IC0LH          : Boolean := True;
+      --  unspecified
+      Reserved_6_6   : HAL.Bit := 16#0#;
+      --  Polarity of the Active-going Capture Edge for the Input Capture
+      --  Channel 2
+      IC2LH          : Boolean := True;
+      --  Polarity of the Active-going Capture Edge for the Input Capture
+      --  Channel 3
+      IC3LH          : Boolean := True;
+      --  Polarity of the Active-going Capture Edge for the Input Capture
+      --  Channel 4
+      IC4LH          : Boolean := True;
+      --  Interrupt Enable for the RTC Input Capture Channel 0
+      IC0IRQEN       : Boolean := False;
+      --  unspecified
+      Reserved_11_11 : HAL.Bit := 16#0#;
+      --  Interrupt Enable for the RTC Input Capture Channel 2
+      IC2IRQEN       : Boolean := False;
+      --  Interrupt Enable for the RTC Input Capture Channel 3
+      IC3IRQEN       : Boolean := False;
+      --  Interrupt Enable for the RTC Input Capture Channel 4
+      IC4IRQEN       : Boolean := False;
+      --  Enable Overwrite of Unread Snapshots for All Input Capture Channels
+      ICOWUSEN       : Boolean := True;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for CR2IC_Register use record
+      IC0EN          at 0 range 0 .. 0;
+      Reserved_1_1   at 0 range 1 .. 1;
+      IC2EN          at 0 range 2 .. 2;
+      IC3EN          at 0 range 3 .. 3;
+      IC4EN          at 0 range 4 .. 4;
+      IC0LH          at 0 range 5 .. 5;
+      Reserved_6_6   at 0 range 6 .. 6;
+      IC2LH          at 0 range 7 .. 7;
+      IC3LH          at 0 range 8 .. 8;
+      IC4LH          at 0 range 9 .. 9;
+      IC0IRQEN       at 0 range 10 .. 10;
+      Reserved_11_11 at 0 range 11 .. 11;
+      IC2IRQEN       at 0 range 12 .. 12;
+      IC3IRQEN       at 0 range 13 .. 13;
+      IC4IRQEN       at 0 range 14 .. 14;
+      ICOWUSEN       at 0 range 15 .. 15;
+   end record;
+
+   --  RTC Control 3 for Configuring SensorStrobe Channel
+   type CR3SS_Register is record
+      --  unspecified
+      Reserved_0_0   : HAL.Bit := 16#0#;
+      --  Enable for SensorStrobe Channel 1
+      SS1EN          : Boolean := False;
+      --  unspecified
+      Reserved_2_8   : HAL.UInt7 := 16#0#;
+      --  Interrupt Enable for SensorStrobe Channel 1
+      SS1IRQEN       : Boolean := False;
+      --  unspecified
+      Reserved_10_15 : HAL.UInt6 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for CR3SS_Register use record
+      Reserved_0_0   at 0 range 0 .. 0;
+      SS1EN          at 0 range 1 .. 1;
+      Reserved_2_8   at 0 range 2 .. 8;
+      SS1IRQEN       at 0 range 9 .. 9;
+      Reserved_10_15 at 0 range 10 .. 15;
+   end record;
+
+   --  Enable for Thermometer-Code Masking of the SensorStrobe Channel 1
+   type CR4SS_SS1MSKEN_Field is
+     (
+      --  Do not apply a mask to SensorStrobe Channel 1 Register
+      No_Msk,
+      --  Apply thermometer decoded mask
+      Therm_Msk)
+     with Size => 1;
+   for CR4SS_SS1MSKEN_Field use
+     (No_Msk => 0,
+      Therm_Msk => 1);
+
+   --  RTC Control 4 for Configuring SensorStrobe Channel
+   type CR4SS_Register is record
+      --  unspecified
+      Reserved_0_0   : HAL.Bit := 16#0#;
+      --  Enable for Thermometer-Code Masking of the SensorStrobe Channel 1
+      SS1MSKEN       : CR4SS_SS1MSKEN_Field := NRF_SVD.RTC0.No_Msk;
+      --  unspecified
+      Reserved_2_8   : HAL.UInt7 := 16#0#;
+      --  Enable for Auto-Reloading When SensorStrobe Match Occurs
+      SS1ARLEN       : Boolean := False;
+      --  unspecified
+      Reserved_10_15 : HAL.UInt6 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for CR4SS_Register use record
+      Reserved_0_0   at 0 range 0 .. 0;
+      SS1MSKEN       at 0 range 1 .. 1;
+      Reserved_2_8   at 0 range 2 .. 8;
+      SS1ARLEN       at 0 range 9 .. 9;
+      Reserved_10_15 at 0 range 10 .. 15;
+   end record;
+
+   --  SR4_RSYNCIC array
+   type SR4_RSYNCIC_Field_Array is array (2 .. 4) of Boolean
+     with Component_Size => 1, Size => 3;
+
+   --  Type definition for SR4_RSYNCIC
+   type SR4_RSYNCIC_Field
+     (As_Array : Boolean := False)
+   is record
+      case As_Array is
+         when False =>
+            --  RSYNCIC as a value
+            Val : HAL.UInt3;
+         when True =>
+            --  RSYNCIC as an array
+            Arr : SR4_RSYNCIC_Field_Array;
+      end case;
+   end record
+     with Unchecked_Union, Size => 3;
+
+   for SR4_RSYNCIC_Field use record
+      Val at 0 range 0 .. 2;
+      Arr at 0 range 0 .. 2;
+   end record;
+
+   --  RTC Status 4
+   type SR4_Register is record
+      --  Read-only. Synchronisation Status of Posted Writes to SR3
+      WSYNCSR3       : Boolean;
+      --  Read-only. Synchronization Status of Posted Writes to RTC Control 2
+      --  for Configuring Input Capture Channels Register
+      WSYNCCR2IC     : Boolean;
+      --  Read-only. Synchronization Status of Posted Writes to RTC Control 3
+      --  for Configuring SensorStrobe Channel Register
+      WSYNCCR3SS     : Boolean;
+      --  Read-only. Synchronization Status of Posted Writes to RTC Control 4
+      --  for Configuring SensorStrobe Channel Register
+      WSYNCCR4SS     : Boolean;
+      --  Read-only. Synchronization Status of Posted Writes to Masks for
+      --  SensorStrobe Channel Register
+      WSYNCSSMSK     : Boolean;
+      --  Read-only. Synchronization Status of Posted Writes to RTC Auto-Reload
+      --  for SensorStrobe Channel 1 Register
+      WSYNCSS1ARL    : Boolean;
+      --  Read-only. Synchronization Status of Posted Writes to SensorStrobe
+      --  Channel 1
+      WSYNCSS1       : Boolean;
+      --  unspecified
+      Reserved_7_9   : HAL.UInt3;
+      --  Read-only. Synchronization Status of Posted Reads of RTC Input
+      --  Channel 0
+      RSYNCIC0       : Boolean;
+      --  unspecified
+      Reserved_11_11 : HAL.Bit;
+      --  Read-only. Synchronization Status of Posted Reads of RTC Input
+      --  Channel 2
+      RSYNCIC        : SR4_RSYNCIC_Field;
+      --  unspecified
+      Reserved_15_15 : HAL.Bit;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for SR4_Register use record
+      WSYNCSR3       at 0 range 0 .. 0;
+      WSYNCCR2IC     at 0 range 1 .. 1;
+      WSYNCCR3SS     at 0 range 2 .. 2;
+      WSYNCCR4SS     at 0 range 3 .. 3;
+      WSYNCSSMSK     at 0 range 4 .. 4;
+      WSYNCSS1ARL    at 0 range 5 .. 5;
+      WSYNCSS1       at 0 range 6 .. 6;
+      Reserved_7_9   at 0 range 7 .. 9;
+      RSYNCIC0       at 0 range 10 .. 10;
+      Reserved_11_11 at 0 range 11 .. 11;
+      RSYNCIC        at 0 range 12 .. 14;
+      Reserved_15_15 at 0 range 15 .. 15;
+   end record;
+
+   --  SR5_RPENDIC array
+   type SR5_RPENDIC_Field_Array is array (2 .. 4) of Boolean
+     with Component_Size => 1, Size => 3;
+
+   --  Type definition for SR5_RPENDIC
+   type SR5_RPENDIC_Field
+     (As_Array : Boolean := False)
+   is record
+      case As_Array is
+         when False =>
+            --  RPENDIC as a value
+            Val : HAL.UInt3;
+         when True =>
+            --  RPENDIC as an array
+            Arr : SR5_RPENDIC_Field_Array;
+      end case;
+   end record
+     with Unchecked_Union, Size => 3;
+
+   for SR5_RPENDIC_Field use record
+      Val at 0 range 0 .. 2;
+      Arr at 0 range 0 .. 2;
+   end record;
+
+   --  RTC Status 5
+   type SR5_Register is record
+      --  Read-only. Pending Status of Posted Clearances of Interrupt Sources
+      --  in RTC Status 3 Register
+      WPENDSR3       : Boolean;
+      --  Read-only. Pending Status of Posted Writes to RTC Control 2 for
+      --  Configuring Input Capture Channels Register
+      WPENDCR2IC     : Boolean;
+      --  Read-only. Pending Status of Posted Writes to RTC Control 3 for
+      --  Configuring SensorStrobe Channel Register
+      WPENDCR3SS     : Boolean;
+      --  Read-only. Pending Status of Posted Writes to RTC Control 4 for
+      --  Configuring SensorStrobe Channel Register
+      WPENDCR4SS     : Boolean;
+      --  Read-only. Pending Status of Posted Writes to RTC Masks for
+      --  SensorStrobe Channel Register
+      WPENDSSMSK     : Boolean;
+      --  Read-only. Pending Status of Posted Writes to RTC Auto-Reload for
+      --  SensorStrobe Channel 1 Register
+      WPENDSS1ARL    : Boolean;
+      --  Read-only. Pending Status of Posted Writes to SensorStrobe Channel 1
+      WPENDSS1       : Boolean;
+      --  unspecified
+      Reserved_7_9   : HAL.UInt3;
+      --  Read-only. Pending Status of Posted Reads of Input Capture Channel 0
+      RPENDIC0       : Boolean;
+      --  unspecified
+      Reserved_11_11 : HAL.Bit;
+      --  Read-only. Pending Status of Posted Reads of IC2
+      RPENDIC        : SR5_RPENDIC_Field;
+      --  unspecified
+      Reserved_15_15 : HAL.Bit;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for SR5_Register use record
+      WPENDSR3       at 0 range 0 .. 0;
+      WPENDCR2IC     at 0 range 1 .. 1;
+      WPENDCR3SS     at 0 range 2 .. 2;
+      WPENDCR4SS     at 0 range 3 .. 3;
+      WPENDSSMSK     at 0 range 4 .. 4;
+      WPENDSS1ARL    at 0 range 5 .. 5;
+      WPENDSS1       at 0 range 6 .. 6;
+      Reserved_7_9   at 0 range 7 .. 9;
+      RPENDIC0       at 0 range 10 .. 10;
+      Reserved_11_11 at 0 range 11 .. 11;
+      RPENDIC        at 0 range 12 .. 14;
+      Reserved_15_15 at 0 range 15 .. 15;
+   end record;
+
+   subtype SR6_FRZCNTPTR_Field is HAL.UInt2;
+
+   --  RTC Status 6
+   type SR6_Register is record
+      --  Read-only. Sticky Unread Status of the Input Capture Channel 0
+      IC0UNR         : Boolean;
+      --  unspecified
+      Reserved_1_1   : HAL.Bit;
+      --  Read-only. Sticky Unread Status of the Input Capture Channel 2
+      IC2UNR         : Boolean;
+      --  Read-only. Sticky Unread Status of the Input Capture Channel 3
+      IC3UNR         : Boolean;
+      --  Read-only. Sticky Unread Status of the Input Capture Channel 4
+      IC4UNR         : Boolean;
+      --  unspecified
+      Reserved_5_7   : HAL.UInt3;
+      --  Read-only. Confirmation That RTC Snapshot 0, 1, 2 Registers Reflect
+      --  the Value of Input-Capture Channel RTC Input Capture Channel 0
+      IC0SNAP        : Boolean;
+      --  Read-only. Pointer for the Triple-Read Sequence of FRZCNT
+      FRZCNTPTR      : SR6_FRZCNTPTR_Field;
+      --  unspecified
+      Reserved_11_15 : HAL.UInt5;
+   end record
+     with Volatile_Full_Access, Size => 16,
+          Bit_Order => System.Low_Order_First;
+
+   for SR6_Register use record
+      IC0UNR         at 0 range 0 .. 0;
+      Reserved_1_1   at 0 range 1 .. 1;
+      IC2UNR         at 0 range 2 .. 2;
+      IC3UNR         at 0 range 3 .. 3;
+      IC4UNR         at 0 range 4 .. 4;
+      Reserved_5_7   at 0 range 5 .. 7;
+      IC0SNAP        at 0 range 8 .. 8;
+      FRZCNTPTR      at 0 range 9 .. 10;
+      Reserved_11_15 at 0 range 11 .. 15;
+   end record;
+
+   -----------------
+   -- Peripherals --
+   -----------------
+
+   --  Real-Time Clock
+   type RTC0_Peripheral is record
+      --  RTC Control 0
+      CR0    : aliased CR0_Register;
+      --  RTC Status 0
+      SR0    : aliased SR0_Register;
+      --  RTC Status 1
+      SR1    : aliased SR1_Register;
+      --  RTC Count 0
+      CNT0   : aliased HAL.UInt16;
+      --  RTC Count 1
+      CNT1   : aliased HAL.UInt16;
+      --  RTC Alarm 0
+      ALM0   : aliased HAL.UInt16;
+      --  RTC Alarm 1
+      ALM1   : aliased HAL.UInt16;
+      --  RTC Trim
+      TRM    : aliased TRM_Register;
+      --  RTC Gateway
+      GWY    : aliased HAL.UInt16;
+      --  RTC Control 1
+      CR1    : aliased CR1_Register;
+      --  RTC Status 2
+      SR2    : aliased SR2_Register;
+      --  RTC Snapshot 0
+      SNAP0  : aliased HAL.UInt16;
+      --  RTC Snapshot 1
+      SNAP1  : aliased HAL.UInt16;
+      --  RTC Snapshot 2
+      SNAP2  : aliased SNAP2_Register;
+      --  RTC Modulo
+      MOD_k  : aliased MOD_Register;
+      --  RTC Count 2
+      CNT2   : aliased CNT2_Register;
+      --  RTC Alarm 2
+      ALM2   : aliased ALM2_Register;
+      --  RTC Status 3
+      SR3    : aliased SR3_Register;
+      --  RTC Control 2 for Configuring Input Capture Channels
+      CR2IC  : aliased CR2IC_Register;
+      --  RTC Control 3 for Configuring SensorStrobe Channel
+      CR3SS  : aliased CR3SS_Register;
+      --  RTC Control 4 for Configuring SensorStrobe Channel
+      CR4SS  : aliased CR4SS_Register;
+      --  RTC Mask for SensorStrobe Channel
+      SSMSK  : aliased HAL.UInt16;
+      --  RTC Auto-Reload for SensorStrobe Channel 1
+      SS1ARL : aliased HAL.UInt16;
+      --  RTC Input Capture Channel 2
+      IC2    : aliased HAL.UInt16;
+      --  RTC Input Capture Channel 3
+      IC3    : aliased HAL.UInt16;
+      --  RTC Input Capture Channel 4
+      IC4    : aliased HAL.UInt16;
+      --  RTC SensorStrobe Channel 1
+      SS1    : aliased HAL.UInt16;
+      --  RTC Status 4
+      SR4    : aliased SR4_Register;
+      --  RTC Status 5
+      SR5    : aliased SR5_Register;
+      --  RTC Status 6
+      SR6    : aliased SR6_Register;
+      --  RTC SensorStrobe Channel 1 Target
+      SS1TGT : aliased HAL.UInt16;
+      --  RTC Freeze Count
+      FRZCNT : aliased HAL.UInt16;
+   end record
+     with Volatile;
+
+   for RTC0_Peripheral use record
+      CR0    at 16#0# range 0 .. 15;
+      SR0    at 16#4# range 0 .. 15;
+      SR1    at 16#8# range 0 .. 15;
+      CNT0   at 16#C# range 0 .. 15;
+      CNT1   at 16#10# range 0 .. 15;
+      ALM0   at 16#14# range 0 .. 15;
+      ALM1   at 16#18# range 0 .. 15;
+      TRM    at 16#1C# range 0 .. 15;
+      GWY    at 16#20# range 0 .. 15;
+      CR1    at 16#28# range 0 .. 15;
+      SR2    at 16#2C# range 0 .. 15;
+      SNAP0  at 16#30# range 0 .. 15;
+      SNAP1  at 16#34# range 0 .. 15;
+      SNAP2  at 16#38# range 0 .. 15;
+      MOD_k  at 16#3C# range 0 .. 15;
+      CNT2   at 16#40# range 0 .. 15;
+      ALM2   at 16#44# range 0 .. 15;
+      SR3    at 16#48# range 0 .. 15;
+      CR2IC  at 16#4C# range 0 .. 15;
+      CR3SS  at 16#50# range 0 .. 15;
+      CR4SS  at 16#54# range 0 .. 15;
+      SSMSK  at 16#58# range 0 .. 15;
+      SS1ARL at 16#5C# range 0 .. 15;
+      IC2    at 16#64# range 0 .. 15;
+      IC3    at 16#68# range 0 .. 15;
+      IC4    at 16#6C# range 0 .. 15;
+      SS1    at 16#70# range 0 .. 15;
+      SR4    at 16#80# range 0 .. 15;
+      SR5    at 16#84# range 0 .. 15;
+      SR6    at 16#88# range 0 .. 15;
+      SS1TGT at 16#8C# range 0 .. 15;
+      FRZCNT at 16#90# range 0 .. 15;
+   end record;
+
+   --  Real-Time Clock
+   RTC0_Periph : aliased RTC0_Peripheral
+     with Import, Address => System'To_Address (16#40001000#);
+
+   --  Real-Time Clock
+   RTC1_Periph : aliased RTC0_Peripheral
+     with Import, Address => System'To_Address (16#40001400#);
+
+end NRF_SVD.RTC0;

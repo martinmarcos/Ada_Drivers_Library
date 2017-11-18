@@ -1,12 +1,188 @@
 choice CHOICE_MCU_VENDOR
        prompt "Select micro-controller vendor"
+   config CHOICE_MCU_Vendor_ABOV
+          bool "ABOV"
+   config CHOICE_MCU_Vendor_AmbiqMicro
+          bool "AmbiqMicro"
+   config CHOICE_MCU_Vendor_AnalogDevices
+          bool "AnalogDevices"
    config CHOICE_MCU_Vendor_Atmel
           bool "Atmel"
-   config CHOICE_MCU_Vendor_Nordic
-          bool "Nordic"
+   config CHOICE_MCU_Vendor_GigaDevice
+          bool "GigaDevice"
+   config CHOICE_MCU_Vendor_Infineon
+          bool "Infineon"
+   config CHOICE_MCU_Vendor_MindMotion
+          bool "MindMotion"
+   config CHOICE_MCU_Vendor_NXP
+          bool "NXP"
+   config CHOICE_MCU_Vendor_NordicSemiconductor
+          bool "NordicSemiconductor"
+   config CHOICE_MCU_Vendor_SONiX
+          bool "SONiX"
    config CHOICE_MCU_Vendor_STMicro
           bool "STMicro"
+   config CHOICE_MCU_Vendor_Zilog
+          bool "Zilog"
 endchoice
+if CHOICE_MCU_Vendor_ABOV
+choice CHOICE_MCU_ABOV_FAMILY
+       prompt "Select micro-controller family"
+   config CHOICE_MCU_Family_AC30M1x64
+          bool "AC30M1x64"
+   config CHOICE_MCU_Family_AC33GA256
+          bool "AC33GA256"
+   config CHOICE_MCU_Family_AC33MA384A
+          bool "AC33MA384A"
+   config CHOICE_MCU_Family_AC33Mx064
+          bool "AC33Mx064"
+   config CHOICE_MCU_Family_AC33Mx128
+          bool "AC33Mx128"
+endchoice
+endif
+if CHOICE_MCU_Family_AC30M1x64
+choice CHOICE_MCU_DEVICE_MCU_Family_AC30M1x64
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_AC30M1332
+          bool "AC30M1332"
+          select MCU_Device_AC30M1332
+   config CHOICE_MCU_Device_AC30M1364
+          bool "AC30M1364"
+          select MCU_Device_AC30M1364
+   config CHOICE_MCU_Device_AC30M1432
+          bool "AC30M1432"
+          select MCU_Device_AC30M1432
+   config CHOICE_MCU_Device_AC30M1464
+          bool "AC30M1464"
+          select MCU_Device_AC30M1464
+endchoice
+endif
+if CHOICE_MCU_Family_AC33GA256
+choice CHOICE_MCU_DEVICE_MCU_Family_AC33GA256
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_AC33GA256
+          bool "AC33GA256"
+          select MCU_Device_AC33GA256
+endchoice
+endif
+if CHOICE_MCU_Family_AC33MA384A
+choice CHOICE_MCU_DEVICE_MCU_Family_AC33MA384A
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_AC33MA384A
+          bool "AC33MA384A"
+          select MCU_Device_AC33MA384A
+endchoice
+endif
+if CHOICE_MCU_Family_AC33Mx064
+choice CHOICE_MCU_DEVICE_MCU_Family_AC33Mx064
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_AC33M3064
+          bool "AC33M3064"
+          select MCU_Device_AC33M3064
+   config CHOICE_MCU_Device_AC33M4064
+          bool "AC33M4064"
+          select MCU_Device_AC33M4064
+endchoice
+endif
+if CHOICE_MCU_Family_AC33Mx128
+choice CHOICE_MCU_DEVICE_MCU_Family_AC33Mx128
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_AC33M6128
+          bool "AC33M6128"
+          select MCU_Device_AC33M6128
+   config CHOICE_MCU_Device_AC33M8128
+          bool "AC33M8128"
+          select MCU_Device_AC33M8128
+endchoice
+endif
+if CHOICE_MCU_Vendor_AmbiqMicro
+choice CHOICE_MCU_AmbiqMicro_FAMILY
+       prompt "Select micro-controller family"
+   config CHOICE_MCU_Family_Apollo_Series
+          bool "Apollo Series"
+endchoice
+endif
+if CHOICE_MCU_Family_Apollo_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_Apollo_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_AMAPH1KK_KBR
+          bool "AMAPH1KK-KBR"
+          select MCU_Device_AMAPH1KK_KBR
+   config CHOICE_MCU_Device_AMAPH1KK_KCR
+          bool "AMAPH1KK-KCR"
+          select MCU_Device_AMAPH1KK_KCR
+   config CHOICE_MCU_Device_APOLLO256_KBR
+          bool "APOLLO256-KBR"
+          select MCU_Device_APOLLO256_KBR
+   config CHOICE_MCU_Device_APOLLO256_KCR
+          bool "APOLLO256-KCR"
+          select MCU_Device_APOLLO256_KCR
+   config CHOICE_MCU_Device_APOLLO512_KBR
+          bool "APOLLO512-KBR"
+          select MCU_Device_APOLLO512_KBR
+   config CHOICE_MCU_Device_APOLLO512_KCR
+          bool "APOLLO512-KCR"
+          select MCU_Device_APOLLO512_KCR
+endchoice
+endif
+if CHOICE_MCU_Vendor_AnalogDevices
+choice CHOICE_MCU_AnalogDevices_FAMILY
+       prompt "Select micro-controller family"
+   config CHOICE_MCU_Family_ADuCM302x_Series
+          bool "ADuCM302x Series"
+   config CHOICE_MCU_Family_ADuCM4x50_Series
+          bool "ADuCM4x50 Series"
+   config CHOICE_MCU_Family_CM41x_Mixed_Signal_Control_Processors
+          bool "CM41x Mixed Signal Control Processors"
+   config CHOICE_MCU_Family_CM41x_M0
+          bool "CM41x_M0"
+   config CHOICE_MCU_Family_CM41x_M4
+          bool "CM41x_M4"
+endchoice
+endif
+if CHOICE_MCU_Family_ADuCM302x_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_ADuCM302x_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_ADuCM3027
+          bool "ADuCM3027"
+          select MCU_Device_ADuCM3027
+   config CHOICE_MCU_Device_ADuCM3029
+          bool "ADuCM3029"
+          select MCU_Device_ADuCM3029
+endchoice
+endif
+if CHOICE_MCU_Family_ADuCM4x50_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_ADuCM4x50_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_ADuCM4050
+          bool "ADuCM4050"
+          select MCU_Device_ADuCM4050
+endchoice
+endif
+if CHOICE_MCU_Family_CM41x_Mixed_Signal_Control_Processors
+choice CHOICE_MCU_DEVICE_MCU_Family_CM41x_Mixed_Signal_Control_Processors
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_ADSP_CM419F
+          bool "ADSP-CM419F"
+          select MCU_Device_ADSP_CM419F
+endchoice
+endif
+if CHOICE_MCU_Family_CM41x_M0
+choice CHOICE_MCU_DEVICE_MCU_Family_CM41x_M0
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_ADSP_CM419F_BCZ_M0
+          bool "ADSP-CM419F-BCZ_M0"
+          select MCU_Device_ADSP_CM419F_BCZ_M0
+endchoice
+endif
+if CHOICE_MCU_Family_CM41x_M4
+choice CHOICE_MCU_DEVICE_MCU_Family_CM41x_M4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_ADSP_CM419F_BCZ_M4
+          bool "ADSP-CM419F-BCZ_M4"
+          select MCU_Device_ADSP_CM419F_BCZ_M4
+endchoice
+endif
 if CHOICE_MCU_Vendor_Atmel
 choice CHOICE_MCU_Atmel_FAMILY
        prompt "Select micro-controller family"
@@ -1311,37 +1487,2192 @@ choice CHOICE_MCU_DEVICE_MCU_Family_SAMV71
           select MCU_Device_ATSAMV71Q21B
 endchoice
 endif
-if CHOICE_MCU_Vendor_Nordic
-choice CHOICE_MCU_Nordic_FAMILY
+if CHOICE_MCU_Vendor_GigaDevice
+choice CHOICE_MCU_GigaDevice_FAMILY
        prompt "Select micro-controller family"
-   config CHOICE_MCU_Family_nRF51
-          bool "nRF51"
+   config CHOICE_MCU_Family_GD32F130
+          bool "GD32F130"
+   config CHOICE_MCU_Family_GD32F150
+          bool "GD32F150"
+   config CHOICE_MCU_Family_GD32F170
+          bool "GD32F170"
+   config CHOICE_MCU_Family_GD32F190
+          bool "GD32F190"
+   config CHOICE_MCU_Family_GD32F330
+          bool "GD32F330"
+   config CHOICE_MCU_Family_GD32F350
+          bool "GD32F350"
 endchoice
 endif
-if CHOICE_MCU_Family_nRF51
-choice CHOICE_MCU_DEVICE_MCU_Family_nRF51
+if CHOICE_MCU_Family_GD32F130
+choice CHOICE_MCU_DEVICE_MCU_Family_GD32F130
        prompt "Select micro-controller device"
-   config CHOICE_MCU_Device_nRF51422xxAA
-          bool "nRF51422xxAA"
-          select MCU_Device_nRF51422xxAA
-   config CHOICE_MCU_Device_nRF51422xxAB
-          bool "nRF51422xxAB"
-          select MCU_Device_nRF51422xxAB
-   config CHOICE_MCU_Device_nRF51422xxAC
-          bool "nRF51422xxAC"
-          select MCU_Device_nRF51422xxAC
-   config CHOICE_MCU_Device_nRF51822xxAA
-          bool "nRF51822xxAA"
-          select MCU_Device_nRF51822xxAA
-   config CHOICE_MCU_Device_nRF51822xxAB
-          bool "nRF51822xxAB"
-          select MCU_Device_nRF51822xxAB
-   config CHOICE_MCU_Device_nRF51822xxAC
-          bool "nRF51822xxAC"
-          select MCU_Device_nRF51822xxAC
-   config CHOICE_MCU_Device_nRF51824QFAA
-          bool "nRF51824QFAA"
-          select MCU_Device_nRF51824QFAA
+   config CHOICE_MCU_Device_GD32F130C4
+          bool "GD32F130C4"
+          select MCU_Device_GD32F130C4
+   config CHOICE_MCU_Device_GD32F130C6
+          bool "GD32F130C6"
+          select MCU_Device_GD32F130C6
+   config CHOICE_MCU_Device_GD32F130C8
+          bool "GD32F130C8"
+          select MCU_Device_GD32F130C8
+   config CHOICE_MCU_Device_GD32F130F4
+          bool "GD32F130F4"
+          select MCU_Device_GD32F130F4
+   config CHOICE_MCU_Device_GD32F130G4
+          bool "GD32F130G4"
+          select MCU_Device_GD32F130G4
+   config CHOICE_MCU_Device_GD32F130G6
+          bool "GD32F130G6"
+          select MCU_Device_GD32F130G6
+   config CHOICE_MCU_Device_GD32F130G8
+          bool "GD32F130G8"
+          select MCU_Device_GD32F130G8
+   config CHOICE_MCU_Device_GD32F130K4
+          bool "GD32F130K4"
+          select MCU_Device_GD32F130K4
+   config CHOICE_MCU_Device_GD32F130K6
+          bool "GD32F130K6"
+          select MCU_Device_GD32F130K6
+   config CHOICE_MCU_Device_GD32F130K8
+          bool "GD32F130K8"
+          select MCU_Device_GD32F130K8
+   config CHOICE_MCU_Device_GD32F130R8
+          bool "GD32F130R8"
+          select MCU_Device_GD32F130R8
+endchoice
+endif
+if CHOICE_MCU_Family_GD32F150
+choice CHOICE_MCU_DEVICE_MCU_Family_GD32F150
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_GD32F150C4
+          bool "GD32F150C4"
+          select MCU_Device_GD32F150C4
+   config CHOICE_MCU_Device_GD32F150C6
+          bool "GD32F150C6"
+          select MCU_Device_GD32F150C6
+   config CHOICE_MCU_Device_GD32F150C8
+          bool "GD32F150C8"
+          select MCU_Device_GD32F150C8
+   config CHOICE_MCU_Device_GD32F150G4
+          bool "GD32F150G4"
+          select MCU_Device_GD32F150G4
+   config CHOICE_MCU_Device_GD32F150G6
+          bool "GD32F150G6"
+          select MCU_Device_GD32F150G6
+   config CHOICE_MCU_Device_GD32F150G8
+          bool "GD32F150G8"
+          select MCU_Device_GD32F150G8
+   config CHOICE_MCU_Device_GD32F150K4
+          bool "GD32F150K4"
+          select MCU_Device_GD32F150K4
+   config CHOICE_MCU_Device_GD32F150K6
+          bool "GD32F150K6"
+          select MCU_Device_GD32F150K6
+   config CHOICE_MCU_Device_GD32F150K8
+          bool "GD32F150K8"
+          select MCU_Device_GD32F150K8
+   config CHOICE_MCU_Device_GD32F150R4
+          bool "GD32F150R4"
+          select MCU_Device_GD32F150R4
+   config CHOICE_MCU_Device_GD32F150R6
+          bool "GD32F150R6"
+          select MCU_Device_GD32F150R6
+   config CHOICE_MCU_Device_GD32F150R8
+          bool "GD32F150R8"
+          select MCU_Device_GD32F150R8
+endchoice
+endif
+if CHOICE_MCU_Family_GD32F170
+choice CHOICE_MCU_DEVICE_MCU_Family_GD32F170
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_GD32F170C4
+          bool "GD32F170C4"
+          select MCU_Device_GD32F170C4
+   config CHOICE_MCU_Device_GD32F170C6
+          bool "GD32F170C6"
+          select MCU_Device_GD32F170C6
+   config CHOICE_MCU_Device_GD32F170C8
+          bool "GD32F170C8"
+          select MCU_Device_GD32F170C8
+   config CHOICE_MCU_Device_GD32F170R8
+          bool "GD32F170R8"
+          select MCU_Device_GD32F170R8
+   config CHOICE_MCU_Device_GD32F170T4
+          bool "GD32F170T4"
+          select MCU_Device_GD32F170T4
+   config CHOICE_MCU_Device_GD32F170T6
+          bool "GD32F170T6"
+          select MCU_Device_GD32F170T6
+   config CHOICE_MCU_Device_GD32F170T8
+          bool "GD32F170T8"
+          select MCU_Device_GD32F170T8
+endchoice
+endif
+if CHOICE_MCU_Family_GD32F190
+choice CHOICE_MCU_DEVICE_MCU_Family_GD32F190
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_GD32F190C4
+          bool "GD32F190C4"
+          select MCU_Device_GD32F190C4
+   config CHOICE_MCU_Device_GD32F190C6
+          bool "GD32F190C6"
+          select MCU_Device_GD32F190C6
+   config CHOICE_MCU_Device_GD32F190C8
+          bool "GD32F190C8"
+          select MCU_Device_GD32F190C8
+   config CHOICE_MCU_Device_GD32F190R4
+          bool "GD32F190R4"
+          select MCU_Device_GD32F190R4
+   config CHOICE_MCU_Device_GD32F190R6
+          bool "GD32F190R6"
+          select MCU_Device_GD32F190R6
+   config CHOICE_MCU_Device_GD32F190R8
+          bool "GD32F190R8"
+          select MCU_Device_GD32F190R8
+   config CHOICE_MCU_Device_GD32F190RB
+          bool "GD32F190RB"
+          select MCU_Device_GD32F190RB
+   config CHOICE_MCU_Device_GD32F190T4
+          bool "GD32F190T4"
+          select MCU_Device_GD32F190T4
+   config CHOICE_MCU_Device_GD32F190T6
+          bool "GD32F190T6"
+          select MCU_Device_GD32F190T6
+   config CHOICE_MCU_Device_GD32F190T8
+          bool "GD32F190T8"
+          select MCU_Device_GD32F190T8
+endchoice
+endif
+if CHOICE_MCU_Family_GD32F330
+choice CHOICE_MCU_DEVICE_MCU_Family_GD32F330
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_GD32F330C4
+          bool "GD32F330C4"
+          select MCU_Device_GD32F330C4
+   config CHOICE_MCU_Device_GD32F330C6
+          bool "GD32F330C6"
+          select MCU_Device_GD32F330C6
+   config CHOICE_MCU_Device_GD32F330C8
+          bool "GD32F330C8"
+          select MCU_Device_GD32F330C8
+   config CHOICE_MCU_Device_GD32F330CB
+          bool "GD32F330CB"
+          select MCU_Device_GD32F330CB
+   config CHOICE_MCU_Device_GD32F330F4
+          bool "GD32F330F4"
+          select MCU_Device_GD32F330F4
+   config CHOICE_MCU_Device_GD32F330F6
+          bool "GD32F330F6"
+          select MCU_Device_GD32F330F6
+   config CHOICE_MCU_Device_GD32F330F8
+          bool "GD32F330F8"
+          select MCU_Device_GD32F330F8
+   config CHOICE_MCU_Device_GD32F330G4
+          bool "GD32F330G4"
+          select MCU_Device_GD32F330G4
+   config CHOICE_MCU_Device_GD32F330G6
+          bool "GD32F330G6"
+          select MCU_Device_GD32F330G6
+   config CHOICE_MCU_Device_GD32F330G8
+          bool "GD32F330G8"
+          select MCU_Device_GD32F330G8
+   config CHOICE_MCU_Device_GD32F330K4
+          bool "GD32F330K4"
+          select MCU_Device_GD32F330K4
+   config CHOICE_MCU_Device_GD32F330K6
+          bool "GD32F330K6"
+          select MCU_Device_GD32F330K6
+   config CHOICE_MCU_Device_GD32F330K8
+          bool "GD32F330K8"
+          select MCU_Device_GD32F330K8
+   config CHOICE_MCU_Device_GD32F330R8
+          bool "GD32F330R8"
+          select MCU_Device_GD32F330R8
+   config CHOICE_MCU_Device_GD32F330RB
+          bool "GD32F330RB"
+          select MCU_Device_GD32F330RB
+endchoice
+endif
+if CHOICE_MCU_Family_GD32F350
+choice CHOICE_MCU_DEVICE_MCU_Family_GD32F350
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_GD32F350C4
+          bool "GD32F350C4"
+          select MCU_Device_GD32F350C4
+   config CHOICE_MCU_Device_GD32F350C6
+          bool "GD32F350C6"
+          select MCU_Device_GD32F350C6
+   config CHOICE_MCU_Device_GD32F350C8
+          bool "GD32F350C8"
+          select MCU_Device_GD32F350C8
+   config CHOICE_MCU_Device_GD32F350CB
+          bool "GD32F350CB"
+          select MCU_Device_GD32F350CB
+   config CHOICE_MCU_Device_GD32F350G4
+          bool "GD32F350G4"
+          select MCU_Device_GD32F350G4
+   config CHOICE_MCU_Device_GD32F350G6
+          bool "GD32F350G6"
+          select MCU_Device_GD32F350G6
+   config CHOICE_MCU_Device_GD32F350G8
+          bool "GD32F350G8"
+          select MCU_Device_GD32F350G8
+   config CHOICE_MCU_Device_GD32F350K4
+          bool "GD32F350K4"
+          select MCU_Device_GD32F350K4
+   config CHOICE_MCU_Device_GD32F350K6
+          bool "GD32F350K6"
+          select MCU_Device_GD32F350K6
+   config CHOICE_MCU_Device_GD32F350K8
+          bool "GD32F350K8"
+          select MCU_Device_GD32F350K8
+   config CHOICE_MCU_Device_GD32F350R4
+          bool "GD32F350R4"
+          select MCU_Device_GD32F350R4
+   config CHOICE_MCU_Device_GD32F350R6
+          bool "GD32F350R6"
+          select MCU_Device_GD32F350R6
+   config CHOICE_MCU_Device_GD32F350R8
+          bool "GD32F350R8"
+          select MCU_Device_GD32F350R8
+   config CHOICE_MCU_Device_GD32F350RB
+          bool "GD32F350RB"
+          select MCU_Device_GD32F350RB
+endchoice
+endif
+if CHOICE_MCU_Vendor_Infineon
+choice CHOICE_MCU_Infineon_FAMILY
+       prompt "Select micro-controller family"
+   config CHOICE_MCU_Family_TLE984x_Series
+          bool "TLE984x Series"
+   config CHOICE_MCU_Family_TLE986x_Series
+          bool "TLE986x Series"
+   config CHOICE_MCU_Family_TLE987x_Series
+          bool "TLE987x Series"
+   config CHOICE_MCU_Family_XMC1100_Series
+          bool "XMC1100 Series"
+   config CHOICE_MCU_Family_XMC1200_Series
+          bool "XMC1200 Series"
+   config CHOICE_MCU_Family_XMC1300_Series
+          bool "XMC1300 Series"
+   config CHOICE_MCU_Family_XMC1400_Series
+          bool "XMC1400 Series"
+   config CHOICE_MCU_Family_XMC4100_Series
+          bool "XMC4100 Series"
+   config CHOICE_MCU_Family_XMC4200_Series
+          bool "XMC4200 Series"
+   config CHOICE_MCU_Family_XMC4300_Series
+          bool "XMC4300 Series"
+   config CHOICE_MCU_Family_XMC4400_Series
+          bool "XMC4400 Series"
+   config CHOICE_MCU_Family_XMC4500_Series
+          bool "XMC4500 Series"
+   config CHOICE_MCU_Family_XMC4700_Series
+          bool "XMC4700 Series"
+   config CHOICE_MCU_Family_XMC4800_Series
+          bool "XMC4800 Series"
+endchoice
+endif
+if CHOICE_MCU_Family_TLE984x_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_TLE984x_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_TLE9842_2QX
+          bool "TLE9842-2QX"
+          select MCU_Device_TLE9842_2QX
+   config CHOICE_MCU_Device_TLE9842QX
+          bool "TLE9842QX"
+          select MCU_Device_TLE9842QX
+   config CHOICE_MCU_Device_TLE9843_2QX
+          bool "TLE9843-2QX"
+          select MCU_Device_TLE9843_2QX
+   config CHOICE_MCU_Device_TLE9843QX
+          bool "TLE9843QX"
+          select MCU_Device_TLE9843QX
+   config CHOICE_MCU_Device_TLE9844_2QX
+          bool "TLE9844-2QX"
+          select MCU_Device_TLE9844_2QX
+   config CHOICE_MCU_Device_TLE9844QX
+          bool "TLE9844QX"
+          select MCU_Device_TLE9844QX
+   config CHOICE_MCU_Device_TLE9845QX
+          bool "TLE9845QX"
+          select MCU_Device_TLE9845QX
+endchoice
+endif
+if CHOICE_MCU_Family_TLE986x_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_TLE986x_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_TLE9861QXA20
+          bool "TLE9861QXA20"
+          select MCU_Device_TLE9861QXA20
+   config CHOICE_MCU_Device_TLE9867QXA20
+          bool "TLE9867QXA20"
+          select MCU_Device_TLE9867QXA20
+   config CHOICE_MCU_Device_TLE9867QXA40
+          bool "TLE9867QXA40"
+          select MCU_Device_TLE9867QXA40
+   config CHOICE_MCU_Device_TLE9867QXW20
+          bool "TLE9867QXW20"
+          select MCU_Device_TLE9867QXW20
+   config CHOICE_MCU_Device_TLE9869QXA20
+          bool "TLE9869QXA20"
+          select MCU_Device_TLE9869QXA20
+endchoice
+endif
+if CHOICE_MCU_Family_TLE987x_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_TLE987x_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_TLE9871QXA20
+          bool "TLE9871QXA20"
+          select MCU_Device_TLE9871QXA20
+   config CHOICE_MCU_Device_TLE9873QXW40
+          bool "TLE9873QXW40"
+          select MCU_Device_TLE9873QXW40
+   config CHOICE_MCU_Device_TLE9877QXA20
+          bool "TLE9877QXA20"
+          select MCU_Device_TLE9877QXA20
+   config CHOICE_MCU_Device_TLE9877QXA40
+          bool "TLE9877QXA40"
+          select MCU_Device_TLE9877QXA40
+   config CHOICE_MCU_Device_TLE9877QXW40
+          bool "TLE9877QXW40"
+          select MCU_Device_TLE9877QXW40
+   config CHOICE_MCU_Device_TLE9879QXA20
+          bool "TLE9879QXA20"
+          select MCU_Device_TLE9879QXA20
+   config CHOICE_MCU_Device_TLE9879QXA40
+          bool "TLE9879QXA40"
+          select MCU_Device_TLE9879QXA40
+   config CHOICE_MCU_Device_TLE9879QXW40
+          bool "TLE9879QXW40"
+          select MCU_Device_TLE9879QXW40
+endchoice
+endif
+if CHOICE_MCU_Family_XMC1100_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC1100_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC1100_Q024x0008
+          bool "XMC1100-Q024x0008"
+          select MCU_Device_XMC1100_Q024x0008
+   config CHOICE_MCU_Device_XMC1100_Q024x0016
+          bool "XMC1100-Q024x0016"
+          select MCU_Device_XMC1100_Q024x0016
+   config CHOICE_MCU_Device_XMC1100_Q024x0032
+          bool "XMC1100-Q024x0032"
+          select MCU_Device_XMC1100_Q024x0032
+   config CHOICE_MCU_Device_XMC1100_Q024x0064
+          bool "XMC1100-Q024x0064"
+          select MCU_Device_XMC1100_Q024x0064
+   config CHOICE_MCU_Device_XMC1100_Q040x0016
+          bool "XMC1100-Q040x0016"
+          select MCU_Device_XMC1100_Q040x0016
+   config CHOICE_MCU_Device_XMC1100_Q040x0032
+          bool "XMC1100-Q040x0032"
+          select MCU_Device_XMC1100_Q040x0032
+   config CHOICE_MCU_Device_XMC1100_Q040x0064
+          bool "XMC1100-Q040x0064"
+          select MCU_Device_XMC1100_Q040x0064
+   config CHOICE_MCU_Device_XMC1100_T016x0008
+          bool "XMC1100-T016x0008"
+          select MCU_Device_XMC1100_T016x0008
+   config CHOICE_MCU_Device_XMC1100_T016x0016
+          bool "XMC1100-T016x0016"
+          select MCU_Device_XMC1100_T016x0016
+   config CHOICE_MCU_Device_XMC1100_T016x0032
+          bool "XMC1100-T016x0032"
+          select MCU_Device_XMC1100_T016x0032
+   config CHOICE_MCU_Device_XMC1100_T016x0064
+          bool "XMC1100-T016x0064"
+          select MCU_Device_XMC1100_T016x0064
+   config CHOICE_MCU_Device_XMC1100_T038x0016
+          bool "XMC1100-T038x0016"
+          select MCU_Device_XMC1100_T038x0016
+   config CHOICE_MCU_Device_XMC1100_T038x0032
+          bool "XMC1100-T038x0032"
+          select MCU_Device_XMC1100_T038x0032
+   config CHOICE_MCU_Device_XMC1100_T038x0064
+          bool "XMC1100-T038x0064"
+          select MCU_Device_XMC1100_T038x0064
+endchoice
+endif
+if CHOICE_MCU_Family_XMC1200_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC1200_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC1200_T038x0200
+          bool "XMC1200-T038x0200"
+          select MCU_Device_XMC1200_T038x0200
+   config CHOICE_MCU_Device_XMC1201_Q040x0016
+          bool "XMC1201-Q040x0016"
+          select MCU_Device_XMC1201_Q040x0016
+   config CHOICE_MCU_Device_XMC1201_Q040x0032
+          bool "XMC1201-Q040x0032"
+          select MCU_Device_XMC1201_Q040x0032
+   config CHOICE_MCU_Device_XMC1201_Q040x0064
+          bool "XMC1201-Q040x0064"
+          select MCU_Device_XMC1201_Q040x0064
+   config CHOICE_MCU_Device_XMC1201_Q040x0128
+          bool "XMC1201-Q040x0128"
+          select MCU_Device_XMC1201_Q040x0128
+   config CHOICE_MCU_Device_XMC1201_Q040x0200
+          bool "XMC1201-Q040x0200"
+          select MCU_Device_XMC1201_Q040x0200
+   config CHOICE_MCU_Device_XMC1201_T028x0016
+          bool "XMC1201-T028x0016"
+          select MCU_Device_XMC1201_T028x0016
+   config CHOICE_MCU_Device_XMC1201_T028x0032
+          bool "XMC1201-T028x0032"
+          select MCU_Device_XMC1201_T028x0032
+   config CHOICE_MCU_Device_XMC1201_T038x0016
+          bool "XMC1201-T038x0016"
+          select MCU_Device_XMC1201_T038x0016
+   config CHOICE_MCU_Device_XMC1201_T038x0032
+          bool "XMC1201-T038x0032"
+          select MCU_Device_XMC1201_T038x0032
+   config CHOICE_MCU_Device_XMC1201_T038x0064
+          bool "XMC1201-T038x0064"
+          select MCU_Device_XMC1201_T038x0064
+   config CHOICE_MCU_Device_XMC1201_T038x0128
+          bool "XMC1201-T038x0128"
+          select MCU_Device_XMC1201_T038x0128
+   config CHOICE_MCU_Device_XMC1201_T038x0200
+          bool "XMC1201-T038x0200"
+          select MCU_Device_XMC1201_T038x0200
+   config CHOICE_MCU_Device_XMC1202_Q024x0016
+          bool "XMC1202-Q024x0016"
+          select MCU_Device_XMC1202_Q024x0016
+   config CHOICE_MCU_Device_XMC1202_Q024x0032
+          bool "XMC1202-Q024x0032"
+          select MCU_Device_XMC1202_Q024x0032
+   config CHOICE_MCU_Device_XMC1202_Q040x0016
+          bool "XMC1202-Q040x0016"
+          select MCU_Device_XMC1202_Q040x0016
+   config CHOICE_MCU_Device_XMC1202_Q040x0032
+          bool "XMC1202-Q040x0032"
+          select MCU_Device_XMC1202_Q040x0032
+   config CHOICE_MCU_Device_XMC1202_T016x0016
+          bool "XMC1202-T016x0016"
+          select MCU_Device_XMC1202_T016x0016
+   config CHOICE_MCU_Device_XMC1202_T016x0032
+          bool "XMC1202-T016x0032"
+          select MCU_Device_XMC1202_T016x0032
+   config CHOICE_MCU_Device_XMC1202_T016x0064
+          bool "XMC1202-T016x0064"
+          select MCU_Device_XMC1202_T016x0064
+   config CHOICE_MCU_Device_XMC1202_T028x0016
+          bool "XMC1202-T028x0016"
+          select MCU_Device_XMC1202_T028x0016
+   config CHOICE_MCU_Device_XMC1202_T028x0032
+          bool "XMC1202-T028x0032"
+          select MCU_Device_XMC1202_T028x0032
+   config CHOICE_MCU_Device_XMC1202_T028x0064
+          bool "XMC1202-T028x0064"
+          select MCU_Device_XMC1202_T028x0064
+endchoice
+endif
+if CHOICE_MCU_Family_XMC1300_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC1300_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC1301_Q024x0008
+          bool "XMC1301-Q024x0008"
+          select MCU_Device_XMC1301_Q024x0008
+   config CHOICE_MCU_Device_XMC1301_Q024x0016
+          bool "XMC1301-Q024x0016"
+          select MCU_Device_XMC1301_Q024x0016
+   config CHOICE_MCU_Device_XMC1301_Q040x0008
+          bool "XMC1301-Q040x0008"
+          select MCU_Device_XMC1301_Q040x0008
+   config CHOICE_MCU_Device_XMC1301_Q040x0016
+          bool "XMC1301-Q040x0016"
+          select MCU_Device_XMC1301_Q040x0016
+   config CHOICE_MCU_Device_XMC1301_Q040x0032
+          bool "XMC1301-Q040x0032"
+          select MCU_Device_XMC1301_Q040x0032
+   config CHOICE_MCU_Device_XMC1301_T016x0008
+          bool "XMC1301-T016x0008"
+          select MCU_Device_XMC1301_T016x0008
+   config CHOICE_MCU_Device_XMC1301_T016x0016
+          bool "XMC1301-T016x0016"
+          select MCU_Device_XMC1301_T016x0016
+   config CHOICE_MCU_Device_XMC1301_T016x0032
+          bool "XMC1301-T016x0032"
+          select MCU_Device_XMC1301_T016x0032
+   config CHOICE_MCU_Device_XMC1301_T038x0008
+          bool "XMC1301-T038x0008"
+          select MCU_Device_XMC1301_T038x0008
+   config CHOICE_MCU_Device_XMC1301_T038x0016
+          bool "XMC1301-T038x0016"
+          select MCU_Device_XMC1301_T038x0016
+   config CHOICE_MCU_Device_XMC1301_T038x0032
+          bool "XMC1301-T038x0032"
+          select MCU_Device_XMC1301_T038x0032
+   config CHOICE_MCU_Device_XMC1301_T038x0064
+          bool "XMC1301-T038x0064"
+          select MCU_Device_XMC1301_T038x0064
+   config CHOICE_MCU_Device_XMC1302_Q024x0016
+          bool "XMC1302-Q024x0016"
+          select MCU_Device_XMC1302_Q024x0016
+   config CHOICE_MCU_Device_XMC1302_Q024x0032
+          bool "XMC1302-Q024x0032"
+          select MCU_Device_XMC1302_Q024x0032
+   config CHOICE_MCU_Device_XMC1302_Q024x0064
+          bool "XMC1302-Q024x0064"
+          select MCU_Device_XMC1302_Q024x0064
+   config CHOICE_MCU_Device_XMC1302_Q040x0016
+          bool "XMC1302-Q040x0016"
+          select MCU_Device_XMC1302_Q040x0016
+   config CHOICE_MCU_Device_XMC1302_Q040x0032
+          bool "XMC1302-Q040x0032"
+          select MCU_Device_XMC1302_Q040x0032
+   config CHOICE_MCU_Device_XMC1302_Q040x0064
+          bool "XMC1302-Q040x0064"
+          select MCU_Device_XMC1302_Q040x0064
+   config CHOICE_MCU_Device_XMC1302_Q040x0128
+          bool "XMC1302-Q040x0128"
+          select MCU_Device_XMC1302_Q040x0128
+   config CHOICE_MCU_Device_XMC1302_Q040x0200
+          bool "XMC1302-Q040x0200"
+          select MCU_Device_XMC1302_Q040x0200
+   config CHOICE_MCU_Device_XMC1302_T016x0008
+          bool "XMC1302-T016x0008"
+          select MCU_Device_XMC1302_T016x0008
+   config CHOICE_MCU_Device_XMC1302_T016x0016
+          bool "XMC1302-T016x0016"
+          select MCU_Device_XMC1302_T016x0016
+   config CHOICE_MCU_Device_XMC1302_T016x0032
+          bool "XMC1302-T016x0032"
+          select MCU_Device_XMC1302_T016x0032
+   config CHOICE_MCU_Device_XMC1302_T028x0016
+          bool "XMC1302-T028x0016"
+          select MCU_Device_XMC1302_T028x0016
+   config CHOICE_MCU_Device_XMC1302_T038x0016
+          bool "XMC1302-T038x0016"
+          select MCU_Device_XMC1302_T038x0016
+   config CHOICE_MCU_Device_XMC1302_T038x0032
+          bool "XMC1302-T038x0032"
+          select MCU_Device_XMC1302_T038x0032
+   config CHOICE_MCU_Device_XMC1302_T038x0064
+          bool "XMC1302-T038x0064"
+          select MCU_Device_XMC1302_T038x0064
+   config CHOICE_MCU_Device_XMC1302_T038x0128
+          bool "XMC1302-T038x0128"
+          select MCU_Device_XMC1302_T038x0128
+   config CHOICE_MCU_Device_XMC1302_T038x0200
+          bool "XMC1302-T038x0200"
+          select MCU_Device_XMC1302_T038x0200
+endchoice
+endif
+if CHOICE_MCU_Family_XMC1400_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC1400_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC1401_F064x0064
+          bool "XMC1401-F064x0064"
+          select MCU_Device_XMC1401_F064x0064
+   config CHOICE_MCU_Device_XMC1401_F064x0128
+          bool "XMC1401-F064x0128"
+          select MCU_Device_XMC1401_F064x0128
+   config CHOICE_MCU_Device_XMC1401_Q048x0064
+          bool "XMC1401-Q048x0064"
+          select MCU_Device_XMC1401_Q048x0064
+   config CHOICE_MCU_Device_XMC1401_Q048x0128
+          bool "XMC1401-Q048x0128"
+          select MCU_Device_XMC1401_Q048x0128
+   config CHOICE_MCU_Device_XMC1402_F064x0064
+          bool "XMC1402-F064x0064"
+          select MCU_Device_XMC1402_F064x0064
+   config CHOICE_MCU_Device_XMC1402_F064x0128
+          bool "XMC1402-F064x0128"
+          select MCU_Device_XMC1402_F064x0128
+   config CHOICE_MCU_Device_XMC1402_F064x0200
+          bool "XMC1402-F064x0200"
+          select MCU_Device_XMC1402_F064x0200
+   config CHOICE_MCU_Device_XMC1402_Q040x0032
+          bool "XMC1402-Q040x0032"
+          select MCU_Device_XMC1402_Q040x0032
+   config CHOICE_MCU_Device_XMC1402_Q040x0064
+          bool "XMC1402-Q040x0064"
+          select MCU_Device_XMC1402_Q040x0064
+   config CHOICE_MCU_Device_XMC1402_Q040x0128
+          bool "XMC1402-Q040x0128"
+          select MCU_Device_XMC1402_Q040x0128
+   config CHOICE_MCU_Device_XMC1402_Q040x0200
+          bool "XMC1402-Q040x0200"
+          select MCU_Device_XMC1402_Q040x0200
+   config CHOICE_MCU_Device_XMC1402_Q048x0032
+          bool "XMC1402-Q048x0032"
+          select MCU_Device_XMC1402_Q048x0032
+   config CHOICE_MCU_Device_XMC1402_Q048x0064
+          bool "XMC1402-Q048x0064"
+          select MCU_Device_XMC1402_Q048x0064
+   config CHOICE_MCU_Device_XMC1402_Q048x0128
+          bool "XMC1402-Q048x0128"
+          select MCU_Device_XMC1402_Q048x0128
+   config CHOICE_MCU_Device_XMC1402_Q048x0200
+          bool "XMC1402-Q048x0200"
+          select MCU_Device_XMC1402_Q048x0200
+   config CHOICE_MCU_Device_XMC1402_Q064x0064
+          bool "XMC1402-Q064x0064"
+          select MCU_Device_XMC1402_Q064x0064
+   config CHOICE_MCU_Device_XMC1402_Q064x0128
+          bool "XMC1402-Q064x0128"
+          select MCU_Device_XMC1402_Q064x0128
+   config CHOICE_MCU_Device_XMC1402_Q064x0200
+          bool "XMC1402-Q064x0200"
+          select MCU_Device_XMC1402_Q064x0200
+   config CHOICE_MCU_Device_XMC1402_T038x0032
+          bool "XMC1402-T038x0032"
+          select MCU_Device_XMC1402_T038x0032
+   config CHOICE_MCU_Device_XMC1402_T038x0064
+          bool "XMC1402-T038x0064"
+          select MCU_Device_XMC1402_T038x0064
+   config CHOICE_MCU_Device_XMC1402_T038x0128
+          bool "XMC1402-T038x0128"
+          select MCU_Device_XMC1402_T038x0128
+   config CHOICE_MCU_Device_XMC1402_T038x0200
+          bool "XMC1402-T038x0200"
+          select MCU_Device_XMC1402_T038x0200
+   config CHOICE_MCU_Device_XMC1403_Q040x0064
+          bool "XMC1403-Q040x0064"
+          select MCU_Device_XMC1403_Q040x0064
+   config CHOICE_MCU_Device_XMC1403_Q040x0128
+          bool "XMC1403-Q040x0128"
+          select MCU_Device_XMC1403_Q040x0128
+   config CHOICE_MCU_Device_XMC1403_Q040x0200
+          bool "XMC1403-Q040x0200"
+          select MCU_Device_XMC1403_Q040x0200
+   config CHOICE_MCU_Device_XMC1403_Q048x0064
+          bool "XMC1403-Q048x0064"
+          select MCU_Device_XMC1403_Q048x0064
+   config CHOICE_MCU_Device_XMC1403_Q048x0128
+          bool "XMC1403-Q048x0128"
+          select MCU_Device_XMC1403_Q048x0128
+   config CHOICE_MCU_Device_XMC1403_Q048x0200
+          bool "XMC1403-Q048x0200"
+          select MCU_Device_XMC1403_Q048x0200
+   config CHOICE_MCU_Device_XMC1403_Q064x0064
+          bool "XMC1403-Q064x0064"
+          select MCU_Device_XMC1403_Q064x0064
+   config CHOICE_MCU_Device_XMC1403_Q064x0128
+          bool "XMC1403-Q064x0128"
+          select MCU_Device_XMC1403_Q064x0128
+   config CHOICE_MCU_Device_XMC1403_Q064x0200
+          bool "XMC1403-Q064x0200"
+          select MCU_Device_XMC1403_Q064x0200
+   config CHOICE_MCU_Device_XMC1404_F064x0064
+          bool "XMC1404-F064x0064"
+          select MCU_Device_XMC1404_F064x0064
+   config CHOICE_MCU_Device_XMC1404_F064x0128
+          bool "XMC1404-F064x0128"
+          select MCU_Device_XMC1404_F064x0128
+   config CHOICE_MCU_Device_XMC1404_F064x0200
+          bool "XMC1404-F064x0200"
+          select MCU_Device_XMC1404_F064x0200
+   config CHOICE_MCU_Device_XMC1404_Q048x0064
+          bool "XMC1404-Q048x0064"
+          select MCU_Device_XMC1404_Q048x0064
+   config CHOICE_MCU_Device_XMC1404_Q048x0128
+          bool "XMC1404-Q048x0128"
+          select MCU_Device_XMC1404_Q048x0128
+   config CHOICE_MCU_Device_XMC1404_Q048x0200
+          bool "XMC1404-Q048x0200"
+          select MCU_Device_XMC1404_Q048x0200
+   config CHOICE_MCU_Device_XMC1404_Q064x0064
+          bool "XMC1404-Q064x0064"
+          select MCU_Device_XMC1404_Q064x0064
+   config CHOICE_MCU_Device_XMC1404_Q064x0128
+          bool "XMC1404-Q064x0128"
+          select MCU_Device_XMC1404_Q064x0128
+   config CHOICE_MCU_Device_XMC1404_Q064x0200
+          bool "XMC1404-Q064x0200"
+          select MCU_Device_XMC1404_Q064x0200
+endchoice
+endif
+if CHOICE_MCU_Family_XMC4100_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC4100_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC4100_F64x128
+          bool "XMC4100-F64x128"
+          select MCU_Device_XMC4100_F64x128
+   config CHOICE_MCU_Device_XMC4100_Q48x128
+          bool "XMC4100-Q48x128"
+          select MCU_Device_XMC4100_Q48x128
+   config CHOICE_MCU_Device_XMC4104_F64x128
+          bool "XMC4104-F64x128"
+          select MCU_Device_XMC4104_F64x128
+   config CHOICE_MCU_Device_XMC4104_F64x64
+          bool "XMC4104-F64x64"
+          select MCU_Device_XMC4104_F64x64
+   config CHOICE_MCU_Device_XMC4104_Q48x128
+          bool "XMC4104-Q48x128"
+          select MCU_Device_XMC4104_Q48x128
+   config CHOICE_MCU_Device_XMC4104_Q48x64
+          bool "XMC4104-Q48x64"
+          select MCU_Device_XMC4104_Q48x64
+   config CHOICE_MCU_Device_XMC4108_F64x64
+          bool "XMC4108-F64x64"
+          select MCU_Device_XMC4108_F64x64
+   config CHOICE_MCU_Device_XMC4108_Q48x64
+          bool "XMC4108-Q48x64"
+          select MCU_Device_XMC4108_Q48x64
+endchoice
+endif
+if CHOICE_MCU_Family_XMC4200_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC4200_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC4200_F64x256
+          bool "XMC4200-F64x256"
+          select MCU_Device_XMC4200_F64x256
+   config CHOICE_MCU_Device_XMC4200_Q48x256
+          bool "XMC4200-Q48x256"
+          select MCU_Device_XMC4200_Q48x256
+endchoice
+endif
+if CHOICE_MCU_Family_XMC4300_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC4300_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC4300_F100x256
+          bool "XMC4300-F100x256"
+          select MCU_Device_XMC4300_F100x256
+endchoice
+endif
+if CHOICE_MCU_Family_XMC4400_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC4400_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC4400_F100x256
+          bool "XMC4400-F100x256"
+          select MCU_Device_XMC4400_F100x256
+   config CHOICE_MCU_Device_XMC4400_F100x512
+          bool "XMC4400-F100x512"
+          select MCU_Device_XMC4400_F100x512
+   config CHOICE_MCU_Device_XMC4400_F64x256
+          bool "XMC4400-F64x256"
+          select MCU_Device_XMC4400_F64x256
+   config CHOICE_MCU_Device_XMC4400_F64x512
+          bool "XMC4400-F64x512"
+          select MCU_Device_XMC4400_F64x512
+   config CHOICE_MCU_Device_XMC4402_F100x256
+          bool "XMC4402-F100x256"
+          select MCU_Device_XMC4402_F100x256
+   config CHOICE_MCU_Device_XMC4402_F64x256
+          bool "XMC4402-F64x256"
+          select MCU_Device_XMC4402_F64x256
+endchoice
+endif
+if CHOICE_MCU_Family_XMC4500_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC4500_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC4500_E144x1024
+          bool "XMC4500-E144x1024"
+          select MCU_Device_XMC4500_E144x1024
+   config CHOICE_MCU_Device_XMC4500_F100x1024
+          bool "XMC4500-F100x1024"
+          select MCU_Device_XMC4500_F100x1024
+   config CHOICE_MCU_Device_XMC4500_F100x768
+          bool "XMC4500-F100x768"
+          select MCU_Device_XMC4500_F100x768
+   config CHOICE_MCU_Device_XMC4500_F144x1024
+          bool "XMC4500-F144x1024"
+          select MCU_Device_XMC4500_F144x1024
+   config CHOICE_MCU_Device_XMC4500_F144x768
+          bool "XMC4500-F144x768"
+          select MCU_Device_XMC4500_F144x768
+   config CHOICE_MCU_Device_XMC4502_F100x768
+          bool "XMC4502-F100x768"
+          select MCU_Device_XMC4502_F100x768
+   config CHOICE_MCU_Device_XMC4504_F100x512
+          bool "XMC4504-F100x512"
+          select MCU_Device_XMC4504_F100x512
+   config CHOICE_MCU_Device_XMC4504_F144x512
+          bool "XMC4504-F144x512"
+          select MCU_Device_XMC4504_F144x512
+endchoice
+endif
+if CHOICE_MCU_Family_XMC4700_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC4700_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC4700_E196x1536
+          bool "XMC4700-E196x1536"
+          select MCU_Device_XMC4700_E196x1536
+   config CHOICE_MCU_Device_XMC4700_E196x2048
+          bool "XMC4700-E196x2048"
+          select MCU_Device_XMC4700_E196x2048
+   config CHOICE_MCU_Device_XMC4700_F100x1536
+          bool "XMC4700-F100x1536"
+          select MCU_Device_XMC4700_F100x1536
+   config CHOICE_MCU_Device_XMC4700_F100x2048
+          bool "XMC4700-F100x2048"
+          select MCU_Device_XMC4700_F100x2048
+   config CHOICE_MCU_Device_XMC4700_F144x1536
+          bool "XMC4700-F144x1536"
+          select MCU_Device_XMC4700_F144x1536
+   config CHOICE_MCU_Device_XMC4700_F144x2048
+          bool "XMC4700-F144x2048"
+          select MCU_Device_XMC4700_F144x2048
+endchoice
+endif
+if CHOICE_MCU_Family_XMC4800_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_XMC4800_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_XMC4800_E196x1024
+          bool "XMC4800-E196x1024"
+          select MCU_Device_XMC4800_E196x1024
+   config CHOICE_MCU_Device_XMC4800_E196x1536
+          bool "XMC4800-E196x1536"
+          select MCU_Device_XMC4800_E196x1536
+   config CHOICE_MCU_Device_XMC4800_E196x2048
+          bool "XMC4800-E196x2048"
+          select MCU_Device_XMC4800_E196x2048
+   config CHOICE_MCU_Device_XMC4800_F100x1024
+          bool "XMC4800-F100x1024"
+          select MCU_Device_XMC4800_F100x1024
+   config CHOICE_MCU_Device_XMC4800_F100x1536
+          bool "XMC4800-F100x1536"
+          select MCU_Device_XMC4800_F100x1536
+   config CHOICE_MCU_Device_XMC4800_F100x2048
+          bool "XMC4800-F100x2048"
+          select MCU_Device_XMC4800_F100x2048
+   config CHOICE_MCU_Device_XMC4800_F144x1024
+          bool "XMC4800-F144x1024"
+          select MCU_Device_XMC4800_F144x1024
+   config CHOICE_MCU_Device_XMC4800_F144x1536
+          bool "XMC4800-F144x1536"
+          select MCU_Device_XMC4800_F144x1536
+   config CHOICE_MCU_Device_XMC4800_F144x2048
+          bool "XMC4800-F144x2048"
+          select MCU_Device_XMC4800_F144x2048
+endchoice
+endif
+if CHOICE_MCU_Vendor_MindMotion
+choice CHOICE_MCU_MindMotion_FAMILY
+       prompt "Select micro-controller family"
+   config CHOICE_MCU_Family_MM32x031_Series
+          bool "MM32x031 Series"
+   config CHOICE_MCU_Family_MM32x103_Series
+          bool "MM32x103 Series"
+endchoice
+endif
+if CHOICE_MCU_Family_MM32x031_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_MM32x031_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MM32x031
+          bool "MM32x031"
+          select MCU_Device_MM32x031
+endchoice
+endif
+if CHOICE_MCU_Family_MM32x103_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_MM32x103_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MM32x103
+          bool "MM32x103"
+          select MCU_Device_MM32x103
+endchoice
+endif
+if CHOICE_MCU_Vendor_NXP
+choice CHOICE_MCU_NXP_FAMILY
+       prompt "Select micro-controller family"
+   config CHOICE_MCU_Family_LPC54101
+          bool "LPC54101"
+   config CHOICE_MCU_Family_LPC54102
+          bool "LPC54102"
+   config CHOICE_MCU_Family_LPC54113
+          bool "LPC54113"
+   config CHOICE_MCU_Family_LPC54114
+          bool "LPC54114"
+   config CHOICE_MCU_Family_LPC54605
+          bool "LPC54605"
+   config CHOICE_MCU_Family_LPC54606
+          bool "LPC54606"
+   config CHOICE_MCU_Family_LPC54607
+          bool "LPC54607"
+   config CHOICE_MCU_Family_LPC54608
+          bool "LPC54608"
+   config CHOICE_MCU_Family_LPC54616
+          bool "LPC54616"
+   config CHOICE_MCU_Family_LPC54618
+          bool "LPC54618"
+   config CHOICE_MCU_Family_LPC54628
+          bool "LPC54628"
+   config CHOICE_MCU_Family_MIMXRT1051
+          bool "MIMXRT1051"
+   config CHOICE_MCU_Family_MIMXRT1052
+          bool "MIMXRT1052"
+   config CHOICE_MCU_Family_MK02F12810
+          bool "MK02F12810"
+   config CHOICE_MCU_Family_MK11D5
+          bool "MK11D5"
+   config CHOICE_MCU_Family_MK11DA5
+          bool "MK11DA5"
+   config CHOICE_MCU_Family_MK12D5
+          bool "MK12D5"
+   config CHOICE_MCU_Family_MK21D5
+          bool "MK21D5"
+   config CHOICE_MCU_Family_MK21DA5
+          bool "MK21DA5"
+   config CHOICE_MCU_Family_MK21F12
+          bool "MK21F12"
+   config CHOICE_MCU_Family_MK21FA12
+          bool "MK21FA12"
+   config CHOICE_MCU_Family_MK22D5
+          bool "MK22D5"
+   config CHOICE_MCU_Family_MK22F12
+          bool "MK22F12"
+   config CHOICE_MCU_Family_MK22F12810
+          bool "MK22F12810"
+   config CHOICE_MCU_Family_MK22F25612
+          bool "MK22F25612"
+   config CHOICE_MCU_Family_MK22F51212
+          bool "MK22F51212"
+   config CHOICE_MCU_Family_MK22FA12
+          bool "MK22FA12"
+   config CHOICE_MCU_Family_MK24F12
+          bool "MK24F12"
+   config CHOICE_MCU_Family_MK24F25612
+          bool "MK24F25612"
+   config CHOICE_MCU_Family_MK26F18
+          bool "MK26F18"
+   config CHOICE_MCU_Family_MK27F15
+          bool "MK27F15"
+   config CHOICE_MCU_Family_MK28F15
+          bool "MK28F15"
+   config CHOICE_MCU_Family_MK63F12
+          bool "MK63F12"
+   config CHOICE_MCU_Family_MK64F12
+          bool "MK64F12"
+   config CHOICE_MCU_Family_MK65F18
+          bool "MK65F18"
+   config CHOICE_MCU_Family_MK66F18
+          bool "MK66F18"
+   config CHOICE_MCU_Family_MK80F25615
+          bool "MK80F25615"
+   config CHOICE_MCU_Family_MK82F25615
+          bool "MK82F25615"
+   config CHOICE_MCU_Family_MKE02Z4
+          bool "MKE02Z4"
+   config CHOICE_MCU_Family_MKE04Z1284
+          bool "MKE04Z1284"
+   config CHOICE_MCU_Family_MKE04Z4
+          bool "MKE04Z4"
+   config CHOICE_MCU_Family_MKE06Z4
+          bool "MKE06Z4"
+   config CHOICE_MCU_Family_MKE14F16
+          bool "MKE14F16"
+   config CHOICE_MCU_Family_MKE14Z7
+          bool "MKE14Z7"
+   config CHOICE_MCU_Family_MKE15Z7
+          bool "MKE15Z7"
+   config CHOICE_MCU_Family_MKE16F16
+          bool "MKE16F16"
+   config CHOICE_MCU_Family_MKE18F16
+          bool "MKE18F16"
+   config CHOICE_MCU_Family_MKL02Z4
+          bool "MKL02Z4"
+   config CHOICE_MCU_Family_MKL03Z4
+          bool "MKL03Z4"
+   config CHOICE_MCU_Family_MKL13Z644
+          bool "MKL13Z644"
+   config CHOICE_MCU_Family_MKL17Z4
+          bool "MKL17Z4"
+   config CHOICE_MCU_Family_MKL17Z644
+          bool "MKL17Z644"
+   config CHOICE_MCU_Family_MKL26Z4
+          bool "MKL26Z4"
+   config CHOICE_MCU_Family_MKL27Z4
+          bool "MKL27Z4"
+   config CHOICE_MCU_Family_MKL27Z644
+          bool "MKL27Z644"
+   config CHOICE_MCU_Family_MKL28Z7
+          bool "MKL28Z7"
+   config CHOICE_MCU_Family_MKL33Z4
+          bool "MKL33Z4"
+   config CHOICE_MCU_Family_MKL33Z644
+          bool "MKL33Z644"
+   config CHOICE_MCU_Family_MKL34Z4
+          bool "MKL34Z4"
+   config CHOICE_MCU_Family_MKL36Z4
+          bool "MKL36Z4"
+   config CHOICE_MCU_Family_MKL43Z4
+          bool "MKL43Z4"
+   config CHOICE_MCU_Family_MKL46Z4
+          bool "MKL46Z4"
+   config CHOICE_MCU_Family_MKL82Z7
+          bool "MKL82Z7"
+   config CHOICE_MCU_Family_MKS20F12
+          bool "MKS20F12"
+   config CHOICE_MCU_Family_MKS22F12
+          bool "MKS22F12"
+   config CHOICE_MCU_Family_MKV10Z1287
+          bool "MKV10Z1287"
+   config CHOICE_MCU_Family_MKV11Z7
+          bool "MKV11Z7"
+   config CHOICE_MCU_Family_MKV30F12810
+          bool "MKV30F12810"
+   config CHOICE_MCU_Family_MKV31F12810
+          bool "MKV31F12810"
+   config CHOICE_MCU_Family_MKV31F25612
+          bool "MKV31F25612"
+   config CHOICE_MCU_Family_MKV31F51212
+          bool "MKV31F51212"
+   config CHOICE_MCU_Family_MKV42F16
+          bool "MKV42F16"
+   config CHOICE_MCU_Family_MKV44F16
+          bool "MKV44F16"
+   config CHOICE_MCU_Family_MKV46F16
+          bool "MKV46F16"
+   config CHOICE_MCU_Family_MKV56F24
+          bool "MKV56F24"
+   config CHOICE_MCU_Family_MKV58F24
+          bool "MKV58F24"
+   config CHOICE_MCU_Family_QN908xA
+          bool "QN908xA"
+   config CHOICE_MCU_Family_QN908xB
+          bool "QN908xB"
+   config CHOICE_MCU_Family_QN908xC
+          bool "QN908xC"
+   config CHOICE_MCU_Family_iMX_RT1050
+          bool "i.MX RT1050"
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54101
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54101
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54101J256
+          bool "LPC54101J256"
+          select MCU_Device_LPC54101J256
+   config CHOICE_MCU_Device_LPC54101J512
+          bool "LPC54101J512"
+          select MCU_Device_LPC54101J512
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54102
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54102
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54102J256
+          bool "LPC54102J256"
+          select MCU_Device_LPC54102J256
+   config CHOICE_MCU_Device_LPC54102J512
+          bool "LPC54102J512"
+          select MCU_Device_LPC54102J512
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54113
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54113
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54113J128
+          bool "LPC54113J128"
+          select MCU_Device_LPC54113J128
+   config CHOICE_MCU_Device_LPC54113J256
+          bool "LPC54113J256"
+          select MCU_Device_LPC54113J256
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54114
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54114
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54114J256
+          bool "LPC54114J256"
+          select MCU_Device_LPC54114J256
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54605
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54605
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54605J256
+          bool "LPC54605J256"
+          select MCU_Device_LPC54605J256
+   config CHOICE_MCU_Device_LPC54605J512
+          bool "LPC54605J512"
+          select MCU_Device_LPC54605J512
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54606
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54606
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54606J256
+          bool "LPC54606J256"
+          select MCU_Device_LPC54606J256
+   config CHOICE_MCU_Device_LPC54606J512
+          bool "LPC54606J512"
+          select MCU_Device_LPC54606J512
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54607
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54607
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54607J256
+          bool "LPC54607J256"
+          select MCU_Device_LPC54607J256
+   config CHOICE_MCU_Device_LPC54607J512
+          bool "LPC54607J512"
+          select MCU_Device_LPC54607J512
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54608
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54608
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54608J512
+          bool "LPC54608J512"
+          select MCU_Device_LPC54608J512
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54616
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54616
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54616J256
+          bool "LPC54616J256"
+          select MCU_Device_LPC54616J256
+   config CHOICE_MCU_Device_LPC54616J512
+          bool "LPC54616J512"
+          select MCU_Device_LPC54616J512
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54618
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54618
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54618J512
+          bool "LPC54618J512"
+          select MCU_Device_LPC54618J512
+endchoice
+endif
+if CHOICE_MCU_Family_LPC54628
+choice CHOICE_MCU_DEVICE_MCU_Family_LPC54628
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_LPC54628J512
+          bool "LPC54628J512"
+          select MCU_Device_LPC54628J512
+endchoice
+endif
+if CHOICE_MCU_Family_MIMXRT1051
+choice CHOICE_MCU_DEVICE_MCU_Family_MIMXRT1051
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MIMXRT1051xxxxx
+          bool "MIMXRT1051xxxxx"
+          select MCU_Device_MIMXRT1051xxxxx
+endchoice
+endif
+if CHOICE_MCU_Family_MIMXRT1052
+choice CHOICE_MCU_DEVICE_MCU_Family_MIMXRT1052
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MIMXRT1052xxxxx
+          bool "MIMXRT1052xxxxx"
+          select MCU_Device_MIMXRT1052xxxxx
+endchoice
+endif
+if CHOICE_MCU_Family_MK02F12810
+choice CHOICE_MCU_DEVICE_MCU_Family_MK02F12810
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK02FN128xxx10
+          bool "MK02FN128xxx10"
+          select MCU_Device_MK02FN128xxx10
+   config CHOICE_MCU_Device_MK02FN64xxx10
+          bool "MK02FN64xxx10"
+          select MCU_Device_MK02FN64xxx10
+endchoice
+endif
+if CHOICE_MCU_Family_MK11D5
+choice CHOICE_MCU_DEVICE_MCU_Family_MK11D5
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK11DN512xxx5
+          bool "MK11DN512xxx5"
+          select MCU_Device_MK11DN512xxx5
+   config CHOICE_MCU_Device_MK11DX128xxx5
+          bool "MK11DX128xxx5"
+          select MCU_Device_MK11DX128xxx5
+   config CHOICE_MCU_Device_MK11DX256xxx5
+          bool "MK11DX256xxx5"
+          select MCU_Device_MK11DX256xxx5
+endchoice
+endif
+if CHOICE_MCU_Family_MK11DA5
+choice CHOICE_MCU_DEVICE_MCU_Family_MK11DA5
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK11DN512Axxx5
+          bool "MK11DN512Axxx5"
+          select MCU_Device_MK11DN512Axxx5
+   config CHOICE_MCU_Device_MK11DX128Axxx5
+          bool "MK11DX128Axxx5"
+          select MCU_Device_MK11DX128Axxx5
+   config CHOICE_MCU_Device_MK11DX256Axxx5
+          bool "MK11DX256Axxx5"
+          select MCU_Device_MK11DX256Axxx5
+endchoice
+endif
+if CHOICE_MCU_Family_MK12D5
+choice CHOICE_MCU_DEVICE_MCU_Family_MK12D5
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK12DN512xxx5
+          bool "MK12DN512xxx5"
+          select MCU_Device_MK12DN512xxx5
+   config CHOICE_MCU_Device_MK12DX128xxx5
+          bool "MK12DX128xxx5"
+          select MCU_Device_MK12DX128xxx5
+   config CHOICE_MCU_Device_MK12DX256xxx5
+          bool "MK12DX256xxx5"
+          select MCU_Device_MK12DX256xxx5
+endchoice
+endif
+if CHOICE_MCU_Family_MK21D5
+choice CHOICE_MCU_DEVICE_MCU_Family_MK21D5
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK21DN512xxx5
+          bool "MK21DN512xxx5"
+          select MCU_Device_MK21DN512xxx5
+   config CHOICE_MCU_Device_MK21DX128xxx5
+          bool "MK21DX128xxx5"
+          select MCU_Device_MK21DX128xxx5
+   config CHOICE_MCU_Device_MK21DX256xxx5
+          bool "MK21DX256xxx5"
+          select MCU_Device_MK21DX256xxx5
+endchoice
+endif
+if CHOICE_MCU_Family_MK21DA5
+choice CHOICE_MCU_DEVICE_MCU_Family_MK21DA5
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK21DN512Axxx5
+          bool "MK21DN512Axxx5"
+          select MCU_Device_MK21DN512Axxx5
+   config CHOICE_MCU_Device_MK21DX128Axxx5
+          bool "MK21DX128Axxx5"
+          select MCU_Device_MK21DX128Axxx5
+   config CHOICE_MCU_Device_MK21DX256Axxx5
+          bool "MK21DX256Axxx5"
+          select MCU_Device_MK21DX256Axxx5
+endchoice
+endif
+if CHOICE_MCU_Family_MK21F12
+choice CHOICE_MCU_DEVICE_MCU_Family_MK21F12
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK21FN1M0xxx12
+          bool "MK21FN1M0xxx12"
+          select MCU_Device_MK21FN1M0xxx12
+   config CHOICE_MCU_Device_MK21FX512xxx12
+          bool "MK21FX512xxx12"
+          select MCU_Device_MK21FX512xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK21FA12
+choice CHOICE_MCU_DEVICE_MCU_Family_MK21FA12
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK21FN1M0Axxx12
+          bool "MK21FN1M0Axxx12"
+          select MCU_Device_MK21FN1M0Axxx12
+   config CHOICE_MCU_Device_MK21FX512Axxx12
+          bool "MK21FX512Axxx12"
+          select MCU_Device_MK21FX512Axxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK22D5
+choice CHOICE_MCU_DEVICE_MCU_Family_MK22D5
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK22DN512xxx5
+          bool "MK22DN512xxx5"
+          select MCU_Device_MK22DN512xxx5
+   config CHOICE_MCU_Device_MK22DX128xxx5
+          bool "MK22DX128xxx5"
+          select MCU_Device_MK22DX128xxx5
+   config CHOICE_MCU_Device_MK22DX256xxx5
+          bool "MK22DX256xxx5"
+          select MCU_Device_MK22DX256xxx5
+endchoice
+endif
+if CHOICE_MCU_Family_MK22F12
+choice CHOICE_MCU_DEVICE_MCU_Family_MK22F12
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK22FN1M0xxx12
+          bool "MK22FN1M0xxx12"
+          select MCU_Device_MK22FN1M0xxx12
+   config CHOICE_MCU_Device_MK22FX512xxx12
+          bool "MK22FX512xxx12"
+          select MCU_Device_MK22FX512xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK22F12810
+choice CHOICE_MCU_DEVICE_MCU_Family_MK22F12810
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK22FN128xxx10
+          bool "MK22FN128xxx10"
+          select MCU_Device_MK22FN128xxx10
+endchoice
+endif
+if CHOICE_MCU_Family_MK22F25612
+choice CHOICE_MCU_DEVICE_MCU_Family_MK22F25612
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK22FN128xxx12
+          bool "MK22FN128xxx12"
+          select MCU_Device_MK22FN128xxx12
+   config CHOICE_MCU_Device_MK22FN256xxx12
+          bool "MK22FN256xxx12"
+          select MCU_Device_MK22FN256xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK22F51212
+choice CHOICE_MCU_DEVICE_MCU_Family_MK22F51212
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK22FN512xxx12
+          bool "MK22FN512xxx12"
+          select MCU_Device_MK22FN512xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK22FA12
+choice CHOICE_MCU_DEVICE_MCU_Family_MK22FA12
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK22FN1M0Axxx12
+          bool "MK22FN1M0Axxx12"
+          select MCU_Device_MK22FN1M0Axxx12
+   config CHOICE_MCU_Device_MK22FX512Axxx12
+          bool "MK22FX512Axxx12"
+          select MCU_Device_MK22FX512Axxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK24F12
+choice CHOICE_MCU_DEVICE_MCU_Family_MK24F12
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK24FN1M0xxx12
+          bool "MK24FN1M0xxx12"
+          select MCU_Device_MK24FN1M0xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK24F25612
+choice CHOICE_MCU_DEVICE_MCU_Family_MK24F25612
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK24FN256xxx12
+          bool "MK24FN256xxx12"
+          select MCU_Device_MK24FN256xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK26F18
+choice CHOICE_MCU_DEVICE_MCU_Family_MK26F18
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK26FN2M0xxx18
+          bool "MK26FN2M0xxx18"
+          select MCU_Device_MK26FN2M0xxx18
+endchoice
+endif
+if CHOICE_MCU_Family_MK27F15
+choice CHOICE_MCU_DEVICE_MCU_Family_MK27F15
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK27FN2M0xxx15
+          bool "MK27FN2M0xxx15"
+          select MCU_Device_MK27FN2M0xxx15
+endchoice
+endif
+if CHOICE_MCU_Family_MK28F15
+choice CHOICE_MCU_DEVICE_MCU_Family_MK28F15
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK28FN2M0xxx15
+          bool "MK28FN2M0xxx15"
+          select MCU_Device_MK28FN2M0xxx15
+endchoice
+endif
+if CHOICE_MCU_Family_MK63F12
+choice CHOICE_MCU_DEVICE_MCU_Family_MK63F12
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK63FN1M0xxx12
+          bool "MK63FN1M0xxx12"
+          select MCU_Device_MK63FN1M0xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK64F12
+choice CHOICE_MCU_DEVICE_MCU_Family_MK64F12
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK64FN1M0xxx12
+          bool "MK64FN1M0xxx12"
+          select MCU_Device_MK64FN1M0xxx12
+   config CHOICE_MCU_Device_MK64FX512xxx12
+          bool "MK64FX512xxx12"
+          select MCU_Device_MK64FX512xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MK65F18
+choice CHOICE_MCU_DEVICE_MCU_Family_MK65F18
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK65FN2M0xxx18
+          bool "MK65FN2M0xxx18"
+          select MCU_Device_MK65FN2M0xxx18
+   config CHOICE_MCU_Device_MK65FX1M0xxx18
+          bool "MK65FX1M0xxx18"
+          select MCU_Device_MK65FX1M0xxx18
+endchoice
+endif
+if CHOICE_MCU_Family_MK66F18
+choice CHOICE_MCU_DEVICE_MCU_Family_MK66F18
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK66FN2M0xxx18
+          bool "MK66FN2M0xxx18"
+          select MCU_Device_MK66FN2M0xxx18
+   config CHOICE_MCU_Device_MK66FX1M0xxx18
+          bool "MK66FX1M0xxx18"
+          select MCU_Device_MK66FX1M0xxx18
+endchoice
+endif
+if CHOICE_MCU_Family_MK80F25615
+choice CHOICE_MCU_DEVICE_MCU_Family_MK80F25615
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK80FN256xxx15
+          bool "MK80FN256xxx15"
+          select MCU_Device_MK80FN256xxx15
+endchoice
+endif
+if CHOICE_MCU_Family_MK82F25615
+choice CHOICE_MCU_DEVICE_MCU_Family_MK82F25615
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MK82FN256xxx15
+          bool "MK82FN256xxx15"
+          select MCU_Device_MK82FN256xxx15
+endchoice
+endif
+if CHOICE_MCU_Family_MKE02Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKE02Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKE02Z16xxx4
+          bool "MKE02Z16xxx4"
+          select MCU_Device_MKE02Z16xxx4
+   config CHOICE_MCU_Device_MKE02Z32xxx4
+          bool "MKE02Z32xxx4"
+          select MCU_Device_MKE02Z32xxx4
+   config CHOICE_MCU_Device_MKE02Z64xxx4
+          bool "MKE02Z64xxx4"
+          select MCU_Device_MKE02Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKE04Z1284
+choice CHOICE_MCU_DEVICE_MCU_Family_MKE04Z1284
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKE04Z128xxx4
+          bool "MKE04Z128xxx4"
+          select MCU_Device_MKE04Z128xxx4
+   config CHOICE_MCU_Device_MKE04Z64xxx4
+          bool "MKE04Z64xxx4"
+          select MCU_Device_MKE04Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKE04Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKE04Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKE04Z8xxx4
+          bool "MKE04Z8xxx4"
+          select MCU_Device_MKE04Z8xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKE06Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKE06Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKE06Z128xxx4
+          bool "MKE06Z128xxx4"
+          select MCU_Device_MKE06Z128xxx4
+   config CHOICE_MCU_Device_MKE06Z64xxx4
+          bool "MKE06Z64xxx4"
+          select MCU_Device_MKE06Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKE14F16
+choice CHOICE_MCU_DEVICE_MCU_Family_MKE14F16
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKE14F256xxx16
+          bool "MKE14F256xxx16"
+          select MCU_Device_MKE14F256xxx16
+   config CHOICE_MCU_Device_MKE14F512xxx16
+          bool "MKE14F512xxx16"
+          select MCU_Device_MKE14F512xxx16
+endchoice
+endif
+if CHOICE_MCU_Family_MKE14Z7
+choice CHOICE_MCU_DEVICE_MCU_Family_MKE14Z7
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKE14Z128xxx7
+          bool "MKE14Z128xxx7"
+          select MCU_Device_MKE14Z128xxx7
+   config CHOICE_MCU_Device_MKE14Z256xxx7
+          bool "MKE14Z256xxx7"
+          select MCU_Device_MKE14Z256xxx7
+endchoice
+endif
+if CHOICE_MCU_Family_MKE15Z7
+choice CHOICE_MCU_DEVICE_MCU_Family_MKE15Z7
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKE15Z128xxx7
+          bool "MKE15Z128xxx7"
+          select MCU_Device_MKE15Z128xxx7
+   config CHOICE_MCU_Device_MKE15Z256xxx7
+          bool "MKE15Z256xxx7"
+          select MCU_Device_MKE15Z256xxx7
+endchoice
+endif
+if CHOICE_MCU_Family_MKE16F16
+choice CHOICE_MCU_DEVICE_MCU_Family_MKE16F16
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKE16F256xxx16
+          bool "MKE16F256xxx16"
+          select MCU_Device_MKE16F256xxx16
+   config CHOICE_MCU_Device_MKE16F512xxx16
+          bool "MKE16F512xxx16"
+          select MCU_Device_MKE16F512xxx16
+endchoice
+endif
+if CHOICE_MCU_Family_MKE18F16
+choice CHOICE_MCU_DEVICE_MCU_Family_MKE18F16
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKE18F256xxx16
+          bool "MKE18F256xxx16"
+          select MCU_Device_MKE18F256xxx16
+   config CHOICE_MCU_Device_MKE18F512xxx16
+          bool "MKE18F512xxx16"
+          select MCU_Device_MKE18F512xxx16
+endchoice
+endif
+if CHOICE_MCU_Family_MKL02Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL02Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL02Z16xxx4
+          bool "MKL02Z16xxx4"
+          select MCU_Device_MKL02Z16xxx4
+   config CHOICE_MCU_Device_MKL02Z32xxx4
+          bool "MKL02Z32xxx4"
+          select MCU_Device_MKL02Z32xxx4
+   config CHOICE_MCU_Device_MKL02Z8xxx4
+          bool "MKL02Z8xxx4"
+          select MCU_Device_MKL02Z8xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL03Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL03Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL03Z16xxx4
+          bool "MKL03Z16xxx4"
+          select MCU_Device_MKL03Z16xxx4
+   config CHOICE_MCU_Device_MKL03Z32xxx4
+          bool "MKL03Z32xxx4"
+          select MCU_Device_MKL03Z32xxx4
+   config CHOICE_MCU_Device_MKL03Z8xxx4
+          bool "MKL03Z8xxx4"
+          select MCU_Device_MKL03Z8xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL13Z644
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL13Z644
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL13Z32xxx4
+          bool "MKL13Z32xxx4"
+          select MCU_Device_MKL13Z32xxx4
+   config CHOICE_MCU_Device_MKL13Z64xxx4
+          bool "MKL13Z64xxx4"
+          select MCU_Device_MKL13Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL17Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL17Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL17Z128xxx4
+          bool "MKL17Z128xxx4"
+          select MCU_Device_MKL17Z128xxx4
+   config CHOICE_MCU_Device_MKL17Z256xxx4
+          bool "MKL17Z256xxx4"
+          select MCU_Device_MKL17Z256xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL17Z644
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL17Z644
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL17Z32xxx4
+          bool "MKL17Z32xxx4"
+          select MCU_Device_MKL17Z32xxx4
+   config CHOICE_MCU_Device_MKL17Z64xxx4
+          bool "MKL17Z64xxx4"
+          select MCU_Device_MKL17Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL26Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL26Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL26Z128xxx4
+          bool "MKL26Z128xxx4"
+          select MCU_Device_MKL26Z128xxx4
+   config CHOICE_MCU_Device_MKL26Z256xxx4
+          bool "MKL26Z256xxx4"
+          select MCU_Device_MKL26Z256xxx4
+   config CHOICE_MCU_Device_MKL26Z32xxx4
+          bool "MKL26Z32xxx4"
+          select MCU_Device_MKL26Z32xxx4
+   config CHOICE_MCU_Device_MKL26Z64xxx4
+          bool "MKL26Z64xxx4"
+          select MCU_Device_MKL26Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL27Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL27Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL27Z128xxx4
+          bool "MKL27Z128xxx4"
+          select MCU_Device_MKL27Z128xxx4
+   config CHOICE_MCU_Device_MKL27Z256xxx4
+          bool "MKL27Z256xxx4"
+          select MCU_Device_MKL27Z256xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL27Z644
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL27Z644
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL27Z32xxx4
+          bool "MKL27Z32xxx4"
+          select MCU_Device_MKL27Z32xxx4
+   config CHOICE_MCU_Device_MKL27Z64xxx4
+          bool "MKL27Z64xxx4"
+          select MCU_Device_MKL27Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL28Z7
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL28Z7
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL28Z512xxx7
+          bool "MKL28Z512xxx7"
+          select MCU_Device_MKL28Z512xxx7
+endchoice
+endif
+if CHOICE_MCU_Family_MKL33Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL33Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL33Z128xxx4
+          bool "MKL33Z128xxx4"
+          select MCU_Device_MKL33Z128xxx4
+   config CHOICE_MCU_Device_MKL33Z256xxx4
+          bool "MKL33Z256xxx4"
+          select MCU_Device_MKL33Z256xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL33Z644
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL33Z644
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL33Z32xxx4
+          bool "MKL33Z32xxx4"
+          select MCU_Device_MKL33Z32xxx4
+   config CHOICE_MCU_Device_MKL33Z64xxx4
+          bool "MKL33Z64xxx4"
+          select MCU_Device_MKL33Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL34Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL34Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL34Z64xxx4
+          bool "MKL34Z64xxx4"
+          select MCU_Device_MKL34Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL36Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL36Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL36Z128xxx4
+          bool "MKL36Z128xxx4"
+          select MCU_Device_MKL36Z128xxx4
+   config CHOICE_MCU_Device_MKL36Z256xxx4
+          bool "MKL36Z256xxx4"
+          select MCU_Device_MKL36Z256xxx4
+   config CHOICE_MCU_Device_MKL36Z64xxx4
+          bool "MKL36Z64xxx4"
+          select MCU_Device_MKL36Z64xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL43Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL43Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL43Z128xxx4
+          bool "MKL43Z128xxx4"
+          select MCU_Device_MKL43Z128xxx4
+   config CHOICE_MCU_Device_MKL43Z256xxx4
+          bool "MKL43Z256xxx4"
+          select MCU_Device_MKL43Z256xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL46Z4
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL46Z4
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL46Z128xxx4
+          bool "MKL46Z128xxx4"
+          select MCU_Device_MKL46Z128xxx4
+   config CHOICE_MCU_Device_MKL46Z256xxx4
+          bool "MKL46Z256xxx4"
+          select MCU_Device_MKL46Z256xxx4
+endchoice
+endif
+if CHOICE_MCU_Family_MKL82Z7
+choice CHOICE_MCU_DEVICE_MCU_Family_MKL82Z7
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKL82Z128xxx7
+          bool "MKL82Z128xxx7"
+          select MCU_Device_MKL82Z128xxx7
+endchoice
+endif
+if CHOICE_MCU_Family_MKS20F12
+choice CHOICE_MCU_DEVICE_MCU_Family_MKS20F12
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKS20FN128xxx12
+          bool "MKS20FN128xxx12"
+          select MCU_Device_MKS20FN128xxx12
+   config CHOICE_MCU_Device_MKS20FN256xxx12
+          bool "MKS20FN256xxx12"
+          select MCU_Device_MKS20FN256xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MKS22F12
+choice CHOICE_MCU_DEVICE_MCU_Family_MKS22F12
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKS22FN128xxx12
+          bool "MKS22FN128xxx12"
+          select MCU_Device_MKS22FN128xxx12
+   config CHOICE_MCU_Device_MKS22FN256xxx12
+          bool "MKS22FN256xxx12"
+          select MCU_Device_MKS22FN256xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MKV10Z1287
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV10Z1287
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV10Z128xxx7
+          bool "MKV10Z128xxx7"
+          select MCU_Device_MKV10Z128xxx7
+   config CHOICE_MCU_Device_MKV10Z64xxx7
+          bool "MKV10Z64xxx7"
+          select MCU_Device_MKV10Z64xxx7
+endchoice
+endif
+if CHOICE_MCU_Family_MKV11Z7
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV11Z7
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV11Z128xxx7
+          bool "MKV11Z128xxx7"
+          select MCU_Device_MKV11Z128xxx7
+   config CHOICE_MCU_Device_MKV11Z64xxx7
+          bool "MKV11Z64xxx7"
+          select MCU_Device_MKV11Z64xxx7
+endchoice
+endif
+if CHOICE_MCU_Family_MKV30F12810
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV30F12810
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV30F128xxx10
+          bool "MKV30F128xxx10"
+          select MCU_Device_MKV30F128xxx10
+   config CHOICE_MCU_Device_MKV30F64xxx10
+          bool "MKV30F64xxx10"
+          select MCU_Device_MKV30F64xxx10
+endchoice
+endif
+if CHOICE_MCU_Family_MKV31F12810
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV31F12810
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV31F128xxx10
+          bool "MKV31F128xxx10"
+          select MCU_Device_MKV31F128xxx10
+endchoice
+endif
+if CHOICE_MCU_Family_MKV31F25612
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV31F25612
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV31F256xxx12
+          bool "MKV31F256xxx12"
+          select MCU_Device_MKV31F256xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MKV31F51212
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV31F51212
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV31F512xxx12
+          bool "MKV31F512xxx12"
+          select MCU_Device_MKV31F512xxx12
+endchoice
+endif
+if CHOICE_MCU_Family_MKV42F16
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV42F16
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV42F128xxx16
+          bool "MKV42F128xxx16"
+          select MCU_Device_MKV42F128xxx16
+   config CHOICE_MCU_Device_MKV42F256xxx16
+          bool "MKV42F256xxx16"
+          select MCU_Device_MKV42F256xxx16
+   config CHOICE_MCU_Device_MKV42F64xxx16
+          bool "MKV42F64xxx16"
+          select MCU_Device_MKV42F64xxx16
+endchoice
+endif
+if CHOICE_MCU_Family_MKV44F16
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV44F16
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV44F128xxx16
+          bool "MKV44F128xxx16"
+          select MCU_Device_MKV44F128xxx16
+   config CHOICE_MCU_Device_MKV44F256xxx16
+          bool "MKV44F256xxx16"
+          select MCU_Device_MKV44F256xxx16
+   config CHOICE_MCU_Device_MKV44F64xxx16
+          bool "MKV44F64xxx16"
+          select MCU_Device_MKV44F64xxx16
+endchoice
+endif
+if CHOICE_MCU_Family_MKV46F16
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV46F16
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV46F128xxx16
+          bool "MKV46F128xxx16"
+          select MCU_Device_MKV46F128xxx16
+   config CHOICE_MCU_Device_MKV46F256xxx16
+          bool "MKV46F256xxx16"
+          select MCU_Device_MKV46F256xxx16
+endchoice
+endif
+if CHOICE_MCU_Family_MKV56F24
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV56F24
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV56F1M0xxx24
+          bool "MKV56F1M0xxx24"
+          select MCU_Device_MKV56F1M0xxx24
+   config CHOICE_MCU_Device_MKV56F512xxx24
+          bool "MKV56F512xxx24"
+          select MCU_Device_MKV56F512xxx24
+endchoice
+endif
+if CHOICE_MCU_Family_MKV58F24
+choice CHOICE_MCU_DEVICE_MCU_Family_MKV58F24
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MKV58F1M0xxx24
+          bool "MKV58F1M0xxx24"
+          select MCU_Device_MKV58F1M0xxx24
+   config CHOICE_MCU_Device_MKV58F512xxx24
+          bool "MKV58F512xxx24"
+          select MCU_Device_MKV58F512xxx24
+endchoice
+endif
+if CHOICE_MCU_Family_QN908xA
+choice CHOICE_MCU_DEVICE_MCU_Family_QN908xA
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_QN9080A
+          bool "QN9080A"
+          select MCU_Device_QN9080A
+   config CHOICE_MCU_Device_QN9083A
+          bool "QN9083A"
+          select MCU_Device_QN9083A
+endchoice
+endif
+if CHOICE_MCU_Family_QN908xB
+choice CHOICE_MCU_DEVICE_MCU_Family_QN908xB
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_QN9080B
+          bool "QN9080B"
+          select MCU_Device_QN9080B
+   config CHOICE_MCU_Device_QN9083B
+          bool "QN9083B"
+          select MCU_Device_QN9083B
+endchoice
+endif
+if CHOICE_MCU_Family_QN908xC
+choice CHOICE_MCU_DEVICE_MCU_Family_QN908xC
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_QN9080C
+          bool "QN9080C"
+          select MCU_Device_QN9080C
+   config CHOICE_MCU_Device_QN9083C
+          bool "QN9083C"
+          select MCU_Device_QN9083C
+endchoice
+endif
+if CHOICE_MCU_Family_iMX_RT1050
+choice CHOICE_MCU_DEVICE_MCU_Family_iMX_RT1050
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_MIMXRT1051
+          bool "MIMXRT1051"
+          select MCU_Device_MIMXRT1051
+   config CHOICE_MCU_Device_MIMXRT1052
+          bool "MIMXRT1052"
+          select MCU_Device_MIMXRT1052
+endchoice
+endif
+if CHOICE_MCU_Vendor_NordicSemiconductor
+choice CHOICE_MCU_NordicSemiconductor_FAMILY
+       prompt "Select micro-controller family"
+   config CHOICE_MCU_Family_nRF51_Series
+          bool "nRF51 Series"
+   config CHOICE_MCU_Family_nRF52_Series
+          bool "nRF52 Series"
+endchoice
+endif
+if CHOICE_MCU_Family_nRF51_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_nRF51_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_nRF51422_xxAA
+          bool "nRF51422_xxAA"
+          select MCU_Device_nRF51422_xxAA
+   config CHOICE_MCU_Device_nRF51422_xxAB
+          bool "nRF51422_xxAB"
+          select MCU_Device_nRF51422_xxAB
+   config CHOICE_MCU_Device_nRF51422_xxAC
+          bool "nRF51422_xxAC"
+          select MCU_Device_nRF51422_xxAC
+   config CHOICE_MCU_Device_nRF51801_xxAB
+          bool "nRF51801_xxAB"
+          select MCU_Device_nRF51801_xxAB
+   config CHOICE_MCU_Device_nRF51802_xxAA
+          bool "nRF51802_xxAA"
+          select MCU_Device_nRF51802_xxAA
+   config CHOICE_MCU_Device_nRF51822_xxAA
+          bool "nRF51822_xxAA"
+          select MCU_Device_nRF51822_xxAA
+   config CHOICE_MCU_Device_nRF51822_xxAB
+          bool "nRF51822_xxAB"
+          select MCU_Device_nRF51822_xxAB
+   config CHOICE_MCU_Device_nRF51822_xxAC
+          bool "nRF51822_xxAC"
+          select MCU_Device_nRF51822_xxAC
+   config CHOICE_MCU_Device_nRF51824_xxAA
+          bool "nRF51824_xxAA"
+          select MCU_Device_nRF51824_xxAA
+endchoice
+endif
+if CHOICE_MCU_Family_nRF52_Series
+choice CHOICE_MCU_DEVICE_MCU_Family_nRF52_Series
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_nRF52810_xxAA
+          bool "nRF52810_xxAA"
+          select MCU_Device_nRF52810_xxAA
+   config CHOICE_MCU_Device_nRF52832_xxAA
+          bool "nRF52832_xxAA"
+          select MCU_Device_nRF52832_xxAA
+   config CHOICE_MCU_Device_nRF52832_xxAB
+          bool "nRF52832_xxAB"
+          select MCU_Device_nRF52832_xxAB
+   config CHOICE_MCU_Device_nRF52840_xxAA
+          bool "nRF52840_xxAA"
+          select MCU_Device_nRF52840_xxAA
+endchoice
+endif
+if CHOICE_MCU_Vendor_SONiX
+choice CHOICE_MCU_SONiX_FAMILY
+       prompt "Select micro-controller family"
+   config CHOICE_MCU_Family_SN32F100
+          bool "SN32F100"
+   config CHOICE_MCU_Family_SN32F230
+          bool "SN32F230"
+   config CHOICE_MCU_Family_SN32F240
+          bool "SN32F240"
+   config CHOICE_MCU_Family_SN32F240B
+          bool "SN32F240B"
+   config CHOICE_MCU_Family_SN32F260
+          bool "SN32F260"
+   config CHOICE_MCU_Family_SN32F700
+          bool "SN32F700"
+   config CHOICE_MCU_Family_SN32F700B
+          bool "SN32F700B"
+   config CHOICE_MCU_Family_SN32F750
+          bool "SN32F750"
+   config CHOICE_MCU_Family_SN32F760
+          bool "SN32F760"
+   config CHOICE_MCU_Family_SN32F760B
+          bool "SN32F760B"
+   config CHOICE_MCU_Family_SN32F770
+          bool "SN32F770"
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F100
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F100
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F107F
+          bool "SN32F107F"
+          select MCU_Device_SN32F107F
+   config CHOICE_MCU_Device_SN32F108F
+          bool "SN32F108F"
+          select MCU_Device_SN32F108F
+   config CHOICE_MCU_Device_SN32F109F
+          bool "SN32F109F"
+          select MCU_Device_SN32F109F
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F230
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F230
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F235J
+          bool "SN32F235J"
+          select MCU_Device_SN32F235J
+   config CHOICE_MCU_Device_SN32F236J
+          bool "SN32F236J"
+          select MCU_Device_SN32F236J
+   config CHOICE_MCU_Device_SN32F237F
+          bool "SN32F237F"
+          select MCU_Device_SN32F237F
+   config CHOICE_MCU_Device_SN32F238F
+          bool "SN32F238F"
+          select MCU_Device_SN32F238F
+   config CHOICE_MCU_Device_SN32F239F
+          bool "SN32F239F"
+          select MCU_Device_SN32F239F
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F240
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F240
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F245J
+          bool "SN32F245J"
+          select MCU_Device_SN32F245J
+   config CHOICE_MCU_Device_SN32F246J
+          bool "SN32F246J"
+          select MCU_Device_SN32F246J
+   config CHOICE_MCU_Device_SN32F247F
+          bool "SN32F247F"
+          select MCU_Device_SN32F247F
+   config CHOICE_MCU_Device_SN32F248F
+          bool "SN32F248F"
+          select MCU_Device_SN32F248F
+   config CHOICE_MCU_Device_SN32F249F
+          bool "SN32F249F"
+          select MCU_Device_SN32F249F
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F240B
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F240B
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F2451BJ
+          bool "SN32F2451BJ"
+          select MCU_Device_SN32F2451BJ
+   config CHOICE_MCU_Device_SN32F246BJ
+          bool "SN32F246BJ"
+          select MCU_Device_SN32F246BJ
+   config CHOICE_MCU_Device_SN32F247BF
+          bool "SN32F247BF"
+          select MCU_Device_SN32F247BF
+   config CHOICE_MCU_Device_SN32F248BF
+          bool "SN32F248BF"
+          select MCU_Device_SN32F248BF
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F260
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F260
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F263X
+          bool "SN32F263X"
+          select MCU_Device_SN32F263X
+   config CHOICE_MCU_Device_SN32F2641J
+          bool "SN32F2641J"
+          select MCU_Device_SN32F2641J
+   config CHOICE_MCU_Device_SN32F264SX
+          bool "SN32F264S/X"
+          select MCU_Device_SN32F264SX
+   config CHOICE_MCU_Device_SN32F265J
+          bool "SN32F265J"
+          select MCU_Device_SN32F265J
+   config CHOICE_MCU_Device_SN32F267J
+          bool "SN32F267J"
+          select MCU_Device_SN32F267J
+   config CHOICE_MCU_Device_SN32F268F
+          bool "SN32F268F"
+          select MCU_Device_SN32F268F
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F700
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F700
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F705J
+          bool "SN32F705J"
+          select MCU_Device_SN32F705J
+   config CHOICE_MCU_Device_SN32F706J
+          bool "SN32F706J"
+          select MCU_Device_SN32F706J
+   config CHOICE_MCU_Device_SN32F707F
+          bool "SN32F707F"
+          select MCU_Device_SN32F707F
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F700B
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F700B
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F705BJ
+          bool "SN32F705BJ"
+          select MCU_Device_SN32F705BJ
+   config CHOICE_MCU_Device_SN32F706BJ
+          bool "SN32F706BJ"
+          select MCU_Device_SN32F706BJ
+   config CHOICE_MCU_Device_SN32F707BF
+          bool "SN32F707BF"
+          select MCU_Device_SN32F707BF
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F750
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F750
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F755J
+          bool "SN32F755J"
+          select MCU_Device_SN32F755J
+   config CHOICE_MCU_Device_SN32F756J
+          bool "SN32F756J"
+          select MCU_Device_SN32F756J
+   config CHOICE_MCU_Device_SN32F757F
+          bool "SN32F757F"
+          select MCU_Device_SN32F757F
+   config CHOICE_MCU_Device_SN32F758F
+          bool "SN32F758F"
+          select MCU_Device_SN32F758F
+   config CHOICE_MCU_Device_SN32F759F
+          bool "SN32F759F"
+          select MCU_Device_SN32F759F
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F760
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F760
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F765J
+          bool "SN32F765J"
+          select MCU_Device_SN32F765J
+   config CHOICE_MCU_Device_SN32F766J
+          bool "SN32F766J"
+          select MCU_Device_SN32F766J
+   config CHOICE_MCU_Device_SN32F767F
+          bool "SN32F767F"
+          select MCU_Device_SN32F767F
+   config CHOICE_MCU_Device_SN32F768F
+          bool "SN32F768F"
+          select MCU_Device_SN32F768F
+   config CHOICE_MCU_Device_SN32F769F
+          bool "SN32F769F"
+          select MCU_Device_SN32F769F
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F760B
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F760B
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F7651BJ
+          bool "SN32F7651BJ"
+          select MCU_Device_SN32F7651BJ
+   config CHOICE_MCU_Device_SN32F7652BJ
+          bool "SN32F7652BJ"
+          select MCU_Device_SN32F7652BJ
+   config CHOICE_MCU_Device_SN32F7661BF
+          bool "SN32F7661BF"
+          select MCU_Device_SN32F7661BF
+   config CHOICE_MCU_Device_SN32F766BJ
+          bool "SN32F766BJ"
+          select MCU_Device_SN32F766BJ
+   config CHOICE_MCU_Device_SN32F767BF
+          bool "SN32F767BF"
+          select MCU_Device_SN32F767BF
+   config CHOICE_MCU_Device_SN32F768BF
+          bool "SN32F768BF"
+          select MCU_Device_SN32F768BF
+endchoice
+endif
+if CHOICE_MCU_Family_SN32F770
+choice CHOICE_MCU_DEVICE_MCU_Family_SN32F770
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_SN32F773S
+          bool "SN32F773S"
+          select MCU_Device_SN32F773S
+   config CHOICE_MCU_Device_SN32F773T
+          bool "SN32F773T"
+          select MCU_Device_SN32F773T
+   config CHOICE_MCU_Device_SN32F7741J
+          bool "SN32F7741J"
+          select MCU_Device_SN32F7741J
+   config CHOICE_MCU_Device_SN32F774S
+          bool "SN32F774S"
+          select MCU_Device_SN32F774S
+   config CHOICE_MCU_Device_SN32F774T
+          bool "SN32F774T"
+          select MCU_Device_SN32F774T
 endchoice
 endif
 if CHOICE_MCU_Vendor_STMicro
@@ -4940,5 +7271,59 @@ choice CHOICE_MCU_DEVICE_MCU_Family_STM32L4PLUS
    config CHOICE_MCU_Device_STM32L4S9ZIYx
           bool "STM32L4S9ZIYx"
           select MCU_Device_STM32L4S9ZIYx
+endchoice
+endif
+if CHOICE_MCU_Vendor_Zilog
+choice CHOICE_MCU_Zilog_FAMILY
+       prompt "Select micro-controller family"
+   config CHOICE_MCU_Family_Z32F0641
+          bool "Z32F0641"
+   config CHOICE_MCU_Family_Z32F0642
+          bool "Z32F0642"
+   config CHOICE_MCU_Family_Z32F1281
+          bool "Z32F1281"
+   config CHOICE_MCU_Family_Z32F3841
+          bool "Z32F3841"
+endchoice
+endif
+if CHOICE_MCU_Family_Z32F0641
+choice CHOICE_MCU_DEVICE_MCU_Family_Z32F0641
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_Z32F06410AES
+          bool "Z32F06410AES"
+          select MCU_Device_Z32F06410AES
+   config CHOICE_MCU_Device_Z32F06410AKS
+          bool "Z32F06410AKS"
+          select MCU_Device_Z32F06410AKS
+endchoice
+endif
+if CHOICE_MCU_Family_Z32F0642
+choice CHOICE_MCU_DEVICE_MCU_Family_Z32F0642
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_Z32F06423AKE
+          bool "Z32F06423AKE"
+          select MCU_Device_Z32F06423AKE
+   config CHOICE_MCU_Device_Z32F06423EKE
+          bool "Z32F06423EKE"
+          select MCU_Device_Z32F06423EKE
+endchoice
+endif
+if CHOICE_MCU_Family_Z32F1281
+choice CHOICE_MCU_DEVICE_MCU_Family_Z32F1281
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_Z32F12811ARS
+          bool "Z32F12811ARS"
+          select MCU_Device_Z32F12811ARS
+   config CHOICE_MCU_Device_Z32F12811ATS
+          bool "Z32F12811ATS"
+          select MCU_Device_Z32F12811ATS
+endchoice
+endif
+if CHOICE_MCU_Family_Z32F3841
+choice CHOICE_MCU_DEVICE_MCU_Family_Z32F3841
+       prompt "Select micro-controller device"
+   config CHOICE_MCU_Device_Z32F38412ALS
+          bool "Z32F38412ALS"
+          select MCU_Device_Z32F38412ALS
 endchoice
 endif

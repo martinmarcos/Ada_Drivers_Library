@@ -1,3 +1,787 @@
+config MCU_Family_AC30M1x64
+      bool
+
+if MCU_Family_AC30M1x64
+   config MCU_Family_Name
+         string
+         default "AC30M1x64"
+endif
+config MCU_Family_AC33GA256
+      bool
+
+if MCU_Family_AC33GA256
+   config MCU_Family_Name
+         string
+         default "AC33GA256"
+endif
+config MCU_Family_AC33MA384A
+      bool
+
+if MCU_Family_AC33MA384A
+   config MCU_Family_Name
+         string
+         default "AC33MA384A"
+endif
+config MCU_Family_AC33Mx064
+      bool
+
+if MCU_Family_AC33Mx064
+   config MCU_Family_Name
+         string
+         default "AC33Mx064"
+endif
+config MCU_Family_AC33Mx128
+      bool
+
+if MCU_Family_AC33Mx128
+   config MCU_Family_Name
+         string
+         default "AC33Mx128"
+endif
+config MCU_Family_ADuCM302x_Series
+      bool
+
+if MCU_Family_ADuCM302x_Series
+   config MCU_Family_Name
+         string
+         default "ADuCM302x Series"
+endif
+config MCU_Family_ADuCM4x50_Series
+      bool
+
+if MCU_Family_ADuCM4x50_Series
+   config MCU_Family_Name
+         string
+         default "ADuCM4x50 Series"
+endif
+config MCU_Family_Apollo_Series
+      bool
+
+if MCU_Family_Apollo_Series
+   config MCU_Family_Name
+         string
+         default "Apollo Series"
+endif
+config MCU_Family_CM41x_Mixed_Signal_Control_Processors
+      bool
+
+if MCU_Family_CM41x_Mixed_Signal_Control_Processors
+   config MCU_Family_Name
+         string
+         default "CM41x Mixed Signal Control Processors"
+endif
+config MCU_Family_CM41x_M0
+      bool
+
+if MCU_Family_CM41x_M0
+   config MCU_Family_Name
+         string
+         default "CM41x_M0"
+endif
+config MCU_Family_CM41x_M4
+      bool
+
+if MCU_Family_CM41x_M4
+   config MCU_Family_Name
+         string
+         default "CM41x_M4"
+endif
+config MCU_Family_GD32F130
+      bool
+
+if MCU_Family_GD32F130
+   config MCU_Family_Name
+         string
+         default "GD32F130"
+endif
+config MCU_Family_GD32F150
+      bool
+
+if MCU_Family_GD32F150
+   config MCU_Family_Name
+         string
+         default "GD32F150"
+endif
+config MCU_Family_GD32F170
+      bool
+
+if MCU_Family_GD32F170
+   config MCU_Family_Name
+         string
+         default "GD32F170"
+endif
+config MCU_Family_GD32F190
+      bool
+
+if MCU_Family_GD32F190
+   config MCU_Family_Name
+         string
+         default "GD32F190"
+endif
+config MCU_Family_GD32F330
+      bool
+
+if MCU_Family_GD32F330
+   config MCU_Family_Name
+         string
+         default "GD32F330"
+endif
+config MCU_Family_GD32F350
+      bool
+
+if MCU_Family_GD32F350
+   config MCU_Family_Name
+         string
+         default "GD32F350"
+endif
+config MCU_Family_LPC54101
+      bool
+
+if MCU_Family_LPC54101
+   config MCU_Family_Name
+         string
+         default "LPC54101"
+endif
+config MCU_Family_LPC54102
+      bool
+
+if MCU_Family_LPC54102
+   config MCU_Family_Name
+         string
+         default "LPC54102"
+endif
+config MCU_Family_LPC54113
+      bool
+
+if MCU_Family_LPC54113
+   config MCU_Family_Name
+         string
+         default "LPC54113"
+endif
+config MCU_Family_LPC54114
+      bool
+
+if MCU_Family_LPC54114
+   config MCU_Family_Name
+         string
+         default "LPC54114"
+endif
+config MCU_Family_LPC54605
+      bool
+
+if MCU_Family_LPC54605
+   config MCU_Family_Name
+         string
+         default "LPC54605"
+endif
+config MCU_Family_LPC54606
+      bool
+
+if MCU_Family_LPC54606
+   config MCU_Family_Name
+         string
+         default "LPC54606"
+endif
+config MCU_Family_LPC54607
+      bool
+
+if MCU_Family_LPC54607
+   config MCU_Family_Name
+         string
+         default "LPC54607"
+endif
+config MCU_Family_LPC54608
+      bool
+
+if MCU_Family_LPC54608
+   config MCU_Family_Name
+         string
+         default "LPC54608"
+endif
+config MCU_Family_LPC54616
+      bool
+
+if MCU_Family_LPC54616
+   config MCU_Family_Name
+         string
+         default "LPC54616"
+endif
+config MCU_Family_LPC54618
+      bool
+
+if MCU_Family_LPC54618
+   config MCU_Family_Name
+         string
+         default "LPC54618"
+endif
+config MCU_Family_LPC54628
+      bool
+
+if MCU_Family_LPC54628
+   config MCU_Family_Name
+         string
+         default "LPC54628"
+endif
+config MCU_Family_MIMXRT1051
+      bool
+
+if MCU_Family_MIMXRT1051
+   config MCU_Family_Name
+         string
+         default "MIMXRT1051"
+endif
+config MCU_Family_MIMXRT1052
+      bool
+
+if MCU_Family_MIMXRT1052
+   config MCU_Family_Name
+         string
+         default "MIMXRT1052"
+endif
+config MCU_Family_MK02F12810
+      bool
+
+if MCU_Family_MK02F12810
+   config MCU_Family_Name
+         string
+         default "MK02F12810"
+endif
+config MCU_Family_MK11D5
+      bool
+
+if MCU_Family_MK11D5
+   config MCU_Family_Name
+         string
+         default "MK11D5"
+endif
+config MCU_Family_MK11DA5
+      bool
+
+if MCU_Family_MK11DA5
+   config MCU_Family_Name
+         string
+         default "MK11DA5"
+endif
+config MCU_Family_MK12D5
+      bool
+
+if MCU_Family_MK12D5
+   config MCU_Family_Name
+         string
+         default "MK12D5"
+endif
+config MCU_Family_MK21D5
+      bool
+
+if MCU_Family_MK21D5
+   config MCU_Family_Name
+         string
+         default "MK21D5"
+endif
+config MCU_Family_MK21DA5
+      bool
+
+if MCU_Family_MK21DA5
+   config MCU_Family_Name
+         string
+         default "MK21DA5"
+endif
+config MCU_Family_MK21F12
+      bool
+
+if MCU_Family_MK21F12
+   config MCU_Family_Name
+         string
+         default "MK21F12"
+endif
+config MCU_Family_MK21FA12
+      bool
+
+if MCU_Family_MK21FA12
+   config MCU_Family_Name
+         string
+         default "MK21FA12"
+endif
+config MCU_Family_MK22D5
+      bool
+
+if MCU_Family_MK22D5
+   config MCU_Family_Name
+         string
+         default "MK22D5"
+endif
+config MCU_Family_MK22F12
+      bool
+
+if MCU_Family_MK22F12
+   config MCU_Family_Name
+         string
+         default "MK22F12"
+endif
+config MCU_Family_MK22F12810
+      bool
+
+if MCU_Family_MK22F12810
+   config MCU_Family_Name
+         string
+         default "MK22F12810"
+endif
+config MCU_Family_MK22F25612
+      bool
+
+if MCU_Family_MK22F25612
+   config MCU_Family_Name
+         string
+         default "MK22F25612"
+endif
+config MCU_Family_MK22F51212
+      bool
+
+if MCU_Family_MK22F51212
+   config MCU_Family_Name
+         string
+         default "MK22F51212"
+endif
+config MCU_Family_MK22FA12
+      bool
+
+if MCU_Family_MK22FA12
+   config MCU_Family_Name
+         string
+         default "MK22FA12"
+endif
+config MCU_Family_MK24F12
+      bool
+
+if MCU_Family_MK24F12
+   config MCU_Family_Name
+         string
+         default "MK24F12"
+endif
+config MCU_Family_MK24F25612
+      bool
+
+if MCU_Family_MK24F25612
+   config MCU_Family_Name
+         string
+         default "MK24F25612"
+endif
+config MCU_Family_MK26F18
+      bool
+
+if MCU_Family_MK26F18
+   config MCU_Family_Name
+         string
+         default "MK26F18"
+endif
+config MCU_Family_MK27F15
+      bool
+
+if MCU_Family_MK27F15
+   config MCU_Family_Name
+         string
+         default "MK27F15"
+endif
+config MCU_Family_MK28F15
+      bool
+
+if MCU_Family_MK28F15
+   config MCU_Family_Name
+         string
+         default "MK28F15"
+endif
+config MCU_Family_MK63F12
+      bool
+
+if MCU_Family_MK63F12
+   config MCU_Family_Name
+         string
+         default "MK63F12"
+endif
+config MCU_Family_MK64F12
+      bool
+
+if MCU_Family_MK64F12
+   config MCU_Family_Name
+         string
+         default "MK64F12"
+endif
+config MCU_Family_MK65F18
+      bool
+
+if MCU_Family_MK65F18
+   config MCU_Family_Name
+         string
+         default "MK65F18"
+endif
+config MCU_Family_MK66F18
+      bool
+
+if MCU_Family_MK66F18
+   config MCU_Family_Name
+         string
+         default "MK66F18"
+endif
+config MCU_Family_MK80F25615
+      bool
+
+if MCU_Family_MK80F25615
+   config MCU_Family_Name
+         string
+         default "MK80F25615"
+endif
+config MCU_Family_MK82F25615
+      bool
+
+if MCU_Family_MK82F25615
+   config MCU_Family_Name
+         string
+         default "MK82F25615"
+endif
+config MCU_Family_MKE02Z4
+      bool
+
+if MCU_Family_MKE02Z4
+   config MCU_Family_Name
+         string
+         default "MKE02Z4"
+endif
+config MCU_Family_MKE04Z1284
+      bool
+
+if MCU_Family_MKE04Z1284
+   config MCU_Family_Name
+         string
+         default "MKE04Z1284"
+endif
+config MCU_Family_MKE04Z4
+      bool
+
+if MCU_Family_MKE04Z4
+   config MCU_Family_Name
+         string
+         default "MKE04Z4"
+endif
+config MCU_Family_MKE06Z4
+      bool
+
+if MCU_Family_MKE06Z4
+   config MCU_Family_Name
+         string
+         default "MKE06Z4"
+endif
+config MCU_Family_MKE14F16
+      bool
+
+if MCU_Family_MKE14F16
+   config MCU_Family_Name
+         string
+         default "MKE14F16"
+endif
+config MCU_Family_MKE14Z7
+      bool
+
+if MCU_Family_MKE14Z7
+   config MCU_Family_Name
+         string
+         default "MKE14Z7"
+endif
+config MCU_Family_MKE15Z7
+      bool
+
+if MCU_Family_MKE15Z7
+   config MCU_Family_Name
+         string
+         default "MKE15Z7"
+endif
+config MCU_Family_MKE16F16
+      bool
+
+if MCU_Family_MKE16F16
+   config MCU_Family_Name
+         string
+         default "MKE16F16"
+endif
+config MCU_Family_MKE18F16
+      bool
+
+if MCU_Family_MKE18F16
+   config MCU_Family_Name
+         string
+         default "MKE18F16"
+endif
+config MCU_Family_MKL02Z4
+      bool
+
+if MCU_Family_MKL02Z4
+   config MCU_Family_Name
+         string
+         default "MKL02Z4"
+endif
+config MCU_Family_MKL03Z4
+      bool
+
+if MCU_Family_MKL03Z4
+   config MCU_Family_Name
+         string
+         default "MKL03Z4"
+endif
+config MCU_Family_MKL13Z644
+      bool
+
+if MCU_Family_MKL13Z644
+   config MCU_Family_Name
+         string
+         default "MKL13Z644"
+endif
+config MCU_Family_MKL17Z4
+      bool
+
+if MCU_Family_MKL17Z4
+   config MCU_Family_Name
+         string
+         default "MKL17Z4"
+endif
+config MCU_Family_MKL17Z644
+      bool
+
+if MCU_Family_MKL17Z644
+   config MCU_Family_Name
+         string
+         default "MKL17Z644"
+endif
+config MCU_Family_MKL26Z4
+      bool
+
+if MCU_Family_MKL26Z4
+   config MCU_Family_Name
+         string
+         default "MKL26Z4"
+endif
+config MCU_Family_MKL27Z4
+      bool
+
+if MCU_Family_MKL27Z4
+   config MCU_Family_Name
+         string
+         default "MKL27Z4"
+endif
+config MCU_Family_MKL27Z644
+      bool
+
+if MCU_Family_MKL27Z644
+   config MCU_Family_Name
+         string
+         default "MKL27Z644"
+endif
+config MCU_Family_MKL28Z7
+      bool
+
+if MCU_Family_MKL28Z7
+   config MCU_Family_Name
+         string
+         default "MKL28Z7"
+endif
+config MCU_Family_MKL33Z4
+      bool
+
+if MCU_Family_MKL33Z4
+   config MCU_Family_Name
+         string
+         default "MKL33Z4"
+endif
+config MCU_Family_MKL33Z644
+      bool
+
+if MCU_Family_MKL33Z644
+   config MCU_Family_Name
+         string
+         default "MKL33Z644"
+endif
+config MCU_Family_MKL34Z4
+      bool
+
+if MCU_Family_MKL34Z4
+   config MCU_Family_Name
+         string
+         default "MKL34Z4"
+endif
+config MCU_Family_MKL36Z4
+      bool
+
+if MCU_Family_MKL36Z4
+   config MCU_Family_Name
+         string
+         default "MKL36Z4"
+endif
+config MCU_Family_MKL43Z4
+      bool
+
+if MCU_Family_MKL43Z4
+   config MCU_Family_Name
+         string
+         default "MKL43Z4"
+endif
+config MCU_Family_MKL46Z4
+      bool
+
+if MCU_Family_MKL46Z4
+   config MCU_Family_Name
+         string
+         default "MKL46Z4"
+endif
+config MCU_Family_MKL82Z7
+      bool
+
+if MCU_Family_MKL82Z7
+   config MCU_Family_Name
+         string
+         default "MKL82Z7"
+endif
+config MCU_Family_MKS20F12
+      bool
+
+if MCU_Family_MKS20F12
+   config MCU_Family_Name
+         string
+         default "MKS20F12"
+endif
+config MCU_Family_MKS22F12
+      bool
+
+if MCU_Family_MKS22F12
+   config MCU_Family_Name
+         string
+         default "MKS22F12"
+endif
+config MCU_Family_MKV10Z1287
+      bool
+
+if MCU_Family_MKV10Z1287
+   config MCU_Family_Name
+         string
+         default "MKV10Z1287"
+endif
+config MCU_Family_MKV11Z7
+      bool
+
+if MCU_Family_MKV11Z7
+   config MCU_Family_Name
+         string
+         default "MKV11Z7"
+endif
+config MCU_Family_MKV30F12810
+      bool
+
+if MCU_Family_MKV30F12810
+   config MCU_Family_Name
+         string
+         default "MKV30F12810"
+endif
+config MCU_Family_MKV31F12810
+      bool
+
+if MCU_Family_MKV31F12810
+   config MCU_Family_Name
+         string
+         default "MKV31F12810"
+endif
+config MCU_Family_MKV31F25612
+      bool
+
+if MCU_Family_MKV31F25612
+   config MCU_Family_Name
+         string
+         default "MKV31F25612"
+endif
+config MCU_Family_MKV31F51212
+      bool
+
+if MCU_Family_MKV31F51212
+   config MCU_Family_Name
+         string
+         default "MKV31F51212"
+endif
+config MCU_Family_MKV42F16
+      bool
+
+if MCU_Family_MKV42F16
+   config MCU_Family_Name
+         string
+         default "MKV42F16"
+endif
+config MCU_Family_MKV44F16
+      bool
+
+if MCU_Family_MKV44F16
+   config MCU_Family_Name
+         string
+         default "MKV44F16"
+endif
+config MCU_Family_MKV46F16
+      bool
+
+if MCU_Family_MKV46F16
+   config MCU_Family_Name
+         string
+         default "MKV46F16"
+endif
+config MCU_Family_MKV56F24
+      bool
+
+if MCU_Family_MKV56F24
+   config MCU_Family_Name
+         string
+         default "MKV56F24"
+endif
+config MCU_Family_MKV58F24
+      bool
+
+if MCU_Family_MKV58F24
+   config MCU_Family_Name
+         string
+         default "MKV58F24"
+endif
+config MCU_Family_MM32x031_Series
+      bool
+
+if MCU_Family_MM32x031_Series
+   config MCU_Family_Name
+         string
+         default "MM32x031 Series"
+endif
+config MCU_Family_MM32x103_Series
+      bool
+
+if MCU_Family_MM32x103_Series
+   config MCU_Family_Name
+         string
+         default "MM32x103 Series"
+endif
+config MCU_Family_QN908xA
+      bool
+
+if MCU_Family_QN908xA
+   config MCU_Family_Name
+         string
+         default "QN908xA"
+endif
+config MCU_Family_QN908xB
+      bool
+
+if MCU_Family_QN908xB
+   config MCU_Family_Name
+         string
+         default "QN908xB"
+endif
+config MCU_Family_QN908xC
+      bool
+
+if MCU_Family_QN908xC
+   config MCU_Family_Name
+         string
+         default "QN908xC"
+endif
 config MCU_Family_SAM3A
       bool
 
@@ -262,6 +1046,94 @@ if MCU_Family_SAMV71
          string
          default "SAMV71"
 endif
+config MCU_Family_SN32F100
+      bool
+
+if MCU_Family_SN32F100
+   config MCU_Family_Name
+         string
+         default "SN32F100"
+endif
+config MCU_Family_SN32F230
+      bool
+
+if MCU_Family_SN32F230
+   config MCU_Family_Name
+         string
+         default "SN32F230"
+endif
+config MCU_Family_SN32F240
+      bool
+
+if MCU_Family_SN32F240
+   config MCU_Family_Name
+         string
+         default "SN32F240"
+endif
+config MCU_Family_SN32F240B
+      bool
+
+if MCU_Family_SN32F240B
+   config MCU_Family_Name
+         string
+         default "SN32F240B"
+endif
+config MCU_Family_SN32F260
+      bool
+
+if MCU_Family_SN32F260
+   config MCU_Family_Name
+         string
+         default "SN32F260"
+endif
+config MCU_Family_SN32F700
+      bool
+
+if MCU_Family_SN32F700
+   config MCU_Family_Name
+         string
+         default "SN32F700"
+endif
+config MCU_Family_SN32F700B
+      bool
+
+if MCU_Family_SN32F700B
+   config MCU_Family_Name
+         string
+         default "SN32F700B"
+endif
+config MCU_Family_SN32F750
+      bool
+
+if MCU_Family_SN32F750
+   config MCU_Family_Name
+         string
+         default "SN32F750"
+endif
+config MCU_Family_SN32F760
+      bool
+
+if MCU_Family_SN32F760
+   config MCU_Family_Name
+         string
+         default "SN32F760"
+endif
+config MCU_Family_SN32F760B
+      bool
+
+if MCU_Family_SN32F760B
+   config MCU_Family_Name
+         string
+         default "SN32F760B"
+endif
+config MCU_Family_SN32F770
+      bool
+
+if MCU_Family_SN32F770
+   config MCU_Family_Name
+         string
+         default "SN32F770"
+endif
 config MCU_Family_STM32F0
       bool
 
@@ -398,11 +1270,171 @@ if MCU_Family_STM32L4PLUS
          string
          default "STM32L4PLUS"
 endif
-config MCU_Family_nRF51
+config MCU_Family_TLE984x_Series
       bool
 
-if MCU_Family_nRF51
+if MCU_Family_TLE984x_Series
    config MCU_Family_Name
          string
-         default "nRF51"
+         default "TLE984x Series"
+endif
+config MCU_Family_TLE986x_Series
+      bool
+
+if MCU_Family_TLE986x_Series
+   config MCU_Family_Name
+         string
+         default "TLE986x Series"
+endif
+config MCU_Family_TLE987x_Series
+      bool
+
+if MCU_Family_TLE987x_Series
+   config MCU_Family_Name
+         string
+         default "TLE987x Series"
+endif
+config MCU_Family_XMC1100_Series
+      bool
+
+if MCU_Family_XMC1100_Series
+   config MCU_Family_Name
+         string
+         default "XMC1100 Series"
+endif
+config MCU_Family_XMC1200_Series
+      bool
+
+if MCU_Family_XMC1200_Series
+   config MCU_Family_Name
+         string
+         default "XMC1200 Series"
+endif
+config MCU_Family_XMC1300_Series
+      bool
+
+if MCU_Family_XMC1300_Series
+   config MCU_Family_Name
+         string
+         default "XMC1300 Series"
+endif
+config MCU_Family_XMC1400_Series
+      bool
+
+if MCU_Family_XMC1400_Series
+   config MCU_Family_Name
+         string
+         default "XMC1400 Series"
+endif
+config MCU_Family_XMC4100_Series
+      bool
+
+if MCU_Family_XMC4100_Series
+   config MCU_Family_Name
+         string
+         default "XMC4100 Series"
+endif
+config MCU_Family_XMC4200_Series
+      bool
+
+if MCU_Family_XMC4200_Series
+   config MCU_Family_Name
+         string
+         default "XMC4200 Series"
+endif
+config MCU_Family_XMC4300_Series
+      bool
+
+if MCU_Family_XMC4300_Series
+   config MCU_Family_Name
+         string
+         default "XMC4300 Series"
+endif
+config MCU_Family_XMC4400_Series
+      bool
+
+if MCU_Family_XMC4400_Series
+   config MCU_Family_Name
+         string
+         default "XMC4400 Series"
+endif
+config MCU_Family_XMC4500_Series
+      bool
+
+if MCU_Family_XMC4500_Series
+   config MCU_Family_Name
+         string
+         default "XMC4500 Series"
+endif
+config MCU_Family_XMC4700_Series
+      bool
+
+if MCU_Family_XMC4700_Series
+   config MCU_Family_Name
+         string
+         default "XMC4700 Series"
+endif
+config MCU_Family_XMC4800_Series
+      bool
+
+if MCU_Family_XMC4800_Series
+   config MCU_Family_Name
+         string
+         default "XMC4800 Series"
+endif
+config MCU_Family_Z32F0641
+      bool
+
+if MCU_Family_Z32F0641
+   config MCU_Family_Name
+         string
+         default "Z32F0641"
+endif
+config MCU_Family_Z32F0642
+      bool
+
+if MCU_Family_Z32F0642
+   config MCU_Family_Name
+         string
+         default "Z32F0642"
+endif
+config MCU_Family_Z32F1281
+      bool
+
+if MCU_Family_Z32F1281
+   config MCU_Family_Name
+         string
+         default "Z32F1281"
+endif
+config MCU_Family_Z32F3841
+      bool
+
+if MCU_Family_Z32F3841
+   config MCU_Family_Name
+         string
+         default "Z32F3841"
+endif
+config MCU_Family_iMX_RT1050
+      bool
+
+if MCU_Family_iMX_RT1050
+   config MCU_Family_Name
+         string
+         default "i.MX RT1050"
+endif
+config MCU_Family_nRF51_Series
+      bool
+
+if MCU_Family_nRF51_Series
+   config MCU_Family_Name
+         string
+         default "nRF51 Series"
+endif
+config MCU_Family_nRF52_Series
+      bool
+
+if MCU_Family_nRF52_Series
+   config MCU_Family_Name
+         string
+         default "nRF52 Series"
 endif

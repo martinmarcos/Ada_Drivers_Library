@@ -1,0 +1,9 @@
+if MCU_Family_nRF51_Series
+   config MCU_DRIVER_NRF51
+          bool
+          default y
+
+          # Sources
+          option source_dir="arch/ARM/NordicSemiconductor/drivers"
+          option source_dir="arch/ARM/NordicSemiconductor/devices"
+endif

@@ -75,6 +75,11 @@ menu "Run-time"
                string
                default ""
      endif
+
+     config Include_Trap_Handler_Vector
+            bool "Include the trap handler vector definition"
+            default n
+
 endmenu
 
 source "middleware/config.in"

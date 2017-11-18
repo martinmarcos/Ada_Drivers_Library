@@ -1,0 +1,6 @@
+
+MEMORY
+{
+  ram1 (rwx) : ORIGIN = 0x200F0000, LENGTH = 0x00008000
+}
+
