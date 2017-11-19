@@ -19,7 +19,6 @@ package Config is
    MCU_DRIVER_NRF51 : constant Boolean := True;
    HAS_RUNTIME_PROFILE_ZFP : constant Boolean := True;
    RUNTIME_NAME_SUFFIX : constant String := "nrf51";
-   STM32_HSE_MHZ : constant := ;
    BOARD_MICRO_BIT : constant Boolean := True;
 
    --

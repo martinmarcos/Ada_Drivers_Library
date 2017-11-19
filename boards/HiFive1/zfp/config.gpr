@@ -64,4 +64,5 @@ abstract project Config is
    HAS_COMPONENTS : Boolean := "True";
    Src_Dirs := Src_Dirs & ("components/src/**");
 
+   Src_Dirs := Src_Dirs & Project'Project_Dir;
 end Config;

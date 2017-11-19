@@ -12,7 +12,6 @@ package Config is
    TARGET_PLATFORM : constant String := "";
    HAS_RUNTIME_PROFILE_NATIVE : constant Boolean := True;
    RUNTIME_NAME_SUFFIX : constant String := "";
-   STM32_HSE_MHZ : constant := ;
    BOARD_NATIVE : constant Boolean := True;
 
    --

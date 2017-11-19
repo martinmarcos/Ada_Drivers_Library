@@ -14,7 +14,6 @@ package Config is
    DEVICE_FE310 : constant Boolean := True;
    HAS_RUNTIME_PROFILE_ZFP : constant Boolean := True;
    RUNTIME_NAME_SUFFIX : constant String := "hifive1";
-   STM32_HSE_MHZ : constant := ;
    BOARD_HIFIVE1 : constant Boolean := True;
 
    --
