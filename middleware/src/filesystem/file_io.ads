@@ -36,10 +36,11 @@ with System;
 with HAL.Block_Drivers;
 
 with HAL.Filesystem;
+with Config;
 
 package File_IO is
 
-   MAX_PATH_LENGTH  : constant := 1024;
+   MAX_PATH_LENGTH  : constant := Config.FILESYSTEM_MAX_PATH_LEN;
    --  Maximum size of a path name length
 
    type Status_Code is

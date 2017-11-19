@@ -30,10 +30,11 @@
 ------------------------------------------------------------------------------
 
 with HAL;            use HAL;
+with Config;
 
 package Filesystem is
 
-   MAX_PATH_LENGTH  : constant := 1024;
+   MAX_PATH_LENGTH  : constant := Config.FILESYSTEM_MAX_PATH_LEN;
    --  Maximum size of a path name length
 
    subtype Block_Number is HAL.UInt64;

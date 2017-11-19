@@ -38,13 +38,14 @@ with System;
 with Interfaces;        use Interfaces;
 with HAL.Block_Drivers; use HAL.Block_Drivers;
 with HAL.Filesystem;    use HAL.Filesystem;
+with Config;
 
 package Filesystem.FAT is
 
    MAX_VOLUMES         : constant := 1;
    --  Maximum number of mounted volumes
 
-   MAX_FILENAME_LENGTH : constant := 255;
+   MAX_FILENAME_LENGTH : constant := Config.FILESYSTEM_MAX_PATH_LEN;
    --  Maximum size of a file or directory name
 
    MAX_FILE_HANDLES    : constant := 10;
