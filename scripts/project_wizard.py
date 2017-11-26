@@ -40,8 +40,8 @@ def valid_int(str):
 
 
 def query_bool(question, default="yes"):
-    valid = {"yes": True, "y": True, "ye": True,
-             "no": False, "n": False}
+    valid = {"yes": 'Y', "y": 'y', "ye": 'y',
+             "no": 'n', "n": 'n'}
     if default is None:
         prompt = " [y/n]\n"
     elif default == "yes" or default == 'y':
@@ -190,7 +190,7 @@ def sc_question(sc, prompt, indent):
 
     if sc.type == BOOL:
         val = query_bool(prompt, sc.str_value)
-        sc.set_value(val)
+        sc.set_value(STR_TO_TRI[val])
         return
 
     if sc.type == TRISTATE:
