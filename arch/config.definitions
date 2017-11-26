@@ -2,6 +2,7 @@ source "arch/ARM/cores.definitions"
 source "arch/ARM/families.definitions"
 source "arch/ARM/mcus.definitions"
 source "arch/ARM/driver.definitions"
+source "arch/ARM/runtimes.definitions"
 
 source "arch/ARM/STMicro/driver.definitions"
 source "arch/ARM/NordicSemiconductor/driver.definitions"

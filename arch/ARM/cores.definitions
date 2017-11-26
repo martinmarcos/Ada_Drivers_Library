@@ -1,4 +1,5 @@
 config MCU_Core_ARM_Cortex_M0
+      select HAS_RUNTIME_PROFILE_ZFP
       bool
 
 if MCU_Core_ARM_Cortex_M0
@@ -7,6 +8,7 @@ if MCU_Core_ARM_Cortex_M0
          default "ARM Cortex-M0"
 endif
 config MCU_Core_ARM_Cortex_M0P
+      select HAS_RUNTIME_PROFILE_ZFP
       bool
 
 if MCU_Core_ARM_Cortex_M0P
@@ -15,6 +17,7 @@ if MCU_Core_ARM_Cortex_M0P
          default "ARM Cortex-M0+"
 endif
 config MCU_Core_ARM_Cortex_M3
+      select HAS_RUNTIME_PROFILE_ZFP
       bool
 
 if MCU_Core_ARM_Cortex_M3
@@ -23,6 +26,7 @@ if MCU_Core_ARM_Cortex_M3
          default "ARM Cortex-M3"
 endif
 config MCU_Core_ARM_Cortex_M4
+      select HAS_RUNTIME_PROFILE_ZFP
       bool
 
 if MCU_Core_ARM_Cortex_M4
@@ -31,6 +35,7 @@ if MCU_Core_ARM_Cortex_M4
          default "ARM Cortex-M4"
 endif
 config MCU_Core_ARM_Cortex_M7
+      select HAS_RUNTIME_PROFILE_ZFP
       bool
 
 if MCU_Core_ARM_Cortex_M7

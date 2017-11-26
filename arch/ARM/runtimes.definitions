@@ -1,0 +1,32 @@
+if MCU_Core_ARM_Cortex_M0 && RUNTIME_PROFILE_ZFP
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "cortex-m0"
+endif
+
+if MCU_Core_ARM_Cortex_M0P && RUNTIME_PROFILE_ZFP
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "cortex-m0plus"
+endif
+
+if MCU_Core_ARM_Cortex_M3 && RUNTIME_PROFILE_ZFP
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "cortex-m3"
+endif
+
+if MCU_Core_ARM_Cortex_M4 && RUNTIME_PROFILE_ZFP
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "cortex-m4"
+endif
+
+if MCU_Core_ARM_Cortex_M7 && RUNTIME_PROFILE_ZFP
+   config RUNTIME_NAME_SUFFIX
+          string
+          default "cortex-m7"
+endif
+
+
+
