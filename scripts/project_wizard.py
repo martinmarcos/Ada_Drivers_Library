@@ -27,9 +27,9 @@ def query_bool(question, default="yes"):
              "no": False, "n": False}
     if default is None:
         prompt = " [y/n]\n"
-    elif default == "yes":
+    elif default == "yes" or default == 'y':
         prompt = " [Y/n]\n"
-    elif default == "no":
+    elif default == "no" or default == 'n':
         prompt = " [y/N]\n"
     else:
         raise ValueError("invalid default answer: '%s'" % default)
@@ -139,6 +139,7 @@ def sc_range(sc, has_active_range, low, high):
     else:
         has_active_range = False
 
+
 def sc_question(sc, prompt, indent):
 
     if sc.type == STRING:
@@ -148,14 +149,14 @@ def sc_question(sc, prompt, indent):
         has_active_range = False
         low = 0
         high = 0
-        sc_range (sc, has_active_range, low, high)
+        sc_range(sc, has_active_range, low, high)
         if not has_active_range:
             low = None
             high = None
         val = query_int(prompt, low, high, int(sc.str_value))
         sc.set_value(str(val))
     elif sc.type == HEX:
-        print "({})".format(sc.str_value)
+        print prompt + " HEX type not supported..."
         return
 
     if isinstance(sc, Symbol) and sc.choice and sc.visibility == 2:
@@ -175,21 +176,17 @@ def sc_question(sc, prompt, indent):
     tri_val_str = {0: " ", 1: "M", 2: "*"}[sc.tri_value]
 
     if len(sc.assignable) == 1:
-        # Pinned to a single value
-        print "-{}-".format(tri_val_str)
         return
 
     if sc.type == BOOL:
-        print "[{}]".format(tri_val_str)
+        val = query_bool(prompt, sc.str_value)
+        sc.set_value(val)
         return
 
     if sc.type == TRISTATE:
-        if sc.assignable == (1, 2):
-            # m and y available
-            print "{" + tri_val_str + "}"  # Gets a bit confusing with .format()
-            return
-        print "<{}>".format(tri_val_str)
+        print prompt + " TRISTATE type not supported..."
         return
+
 
 def menuconfig_nodes(node, indent):
     while node:
