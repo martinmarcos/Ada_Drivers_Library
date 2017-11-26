@@ -258,6 +258,8 @@ prj += '   for Library_Name use "adl";\n'
 prj += '   for Library_Dir use "lib-" & Config.RUNTIME_NAME_SUFFIX;\n'
 prj += '   for Library_Kind use "static";\n'
 prj += '   for Create_Missing_Dirs use "True";\n'
+prj += '   LD_Switches := ("-T", Config.LD_Script_Path);'
+prj += '\n'
 prj += 'end %s;\n' % project_name
 
 with open(os.path.join(project_dir, project_name + '.gpr'), 'w') as file:
@@ -277,6 +279,10 @@ if query_bool("Do you want to create a examples project?"):
     prj += '   for Object_Dir use "obj";\n'
     prj += '   for Main use ("main.adb");\n'
     prj += '   for Create_Missing_Dirs use "True";\n'
+    prj += '\n'
+    prj += '   package Linker is\n'
+    prj += '      for Default_Switches ("Ada") use Drivers.LD_Switches;\n'
+    prj += '   end Linker;\n'
     prj += '\n'
     prj += 'end %s;\n' % example_name
 

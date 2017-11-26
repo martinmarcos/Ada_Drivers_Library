@@ -4,13 +4,14 @@ with "config.gpr";
 
 library Project Ada_Drivers_Library Is
  
-   for Runtime ("Ada") use 
-     Config.RUNTIME_NAME_PREFIX & Config.RUNTIME_NAME_SUFFIX;
+  for Runtime ("Ada") use 
+    Config.RUNTIME_NAME_PREFIX & Config.RUNTIME_NAME_SUFFIX;
 
   for Target use Config.TARGET_PLATFORM;
 
   Obj_Suffix := Project'Runtime ("Ada") & "-" & Common_Flags.Build;
 
+  for Languages use ("Ada", "Asm");
   for Create_Missing_Dirs use "True";
   for Library_Name use "Ada_Drivers_Library";
   for Library_Dir use "lib/" & Obj_Suffix;
