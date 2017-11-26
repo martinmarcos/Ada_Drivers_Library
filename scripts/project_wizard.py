@@ -13,7 +13,23 @@ sys.setrecursionlimit(0x100000)
 
 ###############################################################################
 
-import sys
+import os
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+ADL_dir = os.path.join(script_dir, "..")
+os.sys.path.insert(0, os.path.join(script_dir, "Kconfiglib/"))
+
+from kconfiglib import Kconfig, \
+                       Symbol, Choice, MENU, COMMENT, \
+                       BOOL, TRISTATE, STRING, INT, HEX, UNKNOWN, \
+                       expr_value, \
+                       TRI_TO_STR, STR_TO_TRI, _is_base_n, _TYPE_TO_BASE
+
+
+def create_subdir(dir):
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+
 
 def valid_int(str):
     try:
@@ -21,6 +37,7 @@ def valid_int(str):
         return True
     except ValueError:
         return False
+
 
 def query_bool(question, default="yes"):
     valid = {"yes": True, "y": True, "ye": True,
@@ -47,6 +64,7 @@ def query_bool(question, default="yes"):
             sys.stdout.write("Please respond with 'yes' or 'no' "
                              "(or 'y' or 'n').\n")
 
+
 def query_string(question, default):
 
     prompt = " [default: '%s']\n? " % (default)
@@ -59,6 +77,7 @@ def query_string(question, default):
             return default
         else:
             return choice
+
 
 def query_choice(question, choices):
 
@@ -79,6 +98,7 @@ def query_choice(question, choices):
             return choices[int(choice)]
         else:
             sys.stdout.write("Please respond with an item of the list.\n")
+
 
 def query_int(question, range_from, range_to, default):
 
@@ -109,16 +129,6 @@ def query_int(question, range_from, range_to, default):
         else:
             sys.stdout.write("'%s' is not in the range of valid values\n" % choice)
 
-import os
-
-script_dir = os.path.dirname(os.path.abspath(__file__))
-os.sys.path.insert(0, os.path.join(script_dir, "Kconfiglib/"))
-
-from kconfiglib import Kconfig, \
-                       Symbol, Choice, MENU, COMMENT, \
-                       BOOL, TRISTATE, STRING, INT, HEX, UNKNOWN, \
-                       expr_value, \
-                       TRI_TO_STR, STR_TO_TRI, _is_base_n, _TYPE_TO_BASE
 
 def sc_range(sc, has_active_range, low, high):
     base = _TYPE_TO_BASE[sc.orig_type]
@@ -207,34 +217,32 @@ def menuconfig_nodes(node, indent):
 
         node = node.next
 
-if len (sys.argv) != 1:
-    print "Usage project_wizard.py config.in"
-    exit
+project_name = query_string("Enter project name", "drivers")
+project_dir = os.path.join(os.getcwd(), project_name)
 
-config_file=sys.argv[1]
-config_dir=os.path.dirname(config_file)
+config_file = os.path.join(ADL_dir, "config.in")
+config_dir = os.path.dirname(config_file)
 
 print "Loading configuration %s..." % config_file
 
 conf = Kconfig(config_file, srctree=config_dir, config_prefix='')
 
-conf.syms['RELATIVE_PATH_TO_ADL_ROOT'].set_value(os.path.relpath(config_dir, os.getcwd()))
+conf.syms['RELATIVE_PATH_TO_ADL_ROOT'].set_value(os.path.relpath(config_dir, project_dir))
 
 print "\n======== %s ========\n" % (conf.mainmenu_text)
 
 menuconfig_nodes(conf.top_node.list, 0)
 
-conf.write_config(".config")
+create_subdir(project_name)
+
+conf.write_config(os.path.join(project_dir, ".config"))
 print("configuration saved to config.ads")
 
-conf.write_config_ada('config.ads')
+conf.write_config_ada(os.path.join(project_dir, 'config.ads'))
 print("configuration written to config.ads")
 
-conf.write_config_gpr('config.gpr')
+conf.write_config_gpr(os.path.join(project_dir, 'config.gpr'))
 print("configuration written to config.gpr")
-
-
-project_name = query_string("Enter project name", "drivers")
 
 prj = 'with "config.gpr";\n'
 prj += '\n'
@@ -252,5 +260,39 @@ prj += '   for Library_Kind use "static";\n'
 prj += '   for Create_Missing_Dirs use "True";\n'
 prj += 'end %s;\n' % project_name
 
-with open(project_name + '.gpr', 'w') as file:
+with open(os.path.join(project_dir, project_name + '.gpr'), 'w') as file:
     file.write(prj)
+
+if query_bool("Do you want to create a examples project?"):
+    example_name = query_string("Enter example project name", "hello")
+
+    prj = 'with "%s/%s.gpr";\n' % (project_name, project_name)
+    prj += '\n'
+    prj += 'project %s is\n' % example_name
+    prj += '\n'
+    prj += '   for Runtime ("Ada") use %s\'Runtime ("Ada");\n' % project_name
+    prj += '   for Target use %s\'Target;\n' % project_name
+    prj += '\n'
+    prj += '   for Source_Dirs use ("src");\n'
+    prj += '   for Object_Dir use "obj";\n'
+    prj += '   for Main use ("main.adb");\n'
+    prj += '   for Create_Missing_Dirs use "True";\n'
+    prj += '\n'
+    prj += 'end %s;\n' % example_name
+
+    with open(os.path.join(os.getcwd(), example_name + '.gpr'), 'w') as file:
+        file.write(prj)
+
+    create_subdir("src")
+
+    main = 'with Ada.Text_IO; use Ada.Text_IO;\n'
+    main += '\n'
+    main += 'procedure Main is\n'
+    main += 'begin\n'
+    main += '   Put_Line ("Hello world!");\n'
+    main += 'end Main;\n'
+
+    with open(os.path.join(os.getcwd(), "src", 'main.adb'), 'w') as file:
+        file.write(main)
+
+    os.system('gps -P %s.gpr' % example_name)
